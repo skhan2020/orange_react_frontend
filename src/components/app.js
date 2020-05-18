@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import store from '../store'
 import '../css/App.css'
 import {
   setMessageFromBackend,
@@ -15,16 +16,15 @@ class App extends Component {
   }
 
   getMessageFromBackend() {
-    const props = this.props
-    props.startLoadingMessageFromBackend()
+    store.dispatch(startLoadingMessageFromBackend());
     axios
       .get('/hello')
       .then((resp) => {
-        props.setMessageFromBackend(resp.data.message)
+        store.dispatch(setMessageFromBackend(resp.data.message))
       })
       .catch(function (error) {
         console.log(error)
-        props.stopLoadingMessageFromBackend()
+        store.dispatch(stopLoadingMessageFromBackend())
       })
   }
 
