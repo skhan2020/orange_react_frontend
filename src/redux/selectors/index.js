@@ -1,9 +1,9 @@
 const getMainReducer = (state) => {
-  return state.mainReducer
+  return state.reducer
 }
 
-export const getMessage = (state) => {
-  return getMainReducer(state).message
+export const getLoggedIn = (state) => {
+  return getMainReducer(state).isLoggedIn
 }
 
 export const isCallingBackend = (state) => {

@@ -1,0 +1,11 @@
+@import "../pages.scss";
+
+.todos-form {
+  text-align: center;
+  border: 1px solid purple;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 30rem;
+  max-width: 80%;
+  @extend %custom-button
+}

@@ -1,0 +1,19 @@
+
+@import "../pages.scss";
+
+.auth-form {
+  width: 40rem;
+  max-width: 30%;
+  margin: 5rem auto;
+  .form-control {
+    margin-bottom: 1rem;
+    label, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .form-action {
+    @extend %custom-button
+  }
+}

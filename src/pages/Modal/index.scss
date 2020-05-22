@@ -1,0 +1,21 @@
+@import "../pages.scss";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 90%;
+  background: white;
+  box-shadow: 0 2px 8px black;
+  position: fixed;
+  top: 20vh;
+  margin: auto;
+  @extend %custom-button
+}
+
+@media (min-width: 768px) {
+  .modal{
+    width: 50rem;
+    left: calc(100% -50rem) / 2
+  }
+}

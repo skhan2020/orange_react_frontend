@@ -16,14 +16,24 @@
   }
   .items {
     margin: 0 0 0 1.5rem;
+    button {
+      text-decoration: none;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border: none;
+      font: inherit;
+      background: transparent;
+      cursor: pointer;
+    }
     ul {
       display: flex;
       padding: 0;
       margin: 0;
       list-style: none;
+      align-items: center;
       li {
         margin: 0 1rem;
-        a {
+        a, button {
           text-decoration: none;
           color: white;
         }

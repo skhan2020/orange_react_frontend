@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import './Auth.scss'
+import { setLoginToken } from '../../redux/actions/loginActions'
+import { useDispatch } from 'react-redux'
+import './index.scss'
 
 const AuthPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
+
+  const dispatch  = useDispatch();
 
   const switchModeHandler = () => {
     setIsLogin(!isLogin);
@@ -55,8 +59,11 @@ const AuthPage = () => {
       }
       return res.json();
     })
-    .then(data => {
-      console.log(data)
+    .then(resdata => {
+      if (resdata.data.login.token) {
+        console.log(resdata.data.login)
+        dispatch(setLoginToken(resdata.data.login));
+      }
     })
     .catch(err => {
       console.log(err)
@@ -83,4 +90,4 @@ const AuthPage = () => {
   )
 }
 
-export default AuthPage;
+export default AuthPage
