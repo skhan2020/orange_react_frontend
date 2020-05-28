@@ -10,7 +10,6 @@ import MainNavigation from './components/Navigation/MainNavigation'
 class App extends Component {
   render() {
    const { isLoggedIn } = this.props;
-   debugger;
    return (
       <BrowserRouter>
         <>

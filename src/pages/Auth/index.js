@@ -24,27 +24,34 @@ const AuthPage = () => {
 
     let reqBody = {
       query: `
-      query {
-        login(email: "test2@test.com", password: "testtest") {
-          userId
-          token
-          tokenExpiration
+        query Login($email: String!, $password: String!){
+          login(email: $email, password: $password) {
+            userId
+            token
+            tokenExpiration
+          }
         }
+      `,
+      variables: {
+        email: email,
+        password: password
       }
-      `
     }
     if (!isLogin) {
       reqBody = {
-        query: `mutation {
+        query: `mutation CreateUser ($email: String!, $password: String!){
           createUser(userInput: {
-              email: "${email}",
-              password: "${password}"
+              email: $email,
+              password: $password
           }) {
               email
               _id
           }
-        }`
-        
+        }`,
+        variables: {
+          email: email,
+          password: password
+        }
       }
     }
     fetch('http://localhost:4000/graphqlapi', {
@@ -71,7 +78,7 @@ const AuthPage = () => {
     );
   }
   return (
-    <form className="auth-form" onSubmit={submitHandler}>
+    <form className="form" onSubmit={submitHandler}>
       <div className="form-control">
         <label htmlFor="email">E-mail</label>
         <input type="email" id="email"

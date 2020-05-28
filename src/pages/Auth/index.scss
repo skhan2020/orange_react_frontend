@@ -1,13 +1,12 @@
 
 @import "../pages.scss";
 
-.auth-form {
-  width: 40rem;
+.form {
   max-width: 30%;
-  margin: 5rem auto;
+  margin: 8rem auto;
   .form-control {
     margin-bottom: 1rem;
-    label, input {
+    label, input, textArea {
       display: block;
       width: 100%;
       margin-bottom: 0.5rem;

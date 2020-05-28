@@ -9,3 +9,16 @@
   max-width: 80%;
   @extend %custom-button
 }
+
+.todo_list{
+  width: 40rem;
+  max-width: 40%;
+  margin: 2rem auto;
+  padding: 0;
+  list-style: none;
+  .todo_list_item {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid purple;
+  }
+}

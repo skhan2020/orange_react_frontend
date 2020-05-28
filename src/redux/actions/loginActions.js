@@ -4,7 +4,7 @@ export function setLoginToken(data) {
   return {
     type: "SET_LOGIN_TOKEN",
     payload: {
-      token: data.token,
+      loginToken: data.token,
       userId: data.userId,
       tokenExpiration: data.tokenExpiration,
     },

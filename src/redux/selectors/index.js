@@ -6,10 +6,10 @@ export const getLoggedIn = (state) => {
   return getMainReducer(state).isLoggedIn
 }
 
-export const isCallingBackend = (state) => {
-  return getMainReducer(state).isCallingBackend
+export const getLoginToken = (state) => {
+  return getMainReducer(state).loginToken;
 }
 
-export const wasLastCallSuccessful = (state) => {
-  return getMainReducer(state).lastCallWasSuccessful
+export const getUserId = (state) => {
+  return getMainReducer(state).userId
 }
