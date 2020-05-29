@@ -1,36 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getLoggedIn } from '../../redux/selectors'
-import { doLogout } from '../../redux/actions/loginActions'
+import { getLoggedIn, getShowSignup } from '../../redux/selectors'
+import { doLogout, setShowSignUp } from '../../redux/actions/loginActions'
 import orange_logo from '../../images/orange_logo.png'
 import { translate } from '../../localization/service'
 
 import './MainHeader.scss'
 
 const MainHeader = () => {
-  const [showSignIn, setShowSignIn] = useState(true);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getLoggedIn);
+  const showSignup = useSelector(getShowSignup);
 
   const logoutUser = () => {
     dispatch(doLogout());
   }
-  const updateShowSignIn = () => {
-    setShowSignIn(prevState => !prevState);
+  const updateShowSignUp = () => {
+    dispatch(setShowSignUp({showSignup: !showSignup}));
   }
 
   return (
     <header className="main-header">
-      {!isLoggedIn && 
       <div className="header_logo">
-        <img className="logo" src={orange_logo} /> 
+        <img className="logo" src={orange_logo} alt="OrangeLogo"/> 
         <div>Orange</div>
       </div>
-      }
       <ul>
-        {!isLoggedIn && showSignIn && <li onClick={updateShowSignIn}><NavLink to="/auth">{ translate('sign_up')}</NavLink></li>}
-        {!isLoggedIn && !showSignIn && <li onClick={updateShowSignIn}><NavLink to="/landing">Home</NavLink></li>}
+        {!isLoggedIn && showSignup && <li onClick={updateShowSignUp}><NavLink to="/auth">{ translate('sign_up')}</NavLink></li>}
+        {!isLoggedIn && !showSignup && <li onClick={updateShowSignUp}><NavLink to="/landing">Home</NavLink></li>}
         {isLoggedIn && (
           <li><button onClick={logoutUser}>Logout</button></li>
         )}

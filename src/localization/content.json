@@ -9,6 +9,9 @@
     "en": "Sweat no more!! With Orange you can easily prioritize your work. Its your very own personal manager/coach that will help you organize your daily study load and help you meet your goals more quickly and efficiently!"
   },
   "main_content3" : {
+    "en": "Dont have an Account?"
+  },
+  "main_content4" : {
     "en": "Sign-up for a free trial today!"
   },
   "sign_in" : {
@@ -67,5 +70,11 @@
   },
   "undergrad" : {
     "en" : "Under Grad"
+  },
+  "sign_up_success" : {
+    "en" : "Welcome {name} to Orange. Your trial period ends in 15 days. Sign in and begin your journey to success!"
+  },
+  "trial_expired" : {
+    "en" : "Your trial period has expired!! You can continue with our services for just 5 oranges/month!"
   }
 }

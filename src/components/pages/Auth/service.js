@@ -1,12 +1,13 @@
-import { setLoginToken } from '../../../redux/actions/loginActions';
+import { setLoginToken, setShowSignUp } from '../../../redux/actions/loginActions';
 import { translate } from '../../../localization/service';
 import store from '../../../redux/store';
+import { TRIAL_PERIOD } from '../../../constants'
 
 export const signInHandler = (email, password) => {
   const reqBody = {
     query: `
-      query Login($email: String!, $password: String!){
-        login(email: $email, password: $password) {
+      query Login($email: String!, $password: String!, $expiration: Int!){
+        login(email: $email, password: $password, expiration: $expiration) {
           userId
           token
           tokenExpiration
@@ -14,8 +15,9 @@ export const signInHandler = (email, password) => {
       }
     `,
     variables: {
-      email: email,
-      password: password
+      email,
+      password,
+      expiration: TRIAL_PERIOD
     }
   }
   fetch('http://localhost:4000/graphqlapi', {
@@ -25,21 +27,19 @@ export const signInHandler = (email, password) => {
       "Content-Type": "application/json"
     }
   }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error(translate(res.errors && res.error.message ? res.error.message: "login_error"))
-    }
     return res.json();
   })
   .then(resdata => {
+    if (resdata.errors && resdata.errors.length) {
+      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.error.message: "login_error"))
+    }
     if (resdata.data.login.token) {
-      console.log(resdata.data.login)
       store.dispatch(setLoginToken(resdata.data.login));
     }
   })
   .catch(err => {
     alert(err)
-  }
-  );
+  });
 }
 
 export const signUpHandler = (email, password, firstName, lastName, type) => {
@@ -80,9 +80,11 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
     return res.json();
   })
   .then(resdata => {
-    if (resdata.data.login.token) {
-      console.log(resdata.data.login)
-      store.dispatch(setLoginToken(resdata.data.login));
+    if (resdata.errors && resdata.errors.length) {
+      throw new Error(translate(resdata.errors[0].message))
+    }
+    if (resdata.data && resdata.data.createUser && resdata.data.createUser._id) {
+      store.dispatch(setShowSignUp({showSignup: false, userInfo: resdata.data.createUser}));
     }
   })
   .catch(err => {

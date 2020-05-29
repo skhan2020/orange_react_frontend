@@ -6,7 +6,6 @@ import './index.scss'
 import '../Auth/index.scss'
 
 const TodosPage = () => {
-
   const authToken = useSelector(getLoginToken);
   const userId = useSelector(getUserId);
   const typeEl = useRef(null);

@@ -1,9 +1,9 @@
 const getMainReducer = (state) => {
-  return state.reducer
+  return state.reducer;
 }
 
 export const getLoggedIn = (state) => {
-  return getMainReducer(state).isLoggedIn
+  return getMainReducer(state).isLoggedIn;
 }
 
 export const getLoginToken = (state) => {
@@ -11,5 +11,9 @@ export const getLoginToken = (state) => {
 }
 
 export const getUserId = (state) => {
-  return getMainReducer(state).userId
+  return getMainReducer(state).userId;
+}
+
+export const getShowSignup = (state) => {
+  return getMainReducer(state).showSignup;
 }
