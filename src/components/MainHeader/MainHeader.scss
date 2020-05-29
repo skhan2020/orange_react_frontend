@@ -1,0 +1,52 @@
+.main-header {
+  display: flex;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: orange;
+  padding: 0 1rem;
+  justify-content: space-between;
+
+  .header_logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    color: white;
+    .logo {
+      width: 70px;
+      height: 70px;
+    }
+  }
+  button {
+    text-decoration: none;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    font: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+  ul {
+    padding: 20px;
+    margin: 0;
+    font-size: 1.3em;
+    list-style: none;
+    li {
+      margin: 0 1rem;
+      a, button {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        color: yellow;
+      }
+      a:active {
+        color: yellow;
+      }
+      a.active {
+        color: yellow;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+
+  %custom-button {
+    button {
+      background: yellowgreen;
+      font: inherit;
+      border-color: rgb(214, 247, 150);
+      border-radius: 5px;
+      padding: 0.25rem 1rem;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    button:hover, button:active  {
+      background-color: rgb(28, 179, 73);
+      border-color: rgb(214, 247, 150);
+      border-radius: 5px;
+    }
+  }

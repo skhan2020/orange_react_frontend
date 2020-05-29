@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { getLoginToken, getUserId } from '../../redux/selectors'
+import { getLoginToken, getUserId } from '../../../redux/selectors'
 import { useSelector } from 'react-redux'
 import Modal from '../Modal/index'
 import './index.scss'

@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getLoggedIn } from './redux/selectors'
 import './css/App.scss'
-import AuthPage from './pages/Auth'
-import TodosPage from './pages/Todos'
-import MainNavigation from './components/Navigation/MainNavigation'
+import AuthPage from './components/pages/Auth'
+import LandingPage from './components/Landing/index'
+import TodosPage from './components/pages/Todos'
+import MainHeader from './components/MainHeader/MainHeader'
 
 class App extends Component {
   render() {
@@ -13,14 +14,16 @@ class App extends Component {
    return (
       <BrowserRouter>
         <>
-          <MainNavigation />
+          <MainHeader />
           <main className="main">
             <Switch>
               {isLoggedIn && <Redirect from="/" to="/todos" exact/>}
               {isLoggedIn && <Redirect from="/auth" to="/todos" exact/>}
-              {!isLoggedIn && <Route path="/auth" component={AuthPage} />}
+              {!isLoggedIn && <Route path="/auth"
+                  render={(props) => <AuthPage {...props} isLogin={false} />}/>}
+              {!isLoggedIn && <Route path="/landing" component={LandingPage} />}
               {isLoggedIn && <Route path="/todos" component={TodosPage} />}
-              {!isLoggedIn && <Redirect to="/auth" exact/>}
+              {!isLoggedIn && <Redirect to="/landing" exact/>}
             </Switch>
           </main>
         </>

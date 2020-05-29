@@ -1,0 +1,71 @@
+{
+  "main_header": {
+    "en": "Welcome to The Orange!"
+  },
+  "main_content": {
+    "en": "At Orange we try to make every students life easy and organized. Are you lost between what to practice and what to revise? What projects you need to tackle first?"
+  },
+  "main_content2": {
+    "en": "Sweat no more!! With Orange you can easily prioritize your work. Its your very own personal manager/coach that will help you organize your daily study load and help you meet your goals more quickly and efficiently!"
+  },
+  "main_content3" : {
+    "en": "Sign-up for a free trial today!"
+  },
+  "sign_in" : {
+      "en": "Sign In"
+  },
+  "sign_up" : {
+      "en": "Sign Up"
+  },
+  "last_nm" : {
+      "en": "Last Name"
+  },
+  "first_nm" : {
+      "en": "First Name"
+  },
+  "user_type" : {
+      "en": "I am a:"
+  },
+  "email_missing": {
+      "en": "Please enter a E-mail"
+  },
+  "password_missing" : {
+      "en": "Please enter a password"
+  },
+  "last_nm_missing" : {
+      "en": "Please enter a last name"
+  },
+  "first_nm_missing" : {
+      "en": "Please enter a first name"
+  },
+  "email": {
+      "en": "E-mail"
+  },
+  "password" : {
+      "en": "Password"
+  },
+  "login_error" : {
+    "en": "Could not login you in at this time!"
+  },
+  "user_exits" : {
+    "en": "An account with this E-mail already exist!"
+  },
+  "signup_error" : {
+    "en" : "Could not sign you up at this time. Please try again later!"
+  },
+  "incorrect_login" : {
+    "en" : "Login or Password did not match!"
+  },
+  "user_not_found" : {
+    "en" : "No user found with the provided E-mail address"
+  },
+  "student" : {
+    "en" : "Student"
+  },
+  "professional" : {
+    "en" : "Professional"
+  },
+  "undergrad" : {
+    "en" : "Under Grad"
+  }
+}
