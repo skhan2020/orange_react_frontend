@@ -1,9 +1,9 @@
 import React from 'react'
-import { translate } from '../../localization/service';
+import { translate } from '../../../localization/service';
 import { NavLink } from 'react-router-dom'
-import orange_logo from '../../images/orange_logo.png'
+import orange_logo from '../../../images/orange_logo.png'
 import './index.scss'
-import AuthPage from '../pages/Auth';
+import AuthPage from '../Auth';
 
 const Landing = () => {
   return (
