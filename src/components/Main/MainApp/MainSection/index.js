@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input } from 'antd'
-import Detail from './Detail/index'
+import { translate } from '../../../../localization/service' 
+// import Detail from './Detail/index'
 import './index.scss';
 import TodosPage from './Todos/index';
 
@@ -9,13 +10,16 @@ const MainSection = () => {
 
   return (
   <div className="main_section">
-    <Search
-      className="search_input"
-      placeholder="input search text"
-      onSearch={value => console.log(value)}
-      enterButton />
+    <div className="header_box">
+      <div className="page_heading">TODO</div>
+      <Search
+        className="search_input"
+        placeholder={translate('enter_search')}
+        onSearch={value => console.log(value)}
+        enterButton />
+    </div>
     <TodosPage />
-    <Detail />
+    {/* <Detail /> */}
   </div>)
 }
 

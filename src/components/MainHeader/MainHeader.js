@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLoggedIn, getShowSignup } from '../../redux/selectors'
-import { doLogout, setShowSignUp } from '../../redux/actions/loginActions'
+import { doLogout, setShowSignUp } from '../../redux/actions/authActions'
 import orange_logo from '../../images/orange_logo.png'
 import { translate } from '../../localization/service'
 

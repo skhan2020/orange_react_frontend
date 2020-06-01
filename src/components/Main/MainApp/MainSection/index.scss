@@ -3,10 +3,30 @@
   height: inherit;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  .search_input {
-    border-radius: 5px;
-    max-width: 60%;
-    padding: 20px;
+  padding: 20px;
+  .header_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    .page_heading {
+      width: 100%;
+      font-size: 2em;
+      color: orange;
+      font-weight: bold;
+    }
+    .search_input {
+      border-radius: 5px;
+      max-width: 40%;
+      z-index: 0px;
+      padding-bottom: 20px;
+      .ant-input {
+        height: 44px;
+      }
+      .ant-btn-primary {
+        height: 44px;
+        background-color: rgb(70, 196, 70);
+        border-color: rgb(70, 196, 70);
+      }
+    }
   }
 }

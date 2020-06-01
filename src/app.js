@@ -7,6 +7,7 @@ import AuthPage from './components/Main/Auth';
 import LandingPage from './components/Main/Landing/index';
 import MainApp from './components/Main/MainApp/index';
 import MainHeader from './components/MainHeader/MainHeader';
+import Modal from './components/Main/Modal/index'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
    return (
       <BrowserRouter>
         <>
+          <Modal />
           <MainHeader />
           <main className="main">
             <Switch>

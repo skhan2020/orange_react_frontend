@@ -1,19 +1,31 @@
-const getMainReducer = (state) => {
-  return state.reducer;
+const getAuthReducer = (state) => {
+  return state.authReducer;
+}
+
+const getModalReducer = (state) => {
+  return state.modalReducer;
 }
 
 export const getLoggedIn = (state) => {
-  return getMainReducer(state).isLoggedIn;
+  return getAuthReducer(state).isLoggedIn;
 }
 
 export const getLoginToken = (state) => {
-  return getMainReducer(state).loginToken;
+  return getAuthReducer(state).loginToken;
 }
 
 export const getUserId = (state) => {
-  return getMainReducer(state).userId;
+  return getAuthReducer(state).userId;
 }
 
 export const getShowSignup = (state) => {
-  return getMainReducer(state).showSignup;
+  return getAuthReducer(state).showSignup;
+}
+
+export const getModalType = (state) => {
+  return getModalReducer(state).modalType;
+}
+
+export const isModalOpen = (state) => {
+  return getModalReducer(state).modalOpen;
 }

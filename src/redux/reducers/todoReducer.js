@@ -1,4 +1,4 @@
-import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP } from '../actions/loginActions';
+import { GET_TODO_LIST, UPDATE_TODO_LIST} from '../actions/todoActions';
 
 export const initialState = () => ({
   isLoggedIn: true,
@@ -10,10 +10,10 @@ export const initialState = () => ({
   showSignup: false,
 })
 
-const reducer = (state = initialState(), action) => {
+const todoReducer = (state = initialState(), action) => {
   let payload = action.payload;
   switch (action.type) {
-    case SET_LOGIN_TOKEN:
+    case GET_TODO_LIST:
       state = {
         ...state,
         loginToken: payload.loginToken,
@@ -22,7 +22,7 @@ const reducer = (state = initialState(), action) => {
         isLoggedIn: payload.loginToken !== null,
       }
       break;
-      case CLEAR_LOGIN:
+      case UPDATE_TODO_LIST:
         state = {
           ...state,
           loginToken: "",
@@ -31,27 +31,10 @@ const reducer = (state = initialState(), action) => {
           isLoggedIn: false,
         }
       break;
-      case SHOW_SIGNUP:
-        if (payload.userInfo) {
-          state = {
-            ...state,
-            showSignup: payload.showSignup,
-            userId: payload.userInfo._id || state.userId,
-            firstName: payload.userInfo.firstName || state.firstName,
-            lastName: payload.userInfo.lastName || state.lastName,
-            userType: payload.userInfo.userType || state.userType,
-          }
-        } else {
-        state = {
-          ...state,
-          showSignup: payload.showSignup,
-          userId: payload.userId || state.userId,
-        }}
-      break;
     default:
       break
   }
   return state;
 }
 
-export default reducer
+export default todoReducer

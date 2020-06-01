@@ -1,4 +1,4 @@
-import { setLoginToken, setShowSignUp } from '../../../redux/actions/loginActions';
+import { setLoginToken, setShowSignUp } from '../../../redux/actions/authActions';
 import { translate } from '../../../localization/service';
 import store from '../../../redux/store';
 import { TRIAL_PERIOD } from '../../../constants'

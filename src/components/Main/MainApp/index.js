@@ -1,6 +1,5 @@
 import React from 'react';
 import Spine from './Spine/index';
-import Selector from './Selector/index';
 import MainSection from './MainSection/index';
 import './index.scss';
 

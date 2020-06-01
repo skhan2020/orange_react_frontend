@@ -43,7 +43,7 @@ const AuthPage = props => {
     return function cleanup() {
       form.resetFields();
     };
-  }, [userId]);
+  }, [userId, form]);
 
   const submitHandler = values => {
     if (showLogin) {

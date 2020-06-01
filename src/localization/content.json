@@ -76,5 +76,8 @@
   },
   "trial_expired" : {
     "en" : "Your trial period has expired!! You can continue with our services for just 5 oranges/month!"
+  },
+  "enter_search" : {
+    "en" : "Enter Search..."
   }
 }

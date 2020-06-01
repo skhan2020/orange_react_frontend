@@ -2,14 +2,18 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { logger } from 'redux-logger'
 
-import reducer from './reducers/reducer'
+import authReducer from '../redux/reducers/authReducer';
+import todoReducer from '../redux/reducers/todoReducer';
+import modalReducer from '../redux/reducers/modalReducer';
 
 const middleware = []
 if (process.env.NODE_ENV !== 'production') middleware.push(logger)
 
 const store = createStore(
   combineReducers({
-    reducer,
+    authReducer,
+    todoReducer,
+    modalReducer
   }),
   {},
   composeWithDevTools(applyMiddleware(...middleware))
