@@ -1,0 +1,16 @@
+.tag-box {
+  display: flex;
+  Input {
+    height: 30px;
+    font-size: 1em;
+    width: 100px;
+  }
+  .ant-tag {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    background-color: rgb(247, 221, 108);
+    border: 1px solid orange;
+  }
+}

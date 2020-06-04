@@ -7,28 +7,40 @@
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.75);
+  z-index: 500;
 }
 
 .modal {
   width: 60%;
   background: white;
   box-shadow: 0 2px 8px black;
+  border: 1px orange solid;
+  border-radius: 10px;
   position: fixed;
   top: 20vh;
   margin: auto;
   left: 50%;
+  z-index: 700;
   transform: translateX(-50%);
-  .modal_header {
-    padding: 1rem;
-    background-color: orange;
-    h3 {
-      margin: 0;
+  .modal_content {
+    padding: 5px;
+    .form {
+      @extend %form;
+      border: none;
+      max-width: 100%;
+      margin: 0px;
     }
   }
-  .modal_action {
-    display: flex;
-    justify-content: flex-end;
+  .modal_header {
     padding: 1rem;
-    @extend %custom-button
+    border: 1px orange solid;
+    background-color: orange;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    .modal_header_label {
+      margin: 0;
+      font-size: 1.8em;
+      color: white;
+    }
   }
 }

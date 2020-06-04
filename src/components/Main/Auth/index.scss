@@ -1,52 +1,10 @@
 
 @import "../index.scss";
 
-@mixin form-control {
-  label, input, textArea {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-  input {
-    height: 25px;
-  }
-}
-
-.form {
-  max-width: 30%;
-  border: 2px solid yellowgreen;
-  border-radius: 10px;
-  padding: 30px;
-  margin: 4rem auto;
-  @include form-control;
-  .form-action {
-    @extend %custom-button
-  }
-}
-
-.form_narrow {
-  width: 300px;
-  border: 2px solid yellowgreen;
-  padding: 30px;
-  border-radius: 10px;
-  margin: 30px;
-  @include form-control;
-  .form-action {
-    @extend %custom-button
-  }
-}
-
 .welcome_label {
   font-size: 1.7em;
   width: 60%;
   margin: auto;
   text-align: center;
   @extend %green-text
-}
-
-@media only screen and (min-width: 600px) {
-  .form_narrow {
-    width: 400px;
-    margin: 50px 30px;
-  }
 }

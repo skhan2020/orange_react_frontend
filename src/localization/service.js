@@ -18,8 +18,12 @@ const getString = (key, locale, options) => {
   // Replacer function for interpolation
   const interpolate = (match, s) => (options && options[s]) || `{${s}}`;
 
-  const string =
-    strings[key][locale];
+  let string = "";
+  if (strings[key]) {
+    string = strings[key][locale];
+  } else {
+    return key;
+  }
   // Interpolate values
   const interpolatedString = string.replace(VARIABLE_NAME, interpolate);
 

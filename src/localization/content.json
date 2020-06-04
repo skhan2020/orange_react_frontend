@@ -79,5 +79,29 @@
   },
   "enter_search" : {
     "en" : "Enter Search..."
+  },
+  "create_todo" : {
+    "en" : "Create a Todo"
+  },
+  "create" : {
+    "en" : "Create"
+  },
+  "cancel" : {
+    "en" : "Cancel"
+  },
+  "title" : {
+    "en" : "Title"
+  },
+  "start_time" : {
+    "en" : "Start Time"
+  },
+  "notes" : {
+    "en" : "Notes"
+  },
+  "tags" : {
+    "en" : "Tags"
+  },
+  "add_tag" : {
+    "en" : "Add Tag"
   }
 }

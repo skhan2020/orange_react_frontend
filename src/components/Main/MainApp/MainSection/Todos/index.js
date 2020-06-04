@@ -1,66 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { getLoginToken } from '../../../../../redux/selectors'
-import { useSelector } from 'react-redux'
-import './index.scss'
-import '../../../Auth/index.scss'
+import React from 'react';
+import { Select } from 'antd';
+import { useSelector } from 'react-redux';
+import { STATUSES, ON_HOLD } from '../../../../../constants/index';
+import store from '../../../../../redux/store';
+import { todoListSelector } from '../../../../../redux/selectors';
+import './index.scss';
+import '../../../Auth/index.scss';
 
 const TodosPage = () => {
-  const authToken = useSelector(getLoginToken);
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-      fetchTodos();
-    }, []
-  )
-
-  const fetchTodos = () => {
-    const reqBody = {
-      query: `
-        query {
-          todos {
-            _id
-            type
-            description
-            projectedStartTime
-            notes
-            statusUpdatedTime
-            status
-            creator {
-              _id
-              email
-            }
-          }
-        }
-      `
-    }
-    fetch('http://localhost:4000/graphqlapi', {
-      method: 'POST',
-      body: JSON.stringify(reqBody),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${authToken}`
-      }
-    }).then(res => {
-      if (res.status !== 200 && res.status !== 201) {
-        throw new Error("Failed!")
-      }
-      return res.json();
-    })
-    .then(resdata => {
-      console.log(resdata)
-      // save the todos
-      setTodos(resdata.data.todos);
-    })
-    .catch(err => {
-      console.log(err)
-    }
-    );
-  }
+  const todos = useSelector(todoListSelector);
 
   return (
     <ul className="todo_list">
-      {todos.map(item => <li key={item._id} className="todo_list_item">
-        {item.description}
+      {todos.map(item => <li key={item._id}>
+        <div className="todo_list_item">
+          <span>10:20 PM</span>
+          <div className="list_main">
+            <div className="list_main_title">{item.title}</div>
+            <Select name="type" defaultValue={ON_HOLD} value={item.status}>
+                {STATUSES.map((item, key) => <Select.Option key={key} value={item.value}>{item.label}</Select.Option>)}
+            </Select>
+            <div className="list_main_end">{item.startTime}</div>
+            <div className="list_main_status">{item.category}</div>
+          </div>
+        </div>
       </li>)}
     </ul>
   )

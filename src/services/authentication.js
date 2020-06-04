@@ -1,7 +1,9 @@
-import { setLoginToken, setShowSignUp } from '../../../redux/actions/authActions';
-import { translate } from '../../../localization/service';
-import store from '../../../redux/store';
-import { TRIAL_PERIOD } from '../../../constants'
+import { setLoginToken, setShowSignUp } from '../redux/actions/authActions';
+import { translate } from '../localization/service';
+import { observeLogin } from '../redux/observers/loginObserver'
+import { retrieveTodoList} from './todo'
+import store from '../redux/store';
+import { TRIAL_PERIOD } from '../constants'
 
 export const signInHandler = (email, password) => {
   const reqBody = {
@@ -92,3 +94,10 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
   }
   );
 }
+
+observeLogin(store, loggedIn => {
+  if (!loggedIn) {
+    return;
+  }
+  retrieveTodoList();
+});

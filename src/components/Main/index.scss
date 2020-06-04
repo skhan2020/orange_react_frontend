@@ -3,15 +3,16 @@
     button {
       background: yellowgreen;
       font: inherit;
+      color: white;
       border-color: rgb(214, 247, 150);
       border-radius: 5px;
-      padding: 0.25rem 1rem;
+      font-size: 1.2em;
       margin-right: 1rem;
       cursor: pointer;
     }
     button:hover, button:active  {
-      background-color: rgb(28, 179, 73);
-      border-color: rgb(214, 247, 150);
+      background-color: rgb(111, 163, 7);
+      border-color: rgb(111, 163, 7);
       border-radius: 5px;
     }
   }
@@ -21,3 +22,64 @@
   %orange-text {
     color: orange;
   }
+
+  @mixin form-control {
+    label, input, textArea {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      height: 25px;
+    }
+  }
+  
+%form {
+  max-width: 30%;
+  border: 2px solid yellowgreen;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 4rem auto;
+  .ant-form-item {
+    font-size: 1em;
+    .ant-form-item-label {
+      width: 100px;
+      label {
+        font-size: 1.2em;
+      }
+    }
+    input {
+      height: 30px;
+    }
+  }
+  @include form-control;
+  .ant-picker {
+    margin-right: 20px;
+    height: 35px;
+  }
+  .form-action {
+    .ant-form-item-required {
+      margin: 0px
+    }
+    @extend %custom-button
+  }
+}
+
+.form_narrow {
+  width: 300px;
+  border: 2px solid yellowgreen;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 30px;
+  @include form-control;
+  .form-action {
+    @extend %custom-button
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .form_narrow {
+    width: 400px;
+    margin: 50px 30px;
+  }
+}

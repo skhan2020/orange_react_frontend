@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getLoggedIn } from './redux/selectors';
+import { isLoggedIn } from './redux/selectors';
 import './app.scss';
 import AuthPage from './components/Main/Auth';
 import LandingPage from './components/Main/Landing/index';
@@ -36,7 +36,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: getLoggedIn(state),
+    isLoggedIn: isLoggedIn(state),
   }
 }
 

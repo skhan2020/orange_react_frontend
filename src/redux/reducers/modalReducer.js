@@ -1,7 +1,7 @@
 import { OPEN_MODAL, CLOSE_MODAL} from '../actions/modalAction';
 
 export const initialState = () => ({
-  modalType: null,
+  modalType: '',
   modalOpen: false,
 })
 

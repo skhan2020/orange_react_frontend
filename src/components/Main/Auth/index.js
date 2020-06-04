@@ -5,7 +5,8 @@ import { getUserId } from '../../../redux/selectors';
 import { Button, Form, Checkbox, Input, Select } from 'antd';
 import 'antd/dist/antd.css';
 import './index.scss';
-import { signInHandler, signUpHandler} from './service';
+import '../index.scss';
+import { signInHandler, signUpHandler} from '../../../services/authentication';
 import { STUDENT, PROFESSIONAL, UNDERGRAD} from '../../../constants';
 
 const AuthPage = props => {

@@ -6,7 +6,11 @@ const getModalReducer = (state) => {
   return state.modalReducer;
 }
 
-export const getLoggedIn = (state) => {
+const getTodoReducer = (state) => {
+  return state.todoReducer;
+}
+
+export const isLoggedIn = (state) => {
   return getAuthReducer(state).isLoggedIn;
 }
 
@@ -28,4 +32,8 @@ export const getModalType = (state) => {
 
 export const isModalOpen = (state) => {
   return getModalReducer(state).modalOpen;
+}
+
+export const todoListSelector = (state) => {
+  return getTodoReducer(state).todoList;
 }

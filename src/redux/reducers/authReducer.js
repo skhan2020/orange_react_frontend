@@ -1,9 +1,9 @@
 import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP } from '../actions/authActions';
 
 export const initialState = () => ({
-  isLoggedIn: true,
-  loginToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWQxYWUyN2JjMDU2NjFhNmUwMjU2NzkiLCJlbWFpbCI6InRlc3QiLCJpYXQiOjE1OTA3OTk5MTYsImV4cCI6MTU5MDgwMzUxNn0.knfFTWznhkfNUwPJLYgwafi3eo9br95L1hXzxtDVBDI',
-  userId: '5ed1ae27bc05661a6e025679',
+  isLoggedIn: false,
+  loginToken: '', //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWQxYWUyN2JjMDU2NjFhNmUwMjU2NzkiLCJlbWFpbCI6InRlc3QiLCJpYXQiOjE1OTA3OTk5MTYsImV4cCI6MTU5MDgwMzUxNn0.knfFTWznhkfNUwPJLYgwafi3eo9br95L1hXzxtDVBDI',
+  userId: '', // '5ed1ae27bc05661a6e025679',
   firstName: '',
   lastName: '',
   userType: '',
