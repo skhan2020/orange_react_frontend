@@ -103,5 +103,17 @@
   },
   "add_tag" : {
     "en" : "Add Tag"
+  },
+  "not_started" : {
+    "en" : "Not Started"
+  },
+  "on_hold" : {
+    "en" : "On Hold"
+  },
+  "in_progress" : {
+    "en" : "In Progress"
+  },
+  "done" : {
+    "en" : "Done"
   }
 }

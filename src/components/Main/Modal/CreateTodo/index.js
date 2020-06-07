@@ -36,11 +36,10 @@ const CreateTodo = () => {
 
   const onConfirm = values => {
     dispatch(closeModal());
-
     const todoObject = {
       ...values,
-      startTime: values.startDate[0].toISOString(),
-      endTime: values.startDate[1].toISOString(),
+      projectedStartTime: values.startDate[0].toISOString(),
+      projectedEndTime: values.startDate[1].toISOString(),
       tags: tagsItems,
     }
     createTodo(todoObject);

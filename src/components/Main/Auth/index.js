@@ -123,7 +123,7 @@ const AuthPage = props => {
             {selectItems.map((item, key) => <Select.Option key={key} value={item.value}>{item.label}</Select.Option>)}
         </Select>
       </Form.Item> }
-      {!showLogin && <Form.Item name="remember" valuePropName="checked"  {...tailLayout}>
+      {showLogin && <Form.Item name="remember" valuePropName="checked"  {...tailLayout}>
         <Checkbox>Remember me</Checkbox>
       </Form.Item> }
       <Form.Item className="form-action"  {...tailLayout}>

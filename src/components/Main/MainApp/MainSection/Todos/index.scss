@@ -13,27 +13,29 @@
 .todo_list{
   border-top: 1px solid orange;
   overflow:hidden; 
-  overflow-y:scroll;
+  overflow-y: auto;
   height: 100%;
   width: 100%;
   list-style: none;
   padding: 0px;
+  
   .todo_date_label {
     margin: 10px;
     height: 30px;
     font-size: 1.5em;
     color: orange;
     font-weight: bold;
+    text-decoration: underline;
   }
   .todo_list_item {
     display: flex;
     align-items: center;
     margin: 1rem 0;
     span {
-      width: 100px;
+      width: 140px;
       font-size: 1.2em;
       margin-left: 10px;
-      width: 130px;
+      font-weight: bold;
     }
     .list_main {
       font-size: 1.2em;
@@ -57,6 +59,10 @@
       .list_main_end {
         width: 170px;
         padding: 10px;
+      }
+      .delete_btn {
+        font-size: 1.5em;
+        font-weight: bold;
       }
     }
   }
