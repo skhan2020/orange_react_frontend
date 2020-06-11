@@ -6,34 +6,33 @@ import { translate } from '../../../../../../localization/service'
 import { updateTodoChanges } from '../../../../../../services/todo';
 
 const redButton = css`
-  border: 2px solid red;
+  border: 1px solid red;
   background-color: rgb(253, 218, 218);
 `;
 
 const greenButton = css`
-  border: 2px solid rgb(44, 114, 3);
+  border: 1px solid rgb(79, 199, 68);
   background-color: rgb(182, 250, 142);
 `;
 
 const blueButton = css`
-  border: 2px solid rgb(2, 150, 219);
+  border: 1px solid rgb(2, 150, 219);
   background-color: rgb(179, 228, 247);
 `;
 
 const yellowButton = css`
-  border: 2px solid orange;
+  border: 1px solid orange;
   background-color: white;
 `;
 
 
 const StyledButton = styled(Button)`
-width: 200px;
-height: 50px;
-border-radius: 20px;
-align-items: center;
-display: flex;
-${props =>
-  props.status}
+  width: 160px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  ${props =>
+   props.status || 1000}
 `;
 
 const STATUSES = new Map(
@@ -45,7 +44,7 @@ const STATUSES = new Map(
 
 const DropDown = props => {
 
-  const status = parseInt(props.status);
+  const status = props.status ? parseInt(props.status) : 1000;
 
   const handleMenuClick = event => {
     // handle status change

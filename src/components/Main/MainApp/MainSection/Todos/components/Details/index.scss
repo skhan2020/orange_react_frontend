@@ -1,0 +1,49 @@
+
+@import "../../../../../index.scss";
+
+.form_detail {
+  overflow: hidden;
+  overflow-y: auto;
+  width: 40%;
+  border: 1px solid orange;
+  padding: 30px;
+  margin: 10px;
+  .delete_box {
+    width: 100%;
+    text-align: right;
+    .delete_btn {
+      font-size: 2em;
+      font-weight: bold;
+      color: orange;
+    }
+  }
+  .ant-form-item{
+    .ant-form-item-label > label {
+      width: 100px;
+      text-align: left;
+      color: orange;
+    }
+  }
+  .form-control {
+    display: flex;
+    flex-direction: row;
+    .input, textArea, label, .value_label {
+      font-size: 1.2em;
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      height: 25px;
+    }
+  }
+  .column_box {
+    flex-direction: column;
+  }
+  .form-action {
+    .ant-form-item-control-input-content {
+      margin: auto;
+      @extend %custom-button
+    }
+  }
+}

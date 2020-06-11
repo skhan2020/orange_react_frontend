@@ -1,8 +1,9 @@
-import { ADD_NEW_TODO, UPDATE_TODO_LIST, UPDATE_TODO, DELETE_TODO} from '../actions/todoActions';
+import { ADD_NEW_TODO, UPDATE_TODO_LIST, UPDATE_TODO, DELETE_TODO, OPEN_TODO_DETAIL} from '../actions/todoActions';
 import moment from 'moment';
 
 export const initialState = () => ({
   todoList: [],
+  selectedTodo: {},
 })
 
 const sortAndUpdateTodo = list => {
@@ -38,11 +39,10 @@ const todoReducer = (state = initialState(), action) => {
           }
         break;
         case DELETE_TODO:
-          const itemToDelete = state.todoList.filter(item => item._id === payload.todoID);
-          state.todoList.pop(itemToDelete[0]);
+          const newReducedList = state.todoList.filter(item => item._id !== payload.todoID);
           state = {
             ...state,
-            todoList: sortAndUpdateTodo([...state.todoList]),
+            todoList: sortAndUpdateTodo([...newReducedList]),
           }
         break;
         case UPDATE_TODO:
@@ -57,6 +57,15 @@ const todoReducer = (state = initialState(), action) => {
           state = {
             ...state,
             todoList: todo,
+          }
+      break;
+          case OPEN_TODO_DETAIL : 
+          {
+            state = {
+              ...state,
+              selectedTodo: payload.todo,
+            }
+
           }
       break;
     default:

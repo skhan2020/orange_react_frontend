@@ -2,6 +2,23 @@ import { getLoginToken, getUserId } from '../redux/selectors/index';
 import { updateTodoList, addTodo, updateTodo, todoDeleted } from '../redux/actions/todoActions';
 import store from '../redux/store';
 
+const doFetch = reqBody => {
+  const authToken = getLoginToken(store.getState());
+  return fetch('http://localhost:4000/graphqlapi', {
+    method: 'POST',
+    body: JSON.stringify(reqBody),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${authToken}`
+    }
+  }).then(res => {
+    if (res.status !== 200 && res.status !== 201) {
+      throw new Error("Failed!")
+    }
+    return res.json();
+  })
+}
+
 export const retrieveTodoList = () => {
   const reqBody = {
     query: `
@@ -24,20 +41,7 @@ export const retrieveTodoList = () => {
       }
     `
   }
-  const authToken = getLoginToken(store.getState());
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${authToken}`
-    }
-  }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Failed!")
-    }
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
     console.log(resdata)
     // save the todos
@@ -52,14 +56,15 @@ export const retrieveTodoList = () => {
 export const updateTodoChanges = updateObj => {
   const reqBody = {
     query: `
-      mutation UpdateTodo($id: ID!, $status: Int, $statusUpdatedTime: String, $projectedEndTime: String, $projectedStartTime: String, $notes: String) {
+      mutation UpdateTodo($id: ID!, $status: Int, $statusUpdatedTime: String, $projectedEndTime: String, $projectedStartTime: String, $notes: String, $tags: [String!]) {
         updateTodo(
             id: $id
             projectedStartTime: $projectedStartTime,
             projectedEndTime: $projectedEndTime,
             status: $status,
             statusUpdatedTime: $statusUpdatedTime,
-            notes: $notes
+            notes: $notes,
+            tags: $tags
             ) {
           _id
           category
@@ -80,24 +85,13 @@ export const updateTodoChanges = updateObj => {
       projectedEndTime: updateObj.projectedEndTime,
       projectedStartTime: updateObj.projectedStartTime,
       notes: updateObj.notes,
+      tags: updateObj.tags,
     }
   }
-  const authToken = getLoginToken(store.getState());
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${authToken}`
-    }
-  }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Failed!")
-    }
-    return res.json()
-  })
+  doFetch(reqBody)
   .then(resdata => {
     const resObj = resdata.data.updateTodo;
+    debugger;
     store.dispatch(updateTodo({
       _id: resObj._id, 
       projectedStartTime: resObj.projectedStartTime,
@@ -115,6 +109,10 @@ export const updateTodoChanges = updateObj => {
 }
 
 export const createTodo = todoObj => {
+  if (!todoObj.title || !todoObj.projectedStartTime ) {
+    console.log("Some required items are missing!");
+    return ;
+  }
   const reqBody = {
     query: `
       mutation CreateTodo($category: String!, $title: String!, $status: Int!, $statusUpdatedTime: String!, $projectedEndTime: String!, $projectedStartTime: String!, $notes: String, $tags: [String!]) {
@@ -151,24 +149,11 @@ export const createTodo = todoObj => {
       statusUpdatedTime: new Date().toISOString(),
       projectedEndTime: todoObj.projectedEndTime,
       projectedStartTime: todoObj.projectedStartTime,
-      notes: todoObj.notes,
-      tags: todoObj.tags,
+      notes: todoObj.notes || '',
+      tags: todoObj.tags || [],
     }
   }
-  const authToken = getLoginToken(store.getState());
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${authToken}`
-    }
-  }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Failed!")
-    }
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
     const resObj = resdata.data.createTodo;
     const userId = getUserId(store.getState());
@@ -209,20 +194,7 @@ export const deleteTodo = todoId => {
       todoId: todoId,
     }
   }
-  const authToken = getLoginToken(store.getState());
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${authToken}`
-    }
-  }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Failed!")
-    }
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
     const deletedId = resdata.data.deleteTodo._id;
     store.dispatch(todoDeleted(deletedId));
@@ -231,5 +203,31 @@ export const deleteTodo = todoId => {
     console.log(err)
   }
   );
+}
+
+  export const getStatusTimeline = todoId => {
+    const reqBody = {
+      query: `
+        mutation CreateTodo($todoId: ID!) {
+          deleteTodo(
+              todoId: $todoId,
+          ) {
+            _id
+          }
+        }
+      `,
+      variables: {
+        todoId: todoId,
+      }
+    }
+    doFetch(reqBody)
+    .then(resdata => {
+      const deletedId = resdata.data.deleteTodo._id;
+      store.dispatch(todoDeleted(deletedId));
+    })
+    .catch(err => {
+      console.log(err)
+    }
+    );
 
 }

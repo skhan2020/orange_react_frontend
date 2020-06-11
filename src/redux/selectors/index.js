@@ -37,3 +37,7 @@ export const isModalOpen = (state) => {
 export const todoListSelector = (state) => {
   return getTodoReducer(state).todoList;
 }
+
+export const todoSelectedSelector = (state) => {
+  return getTodoReducer(state).selectedTodo;
+}

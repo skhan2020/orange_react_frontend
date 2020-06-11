@@ -2,7 +2,7 @@
   display: flex;
   left: 0;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 4rem;
   background-color: orange;
   padding: 0 1rem;
@@ -28,26 +28,22 @@
     background: transparent;
     cursor: pointer;
   }
-  ul {
-    padding: 20px;
-    margin: 0;
+  a, button {
+    padding: 8px;
+    margin: 10px;
+    height: 43px;
     font-size: 1.3em;
     list-style: none;
-    li {
-      margin: 0 1rem;
-      a, button {
-        text-decoration: none;
-        color: white;
-      }
-      a:hover {
-        color: yellow;
-      }
-      a:active {
-        color: yellow;
-      }
-      a.active {
-        color: yellow;
-      }
-    }
+    text-decoration: none;
+    color: white;
+  }
+  a:hover {
+    color: yellow;
+  }
+  a:active {
+    color: yellow;
+  }
+  a.active {
+    color: yellow;
   }
 }

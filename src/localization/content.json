@@ -115,5 +115,20 @@
   },
   "done" : {
     "en" : "Done"
+  },
+  "status" : {
+    "en" : "Status"
+  },
+  "category" : {
+    "en" : "Category"
+  },
+  "statusTimeline" : {
+    "en" : "Status Timeline"
+  },
+  "save" : {
+    "en" : "Save"
+  },
+  "delete" : {
+    "en" : "Delete"
   }
 }

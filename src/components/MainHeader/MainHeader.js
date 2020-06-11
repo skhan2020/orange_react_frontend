@@ -26,13 +26,11 @@ const MainHeader = () => {
         <img className="logo" src={orange_logo} alt="OrangeLogo"/> 
         <div>Orange</div>
       </div>
-      <ul>
-        {!loggedIn && showSignup && <li onClick={updateShowSignUp}><NavLink to="/auth">{ translate('sign_up')}</NavLink></li>}
-        {!loggedIn && !showSignup && <li onClick={updateShowSignUp}><NavLink to="/landing">Home</NavLink></li>}
+        {!loggedIn && showSignup && <NavLink onClick={updateShowSignUp} to="/auth">{ translate('sign_up')}</NavLink>}
+        {!loggedIn && !showSignup && <NavLink onClick={updateShowSignUp} to="/landing">Home</NavLink>}
         {loggedIn && (
-          <li><button onClick={logoutUser}>Logout</button></li>
+          <NavLink onClick={logoutUser} to="/landing">Logout</NavLink>
         )}
-      </ul>
     </header>
   )
 }

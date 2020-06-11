@@ -7,7 +7,7 @@ export const initialState = () => ({
   firstName: '',
   lastName: '',
   userType: '',
-  showSignup: false,
+  showSignup: true,
 })
 
 const authReducer = (state = initialState(), action) => {
@@ -29,6 +29,7 @@ const authReducer = (state = initialState(), action) => {
           tokenExpiration: "",
           userId: null,
           isLoggedIn: false,
+          showSignup: true,
         }
       break;
       case SHOW_SIGNUP:

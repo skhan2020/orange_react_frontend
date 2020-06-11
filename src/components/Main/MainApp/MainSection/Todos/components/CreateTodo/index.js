@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { closeModal } from '../../../../redux/actions/modalAction';
+import { closeModal } from '../../../../../../../redux/actions/modalAction';
 import { Button, Form, DatePicker, Input } from 'antd';
-import { createTodo } from '../../../../services/todo'
-import { translate } from '../../../../localization/service';
+import { createTodo } from '../../../../../../../services/todo'
+import { translate } from '../../../../../../../localization/service';
 import EditableTagGroup from './Tags';
 import '../index.scss';
 import './index.scss';
@@ -40,6 +40,7 @@ const CreateTodo = () => {
       ...values,
       projectedStartTime: values.startDate[0].toISOString(),
       projectedEndTime: values.startDate[1].toISOString(),
+      notes: values.notes || '',
       tags: tagsItems,
     }
     createTodo(todoObject);
@@ -94,7 +95,7 @@ const CreateTodo = () => {
         </Form.Item>
         <Form.Item 
           label={translate("tags")} name="tags">
-          <EditableTagGroup updateTags={updateTags}/>
+          <EditableTagGroup updateTags={updateTags} tags={tagsItems}/>
         </Form.Item>
         <Form.Item className="form-action"  {...tailLayout}>
           <Button htmlType="submit" onClick={() => onCancel()}>{ translate('cancel')}</Button>

@@ -1,21 +1,20 @@
 import React from 'react';
 import {  Tag, Input  } from  'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { translate } from '../../../../localization/service';
+import { translate } from '../../../../../../../localization/service';
 
 class EditableTagGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: [],
       inputVisible: false,
       inputValue: '',
     };
   }
 
   handleClose = removedTag => {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
-    this.setState({ tags }, this.props.updateTags(tags));
+    const tags = this.props.tags.filter(tag => tag !== removedTag);
+    this.props.updateTags(tags);
   };
 
   showInput = () => {
@@ -27,16 +26,16 @@ class EditableTagGroup extends React.Component {
   };
 
   handleInputConfirm = () => {
+    debugger;
     const { inputValue } = this.state;
-    let { tags } = this.state;
-    if (inputValue && tags.indexOf(inputValue) === -1) {
-      tags = [...tags, inputValue];
-    }
+    const { tags} = this.props;
     this.setState({
-      tags,
       inputVisible: false,
       inputValue: '',
-    }, this.props.updateTags(tags));
+    });
+    if (inputValue && tags.indexOf(inputValue) === -1) {
+      this.props.updateTags([...tags, inputValue])
+    }
   };
 
   saveInputRef = input => (this.input = input);
@@ -61,8 +60,9 @@ class EditableTagGroup extends React.Component {
   };
 
   render() {
-    const { tags, inputVisible, inputValue } = this.state;
-    const tagChild = tags.map(this.forMap);
+    const { inputVisible, inputValue } = this.state;
+    debugger;
+    const tagChild = this.props.tags.map(this.forMap);
     return (
       <div className="tag-box">
         <div>

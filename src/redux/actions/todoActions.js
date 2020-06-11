@@ -5,6 +5,7 @@ export const GET_TODO_LIST = "GET_TODO_LIST";
 export const ADD_NEW_TODO = "ADD_NEW_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
+export const OPEN_TODO_DETAIL = 'OPEN_TODO_DETAIL';
 
 export function updateTodoList(data) {
   return {
@@ -60,3 +61,11 @@ export function todoDeleted(data) {
   };
 }
 
+export function openTodoDetail(data) {
+  return {
+    type: OPEN_TODO_DETAIL,
+    payload: {
+      todo: data,
+    }
+  }
+}

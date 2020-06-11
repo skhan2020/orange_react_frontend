@@ -5,6 +5,11 @@
   font-size: 1.7em;
   width: 60%;
   margin: auto;
+  padding-top: 50px;
   text-align: center;
   @extend %green-text
+}
+
+.form {
+  @extend %form;
 }
