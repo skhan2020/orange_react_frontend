@@ -130,5 +130,8 @@
   },
   "delete" : {
     "en" : "Delete"
+  },
+  "status_time_line" : {
+    "en" : "Status Timeline"
   }
 }

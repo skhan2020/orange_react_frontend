@@ -6,6 +6,7 @@ export const ADD_NEW_TODO = "ADD_NEW_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const OPEN_TODO_DETAIL = 'OPEN_TODO_DETAIL';
+export const UPDATE_STATUS_TIMELINE = "UPDATE_STATUS_TIMELINE";
 
 export function updateTodoList(data) {
   return {
@@ -68,4 +69,14 @@ export function openTodoDetail(data) {
       todo: data,
     }
   }
+}
+
+export function updateStatusTimeline(id, statusList) {
+  return {
+    type: UPDATE_STATUS_TIMELINE,
+    payload: {
+      statusList,
+      id,
+    }
+  };
 }

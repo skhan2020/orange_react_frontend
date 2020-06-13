@@ -4,6 +4,7 @@ import { translate } from '../../../../../../../localization/service';
 import { todoSelectedSelector } from '../../../../../../../redux/selectors/index'
 import { updateTodoChanges, deleteTodo } from '../../../../../../../services/todo'
 import EditableTagGroup from '../CreateTodo/Tags';
+import StatusTimeLine from './StatusTimeLine/index'
 import { useSelector } from 'react-redux';
 import { CloseOutlined  } from '@ant-design/icons';
 import DropDown from '../DropDown';
@@ -26,7 +27,6 @@ const TodoDetails = props => {
   }  
   
   const onConfirm = values => {
-    debugger;
     const todoObject = {
       ...todo,
       projectedStartTime: values.startDate[0].toISOString(),
@@ -48,7 +48,6 @@ const TodoDetails = props => {
   }
 
   const updateTags = tagList => {
-    debugger;
     setTagsItems(tagList);
   }
 
@@ -78,11 +77,10 @@ const TodoDetails = props => {
         >
           <div className="value_label" >{todo.title}</div>
         </Form.Item>
-        <Form.Item
-          className="form-control" 
-          label={translate("status")} name="status"
-        >
-          <DropDown status={todo.status} todo={todo} />
+        <Form.Item className="form-control" 
+          label={translate("category")} name="category"
+          >
+          <div className="value_label">{todo.category}</div>
         </Form.Item>
         <Form.Item
           className="form-control column_box" 
@@ -96,10 +94,17 @@ const TodoDetails = props => {
           >
           <RangePicker renderExtraFooter={() => 'extra footer'} showTime />
         </Form.Item>
-        <Form.Item className="form-control" 
-          label={translate("category")} name="category"
+        <Form.Item
+          className="form-control" 
+          label={translate("status")} name="status"
+        >
+          <DropDown status={todo.status} todo={todo} />
+        </Form.Item>
+        <Form.Item
+          className="form-control column_box" 
+          label={translate("status_time_line")} name="statusTimeline"
           >
-          <div className="value_label">{todo.category}</div>
+          <StatusTimeLine todo={todo._id} className="status-timeline"/>
         </Form.Item>
         <Form.Item className="form-control" shouldUpdate
           label={translate("notes")} name="notes"

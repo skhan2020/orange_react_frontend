@@ -2,7 +2,7 @@ import { getLoginToken, getUserId } from '../redux/selectors/index';
 import { updateTodoList, addTodo, updateTodo, todoDeleted } from '../redux/actions/todoActions';
 import store from '../redux/store';
 
-const doFetch = reqBody => {
+export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
   return fetch('http://localhost:4000/graphqlapi', {
     method: 'POST',
@@ -91,7 +91,6 @@ export const updateTodoChanges = updateObj => {
   doFetch(reqBody)
   .then(resdata => {
     const resObj = resdata.data.updateTodo;
-    debugger;
     store.dispatch(updateTodo({
       _id: resObj._id, 
       projectedStartTime: resObj.projectedStartTime,
@@ -203,31 +202,4 @@ export const deleteTodo = todoId => {
     console.log(err)
   }
   );
-}
-
-  export const getStatusTimeline = todoId => {
-    const reqBody = {
-      query: `
-        mutation CreateTodo($todoId: ID!) {
-          deleteTodo(
-              todoId: $todoId,
-          ) {
-            _id
-          }
-        }
-      `,
-      variables: {
-        todoId: todoId,
-      }
-    }
-    doFetch(reqBody)
-    .then(resdata => {
-      const deletedId = resdata.data.deleteTodo._id;
-      store.dispatch(todoDeleted(deletedId));
-    })
-    .catch(err => {
-      console.log(err)
-    }
-    );
-
 }

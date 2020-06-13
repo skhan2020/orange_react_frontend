@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 const getAuthReducer = (state) => {
   return state.authReducer;
 }
@@ -35,9 +37,15 @@ export const isModalOpen = (state) => {
 }
 
 export const todoListSelector = (state) => {
-  return getTodoReducer(state).todoList;
+  return getTodoReducer(state).get('todoList') ||
+  Immutable.List([]);
+}
+
+export const todoStatusesSelector = (state) => {
+  const selectedItem = getTodoReducer(state).get('selectedTodo')
+  return getTodoReducer(state).getIn(['statuses', selectedItem._id]) || [];
 }
 
 export const todoSelectedSelector = (state) => {
-  return getTodoReducer(state).selectedTodo;
+  return getTodoReducer(state).get('selectedTodo') || {};
 }

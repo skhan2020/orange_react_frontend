@@ -1,45 +1,29 @@
-import { setLoginToken, setShowSignUp } from '../redux/actions/authActions';
-import { translate } from '../localization/service';
-import { observeLogin } from '../redux/observers/loginObserver'
-import { retrieveTodoList} from './todo'
 import store from '../redux/store';
-import { TRIAL_PERIOD } from '../constants'
+import { doFetch } from './todo';
+import { updateStatusTimeline } from '../redux/actions/todoActions';
 
-export const signInHandler = (email, password) => {
+export const getStatusTimeline = todoId => {
   const reqBody = {
     query: `
-      query Login($email: String!, $password: String!, $expiration: Int!){
-        login(email: $email, password: $password, expiration: $expiration) {
-          userId
-          token
-          tokenExpiration
+      query Statuses($todo: ID!){
+        statuses(todo: $todo) {
+          _id
+          createdAt
+          todo
+          type
         }
       }
     `,
     variables: {
-      email,
-      password,
-      expiration: TRIAL_PERIOD
+      todo: todoId,
     }
   }
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
-    if (resdata.errors && resdata.errors.length) {
-      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.error.message: "login_error"))
-    }
-    if (resdata.data.login.token) {
-      store.dispatch(setLoginToken(resdata.data.login));
-    }
+    store.dispatch(updateStatusTimeline(todoId, resdata.data.statuses));
   })
   .catch(err => {
-    alert(err)
-  });
+    console.log(err)
+  }
+  );
 }

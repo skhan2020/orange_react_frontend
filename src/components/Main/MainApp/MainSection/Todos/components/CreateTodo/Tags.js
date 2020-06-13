@@ -2,6 +2,7 @@ import React from 'react';
 import {  Tag, Input  } from  'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { translate } from '../../../../../../../localization/service';
+import { TAG_LIMIT } from '../../../../../../../constants';
 
 class EditableTagGroup extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class EditableTagGroup extends React.Component {
   };
 
   showInput = () => {
-    this.setState({ inputVisible: true }, () => this.input.focus());
+    this.setState({ inputVisible: true }, () => this.input && this.input.focus());
   };
 
   handleInputChange = e => {
@@ -26,7 +27,6 @@ class EditableTagGroup extends React.Component {
   };
 
   handleInputConfirm = () => {
-    debugger;
     const { inputValue } = this.state;
     const { tags} = this.props;
     this.setState({
@@ -61,8 +61,8 @@ class EditableTagGroup extends React.Component {
 
   render() {
     const { inputVisible, inputValue } = this.state;
-    debugger;
     const tagChild = this.props.tags.map(this.forMap);
+    const tagLength = this.props.tags.length;
     return (
       <div className="tag-box">
         <div>
@@ -80,7 +80,7 @@ class EditableTagGroup extends React.Component {
             onPressEnter={this.handleInputConfirm}
           />
         )}
-        {!inputVisible && (
+        {!inputVisible && (tagLength < TAG_LIMIT) && (
           <Tag onClick={this.showInput} className="site-tag-plus">
             <PlusOutlined />{translate("add_tag")}
           </Tag>

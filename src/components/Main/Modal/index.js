@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 import BackDrop from './BackDrop';
-import CreateTodo from './CreateTodo/index';
+import CreateTodo from './../MainApp/MainSection/Todos/components/CreateTodo/index';
 import { useSelector } from 'react-redux'
 import { getModalType, isModalOpen } from '../../../redux/selectors';
 import { translate } from '../../../localization/service'

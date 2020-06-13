@@ -34,13 +34,13 @@ const TodosPage = () => {
     <div className="todo_page">
       <ul className="todo_list">
         {todos.map(item => <li key={item._id}>
-          {item.showDate && <div className="todo_date_label" >{item.projectedStartTime.format('MM-DD-YYYY')} </div>}
+          {item.showDate && <div className="todo_date_label" >{item.projectedStartTime.format('dddd, MM-DD-YYYY')} </div>}
           <div className="todo_list_item">
           <span>{`${item.projectedStartTime.format('HH:mm')} - ${item.projectedEndTime.format('HH:mm')}`}</span>
             <div className="list_main">
               <div className="list_main_title" onClick={() => openDetail(true, item)}>{`${item.category} - ${item.title}`}</div>
               <DropDown status={item.status} todo={item} />
-              <CloseOutlined className="delete_btn" onClick={() => handleDeleteTodo(true)} />
+              <CloseOutlined className="delete_btn" onClick={() => handleDeleteTodo(item)} />
             </div>
           </div>
         </li>)}

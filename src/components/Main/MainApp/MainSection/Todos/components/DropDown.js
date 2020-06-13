@@ -1,30 +1,26 @@
 import React from 'react';
 import {  Menu, Dropdown, Button  } from 'antd';
-import { NOT_STARTED, IN_PROGRESS, ON_HOLD, DONE } from '../../../../../../constants/index';
+import { STATUSES } from '../../../../../../constants/index';
 import styled, { css } from 'styled-components'
-import { translate } from '../../../../../../localization/service'
 import { updateTodoChanges } from '../../../../../../services/todo';
 
-const redButton = css`
+const cssList = {
+  redButton : css`
   border: 1px solid red;
   background-color: rgb(253, 218, 218);
-`;
-
-const greenButton = css`
+`, 
+  greenButton: css`
   border: 1px solid rgb(79, 199, 68);
   background-color: rgb(182, 250, 142);
-`;
-
-const blueButton = css`
+`,
+  blueButton : css`
   border: 1px solid rgb(2, 150, 219);
   background-color: rgb(179, 228, 247);
-`;
-
-const yellowButton = css`
+`,
+  yellowButton : css`
   border: 1px solid orange;
   background-color: white;
-`;
-
+`}
 
 const StyledButton = styled(Button)`
   width: 160px;
@@ -34,13 +30,6 @@ const StyledButton = styled(Button)`
   ${props =>
    props.status || 1000}
 `;
-
-const STATUSES = new Map(
-  [[ 1000, { label: translate(NOT_STARTED), css: redButton } ],
-  [ 2000, { label: translate(IN_PROGRESS), css: yellowButton} ],
-  [ 3000, { label: translate(ON_HOLD), css: blueButton } ],
-  [ 4000, { label: translate(DONE), css: greenButton } ]]
-);
 
 const DropDown = props => {
 
@@ -70,7 +59,7 @@ const DropDown = props => {
    return (
     <Dropdown
       overlay={menu} placement="bottomCenter" >
-      <StyledButton className="statusDropdownButton" status={STATUSES.get(status).css}>
+      <StyledButton className="statusDropdownButton" status={cssList[STATUSES.get(status).css]}>
         {STATUSES.get(status).label}</StyledButton>
     </Dropdown>
   );
