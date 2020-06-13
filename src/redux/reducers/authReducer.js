@@ -1,54 +1,41 @@
 import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP } from '../actions/authActions';
+import Immutable from 'immutable';
 
-export const initialState = () => ({
+export const initialState = new Immutable.Map({
   isLoggedIn: false,
-  loginToken: '', //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWQxYWUyN2JjMDU2NjFhNmUwMjU2NzkiLCJlbWFpbCI6InRlc3QiLCJpYXQiOjE1OTA3OTk5MTYsImV4cCI6MTU5MDgwMzUxNn0.knfFTWznhkfNUwPJLYgwafi3eo9br95L1hXzxtDVBDI',
-  userId: '', // '5ed1ae27bc05661a6e025679',
+  loginToken: '', 
+  userId: '', 
   firstName: '',
   lastName: '',
   userType: '',
   showSignup: true,
-})
+});
 
-const authReducer = (state = initialState(), action) => {
+const authReducer = (state = initialState, action) => {
   let payload = action.payload;
   switch (action.type) {
     case SET_LOGIN_TOKEN:
-      state = {
-        ...state,
-        loginToken: payload.loginToken,
-        tokenExpiration: payload.tokenExpiration,
-        userId: payload.userId,
-        isLoggedIn: payload.loginToken !== null,
-      }
-      break;
-      case CLEAR_LOGIN:
-        state = {
-          ...state,
-          loginToken: "",
-          tokenExpiration: "",
-          userId: null,
-          isLoggedIn: false,
-          showSignup: true,
-        }
-      break;
-      case SHOW_SIGNUP:
-        if (payload.userInfo) {
-          state = {
-            ...state,
-            showSignup: payload.showSignup,
-            userId: payload.userInfo._id || state.userId,
-            firstName: payload.userInfo.firstName || state.firstName,
-            lastName: payload.userInfo.lastName || state.lastName,
-            userType: payload.userInfo.userType || state.userType,
-          }
-        } else {
-        state = {
-          ...state,
-          showSignup: payload.showSignup,
-          userId: payload.userId || state.userId,
-        }}
-      break;
+      return state.set('loginToken', payload.loginToken)
+                  .set('tokenExpiration', payload.tokenExpiration)
+                  .set('userId', payload.userId)
+                  .set('isLoggedIn', payload.loginToken !== null);
+    case CLEAR_LOGIN:
+      return state.set('loginToken', "")
+                  .set('tokenExpiration', "")
+                  .set('userId', null)
+                  .set('showSignup', true)
+                  .set('isLoggedIn', false);
+    case SHOW_SIGNUP:
+      if (payload.userInfo) {
+        return state.set('firstName', payload.userInfo.firstName || state.firstName)
+                    .set('lastName', payload.userInfo.lastName || state.lastName)
+                    .set('userId', payload.userInfo._id || state.userId)
+                    .set('showSignup', payload.showSignup)
+                    .set('userType', payload.userInfo.userType || state.userType);
+                } else {
+                  return state.set('showSignup', payload.showSignup)
+                              .set('userId', payload.userId || state.userId)
+                }
     default:
       break
   }

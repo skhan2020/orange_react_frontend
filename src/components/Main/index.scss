@@ -35,13 +35,13 @@
   }
   
 %form {
-  max-width: 30%;
+  width: 80%;
   border: 2px solid yellowgreen;
   border-radius: 10px;
   padding: 30px;
   margin: 4rem auto;
   .ant-form-item {
-    font-size: 1em;
+    font-size: 1.1em;
     .ant-form-item-label {
       width: 100px;
     }
@@ -78,5 +78,8 @@
   .form_narrow {
     width: 400px;
     margin: 40px 30px;
+  }
+  %form {
+    max-width: 30%;
   }
 }

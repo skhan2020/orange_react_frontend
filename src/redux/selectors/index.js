@@ -13,27 +13,27 @@ const getTodoReducer = (state) => {
 }
 
 export const isLoggedIn = (state) => {
-  return getAuthReducer(state).isLoggedIn;
+  return getAuthReducer(state).get('isLoggedIn');
 }
 
 export const getLoginToken = (state) => {
-  return getAuthReducer(state).loginToken;
+  return getAuthReducer(state).get('loginToken');
 }
 
 export const getUserId = (state) => {
-  return getAuthReducer(state).userId;
+  return getAuthReducer(state).get('userId');
 }
 
 export const getShowSignup = (state) => {
-  return getAuthReducer(state).showSignup;
+  return getAuthReducer(state).get('showSignup');
 }
 
 export const getModalType = (state) => {
-  return getModalReducer(state).modalType;
+  return getModalReducer(state).get('modalType');
 }
 
 export const isModalOpen = (state) => {
-  return getModalReducer(state).modalOpen;
+  return getModalReducer(state).get('modalOpen');
 }
 
 export const todoListSelector = (state) => {

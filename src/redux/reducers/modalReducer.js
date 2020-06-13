@@ -1,27 +1,20 @@
 import { OPEN_MODAL, CLOSE_MODAL} from '../actions/modalAction';
+import Immutable from 'immutable';
 
-export const initialState = () => ({
+export const initialState = new Immutable.Map({
   modalType: '',
   modalOpen: false,
-})
+});
 
-const modalReducer = (state = initialState(), action) => {
+const modalReducer = (state = initialState, action) => {
   let payload = action.payload;
   switch (action.type) {
     case OPEN_MODAL:
-      state = {
-        ...state,
-        modalType: payload.type,
-        modalOpen: true,
-      }
-      break;
-      case CLOSE_MODAL:
-        state = {
-          ...state,
-          modalType: null,
-          modalOpen: false,
-        }
-      break;
+      return state.set('modalType', payload.type)
+                  .set('modalOpen', true);
+    case CLOSE_MODAL:
+      return state.set('modalType', null)
+                  .set('modalOpen', false);
     default:
       break
   }

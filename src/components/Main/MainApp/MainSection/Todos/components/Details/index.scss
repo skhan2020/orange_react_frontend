@@ -51,3 +51,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .ant-calendar-range {
+    width: 276px;
+    .ant-calendar-range-part {
+      width: 100%;
+    }
+    .ant-calendar-range-right {
+      float: left;
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+}

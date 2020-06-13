@@ -23,10 +23,14 @@ const cssList = {
 `}
 
 const StyledButton = styled(Button)`
-  width: 160px;
+  width: 140px;
   height: 40px;
   align-items: center;
   display: flex;
+  padding: 0px;
+  @media (min-width: 600px) {
+    width: 160px;
+  }
   ${props =>
    props.status || 1000}
 `;

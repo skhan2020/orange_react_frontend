@@ -1,5 +1,11 @@
 .main_app {
-  height: calc(100vh - 4rem);
-  display: grid;
-  grid-template-columns: 70px auto;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 600px) {
+  .main_app {
+    height: calc(100vh - 4rem);
+    display: grid;
+    grid-template-columns: 70px auto;
+  }
 }

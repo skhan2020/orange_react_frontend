@@ -3,7 +3,7 @@
 
 .welcome_label {
   font-size: 1.7em;
-  width: 60%;
+  width: 100%;
   margin: auto;
   padding-top: 50px;
   text-align: center;
@@ -12,4 +12,11 @@
 
 .form {
   @extend %form;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .welcome_label {
+    width: 60%;
+  }
 }

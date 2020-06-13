@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector} from 'react-redux';
 import { translate } from '../../../localization/service';
 import { getUserId } from '../../../redux/selectors';
-import { Button, Form, Checkbox, Input, Select } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import 'antd/dist/antd.css';
 import './index.scss';
 import '../index.scss';
@@ -57,7 +57,13 @@ const AuthPage = props => {
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
-  
+
+  const validateMessages = {
+    required: '${label} is required!',
+    types: {
+      email: '${label} is not validate email!',
+    }
+  };
   return (
     <>
     { !isLogin && <div className="welcome_label">{translate(showLogin? "sign_up_success" : "main_content4", {
@@ -72,6 +78,7 @@ const AuthPage = props => {
       }}
       onFinish={submitHandler}
       onFinishFailed={onFinishFailed}
+      validateMessages={validateMessages}
     >
       {!showLogin && <Form.Item
         label={translate("first_nm")} name="firstName"
@@ -103,6 +110,11 @@ const AuthPage = props => {
             message: translate("email_missing"),
           },
         ]}
+        rules={[
+          {
+            type: 'email',
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -122,9 +134,6 @@ const AuthPage = props => {
         <Select name="type">
             {selectItems.map((item, key) => <Select.Option key={key} value={item.value}>{item.label}</Select.Option>)}
         </Select>
-      </Form.Item> }
-      {showLogin && <Form.Item name="remember" valuePropName="checked"  {...tailLayout}>
-        <Checkbox>Remember me</Checkbox>
       </Form.Item> }
       <Form.Item className="form-action"  {...tailLayout}>
         <Button htmlType="submit" type="primary">{ translate(showLogin? 'sign_in' : 'sign_up')}</Button>

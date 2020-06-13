@@ -21,7 +21,7 @@
     overflow:hidden; 
     overflow-y: auto;
     height: inherit;
-    width: 100%;
+    width: 100vw;
     list-style: none;
     padding: 0px;
     
@@ -33,12 +33,11 @@
     }
       .todo_list_item {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         margin: 1rem 0;
         span {
-          width: 140px;
+          width: 115px;
           font-size: 1.2em;
-          margin-left: 10px;
         }
         .list_main {
           font-size: 1.4em;
@@ -73,3 +72,23 @@
       }
     }
   }
+
+
+
+@media only screen and (min-width: 600px) {
+  .todo_page {
+    .todo_list {
+      width: 100%;
+      .todo_date_label {
+        .todo_list_item {
+          align-items: center;
+          flex-direction: row;
+          span {
+            width: 140px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

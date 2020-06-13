@@ -1,9 +1,9 @@
 .spine {
-  height: inherit;
+  width: 100vw;
   ul {
     list-style-type: none;
     margin: 0;
-    padding: 10px 1px 10px 10px ;
+    padding : 0px;
     background-color: rgb(253, 248, 201);
     height: inherit;
     li {
@@ -24,4 +24,14 @@
 }
 .activeButton {
   background-color: rgb(247, 221, 108);
+}
+
+@media only screen and (min-width: 600px) {
+  .spine {
+    height: inherit;
+    width: 70px;
+    ul {
+      padding: 10px 1px 10px 10px ;
+    }
+  }
 }
