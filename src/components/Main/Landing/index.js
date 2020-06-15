@@ -10,7 +10,7 @@ const Landing = () => {
     <div className="main_container">
       <div className="container">
         <div className="logo_box">
-          <img src={orange_logo} className="logo" alt="OrangeLogo"/>
+          <img src={orange_logo} className="logo" alt="Orange Logo"/>
           <div className="intro">{translate('main_header')}</div>
         </div>
         <div >{translate('main_content')}</div>

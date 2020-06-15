@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { isLoggedIn, getShowSignup } from '../../redux/selectors'
 import { doLogout, setShowSignUp } from '../../redux/actions/authActions'
-import orange_logo from '../../images/orange_logo.png'
+import orange_logo_small from '../../images/orange_logo_small.png'
 import { translate } from '../../localization/service'
 
 import './MainHeader.scss'
@@ -23,7 +23,7 @@ const MainHeader = () => {
   return (
     <header className="main-header">
       <div className="header_logo">
-        <img className="logo" src={orange_logo} alt="OrangeLogo"/> 
+        <img className="logo" src={orange_logo_small} alt="Orange Logo"/> 
         <div>Orange</div>
       </div>
         {!loggedIn && showSignup && <NavLink onClick={updateShowSignUp} to="/auth">{ translate('sign_up')}</NavLink>}
