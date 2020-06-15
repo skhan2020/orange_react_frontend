@@ -106,13 +106,9 @@ const AuthPage = props => {
         label={translate("email")} name="email"
         rules={[
           {
+            type: 'email',
             required: true,
             message: translate("email_missing"),
-          },
-        ]}
-        rules={[
-          {
-            type: 'email',
           },
         ]}
       >

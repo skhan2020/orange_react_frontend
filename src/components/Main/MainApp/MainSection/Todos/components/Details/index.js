@@ -92,7 +92,7 @@ const TodoDetails = props => {
             },
           ]}
           >
-          <RangePicker renderExtraFooter={() => 'extra footer'} showTime />
+          <RangePicker renderExtraFooter={() => 'extra footer'} showTime  format="YYYY-DD-MM HH:mm" />
         </Form.Item>
         <Form.Item
           className="form-control" 

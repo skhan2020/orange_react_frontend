@@ -4,7 +4,7 @@
 .form_detail {
   overflow: hidden;
   overflow-y: auto;
-  width: 40%;
+  width: 100%;
   border: 1px solid orange;
   padding: 30px;
   margin: 10px;
@@ -27,6 +27,7 @@
   .form-control {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
     .input, textArea, label, .value_label {
       font-size: 1.2em;
       display: block;
@@ -52,7 +53,10 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 600px) {
+  .form_detail {
+    width: 100%;
+  }
   .ant-calendar-range {
     width: 276px;
     .ant-calendar-range-part {
@@ -62,5 +66,11 @@
       float: left;
       border-top: 1px solid #e8e8e8;
     }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .form_detail {
+    width: 40%;
   }
 }

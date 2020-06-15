@@ -25,15 +25,17 @@ const cssList = {
 const StyledButton = styled(Button)`
   width: 140px;
   height: 40px;
-  align-items: center;
   display: flex;
-  padding: 0px;
+  align-items: center;
+  justify-content: center;
   @media (min-width: 600px) {
     width: 160px;
   }
   ${props =>
    props.status || 1000}
 `;
+
+StyledButton.displayName = 'StyledButton';
 
 const DropDown = props => {
 
