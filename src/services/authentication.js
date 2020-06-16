@@ -1,4 +1,4 @@
-import { setLoginToken, setShowSignUp } from '../redux/actions/authActions';
+import { setLoginToken, setShowSignUp, setLoginFailed } from '../redux/actions/authActions';
 import { translate } from '../localization/service';
 import { observeLogin } from '../redux/observers/loginObserver'
 import { retrieveTodoList} from './todo'
@@ -33,14 +33,14 @@ export const signInHandler = (email, password) => {
   })
   .then(resdata => {
     if (resdata.errors && resdata.errors.length) {
-      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.error.message: "login_error"))
+      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.errors[0].message: "login_error"))
     }
     if (resdata.data.login.token) {
       store.dispatch(setLoginToken(resdata.data.login));
     }
   })
   .catch(err => {
-    alert(err)
+    store.dispatch(setLoginFailed(err.message));
   });
 }
 
@@ -90,7 +90,7 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
     }
   })
   .catch(err => {
-    alert(err)
+    store.dispatch(setLoginFailed(err.message));
   }
   );
 }

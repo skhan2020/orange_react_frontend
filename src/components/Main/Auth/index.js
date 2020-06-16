@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector} from 'react-redux';
 import { translate } from '../../../localization/service';
-import { getUserId } from '../../../redux/selectors';
-import { Button, Form, Input, Select } from 'antd';
+import { getUserId, getLoginError } from '../../../redux/selectors';
+import { Button, Form, Input, Select, Alert } from 'antd';
 import 'antd/dist/antd.css';
 import './index.scss';
 import '../index.scss';
@@ -13,6 +13,7 @@ const AuthPage = props => {
   const { isLogin } = props;
   const DEFAULT_TYPE = STUDENT;
   const userId = useSelector(getUserId);
+  const { hasError, errorMessage } = useSelector(getLoginError);
   const showLogin = userId || isLogin;
   const [form] = Form.useForm();
   const selectItems = [
@@ -134,6 +135,7 @@ const AuthPage = props => {
       <Form.Item className="form-action"  {...tailLayout}>
         <Button htmlType="submit" type="primary">{ translate(showLogin? 'sign_in' : 'sign_up')}</Button>
       </Form.Item>
+      {hasError && <Alert className="errorAlert" message={errorMessage} type="error" showIcon />}
     </Form>
     </>
   )

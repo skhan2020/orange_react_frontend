@@ -12,6 +12,9 @@
 
 .form {
   @extend %form;
+  .errorAlert {
+    padding-bottom: 10px;
+  }
 }
 
 

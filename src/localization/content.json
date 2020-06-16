@@ -57,7 +57,7 @@
     "en" : "Could not sign you up at this time. Please try again later!"
   },
   "incorrect_login" : {
-    "en" : "Login or Password did not match!"
+    "en" : "Login failed. Please try again!"
   },
   "user_not_found" : {
     "en" : "No user found with the provided E-mail address"

@@ -1,6 +1,7 @@
 export const SET_LOGIN_TOKEN = "SET_LOGIN_TOKEN";
 export const SHOW_SIGNUP = "SHOW_SIGNUP";
 export const CLEAR_LOGIN = "CLEAR_LOGIN";
+export const SET_LOGIN_FAILED = 'SET_LOGIN_FAILED';
 
 export function setLoginToken(data) {
   return {
@@ -16,6 +17,15 @@ export function setLoginToken(data) {
 export function doLogout() {
   return {
     type: CLEAR_LOGIN
+  };
+}
+
+export function setLoginFailed(message) {
+  return {
+    type: SET_LOGIN_FAILED,
+    payload: {
+      message,
+    },
   };
 }
 

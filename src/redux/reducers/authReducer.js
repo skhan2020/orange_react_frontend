@@ -1,4 +1,4 @@
-import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP } from '../actions/authActions';
+import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP, SET_LOGIN_FAILED } from '../actions/authActions';
 import Immutable from 'immutable';
 
 export const initialState = new Immutable.Map({
@@ -9,6 +9,8 @@ export const initialState = new Immutable.Map({
   lastName: '',
   userType: '',
   showSignup: true,
+  loginError: false,
+  errorMessage: ''
 });
 
 const authReducer = (state = initialState, action) => {
@@ -18,12 +20,19 @@ const authReducer = (state = initialState, action) => {
       return state.set('loginToken', payload.loginToken)
                   .set('tokenExpiration', payload.tokenExpiration)
                   .set('userId', payload.userId)
+                  .set('loginError', false)
+                  .set('errorMessage', '')
                   .set('isLoggedIn', payload.loginToken !== null);
+    case SET_LOGIN_FAILED:
+      return state.set('loginError', true)
+                  .set('errorMessage', payload.message);
     case CLEAR_LOGIN:
       return state.set('loginToken', "")
                   .set('tokenExpiration', "")
                   .set('userId', null)
                   .set('showSignup', true)
+                  .set('loginError', false)
+                  .set('errorMessage', '')
                   .set('isLoggedIn', false);
     case SHOW_SIGNUP:
       if (payload.userInfo) {
@@ -31,6 +40,8 @@ const authReducer = (state = initialState, action) => {
                     .set('lastName', payload.userInfo.lastName || state.lastName)
                     .set('userId', payload.userInfo._id || state.userId)
                     .set('showSignup', payload.showSignup)
+                    .set('loginError', false)
+                    .set('errorMessage', '')
                     .set('userType', payload.userInfo.userType || state.userType);
                 } else {
                   return state.set('showSignup', payload.showSignup)

@@ -20,6 +20,11 @@ export const getLoginToken = (state) => {
   return getAuthReducer(state).get('loginToken');
 }
 
+export const getLoginError = (state) => {
+  return { hasError: getAuthReducer(state).get('loginError'),
+           errorMessage: getAuthReducer(state).get('errorMessage') };
+} 
+
 export const getUserId = (state) => {
   return getAuthReducer(state).get('userId');
 }
