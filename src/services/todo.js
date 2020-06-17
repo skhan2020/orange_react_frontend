@@ -4,7 +4,7 @@ import store from '../redux/store';
 
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
-  return fetch('http://localhost:4000/graphqlapi', {
+  return fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', {
     method: 'POST',
     body: JSON.stringify(reqBody),
     headers: {

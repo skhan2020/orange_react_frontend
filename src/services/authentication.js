@@ -22,7 +22,7 @@ export const signInHandler = (email, password) => {
       expiration: TRIAL_PERIOD
     }
   }
-  fetch('http://localhost:4000/graphqlapi', {
+  fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', {
     method: 'POST',
     body: JSON.stringify(reqBody),
     headers: {
