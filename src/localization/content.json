@@ -78,7 +78,7 @@
     "en" : "Your trial period has expired!! You can continue with our services for just 5 oranges/month!"
   },
   "enter_search" : {
-    "en" : "Enter Search..."
+    "en" : "Enter to search in {item}..."
   },
   "create_todo" : {
     "en" : "Create a Todo"

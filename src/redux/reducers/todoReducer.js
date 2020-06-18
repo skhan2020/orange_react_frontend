@@ -1,4 +1,6 @@
-import { ADD_NEW_TODO, UPDATE_TODO_LIST, UPDATE_TODO,
+import { ADD_NEW_TODO, 
+   UPDATE_TODO_LIST, UPDATE_TODO,
+   UPDATE_FILTERED_TODO_LIST,
    DELETE_TODO, OPEN_TODO_DETAIL,
    UPDATE_STATUS_TIMELINE
   } from '../actions/todoActions';
@@ -9,6 +11,7 @@ const initialState = new Immutable.Map({
   todoList: Immutable.List([]),
   selectedTodo: {},
   statuses: Immutable.Map({}),
+  filteredList: Immutable.List([]),
 })
 
 const sortAndUpdateTodo = list => {
@@ -21,6 +24,8 @@ const sortAndUpdateTodo = list => {
     } else {
       item.showDate = false; 
     }
+    item.projectedStartTime = moment(item.projectedStartTime).local();
+    item.projectedEndTime = moment(item.projectedEndTime).local();
   });
   return list;
 }
@@ -32,6 +37,9 @@ const todoReducer = (state = initialState, action) => {
       // sort the todos in ascending order
       const list = payload.todos;
       return state.set('todoList', sortAndUpdateTodo(list));
+    case UPDATE_FILTERED_TODO_LIST:
+      const filteredList = payload.todos;
+      return state.set('filteredList', sortAndUpdateTodo(filteredList));
     case ADD_NEW_TODO:
       const newList = [...state.get('todoList'), payload.todo]
       return state.set('todoList', sortAndUpdateTodo(newList));

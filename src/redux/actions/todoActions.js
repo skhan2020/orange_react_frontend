@@ -7,10 +7,20 @@ export const UPDATE_TODO = "UPDATE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const OPEN_TODO_DETAIL = 'OPEN_TODO_DETAIL';
 export const UPDATE_STATUS_TIMELINE = "UPDATE_STATUS_TIMELINE";
+export const UPDATE_FILTERED_TODO_LIST = "UPDATE_FILTERED_TODO_LIST";
 
 export function updateTodoList(data) {
   return {
     type: UPDATE_TODO_LIST,
+    payload: {
+      todos: data,
+    },
+  };
+}
+
+export function updateFilteredTodoList(data) {
+  return {
+    type: UPDATE_FILTERED_TODO_LIST,
     payload: {
       todos: data,
     },

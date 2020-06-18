@@ -1,10 +1,12 @@
 import { getLoginToken, getUserId } from '../redux/selectors/index';
-import { updateTodoList, addTodo, updateTodo, todoDeleted } from '../redux/actions/todoActions';
+import { updateTodoList, addTodo, 
+  updateFilteredTodoList,
+  updateTodo, todoDeleted } from '../redux/actions/todoActions';
 import store from '../redux/store';
 
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
-  return fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', {
+  return fetch('http://localhost:4000/graphqlapi', {
     method: 'POST',
     body: JSON.stringify(reqBody),
     headers: {
@@ -178,10 +180,52 @@ export const createTodo = todoObj => {
 
 }
 
+export const getFilteredTodos = (type, filter) => {
+  const reqBody = {
+    query: `
+      query FilteredTodos($filter: String!, $type: String!) {
+        filteredTodos(
+          filter: $filter,
+          type: $type,
+        ) {
+          _id
+          category
+          title
+          status
+          statusUpdatedTime
+          projectedStartTime
+          projectedEndTime
+          notes
+          tags
+          creator {
+            _id
+            email
+          }
+        }
+      }
+    `,
+    variables: {
+      type,
+      filter,
+    }
+  }
+  doFetch(reqBody)
+  .then(resdata => {
+    console.log(resdata)
+    debugger;
+    // save the todos
+    store.dispatch(updateFilteredTodoList(resdata.data.filteredTodos));
+  })
+  .catch(err => {
+    console.log(err)
+  }
+  );
+}
+
 export const deleteTodo = todoId => {
   const reqBody = {
     query: `
-      mutation CreateTodo($todoId: ID!) {
+      mutation DeleteTodo($todoId: ID!) {
         deleteTodo(
             todoId: $todoId,
         ) {

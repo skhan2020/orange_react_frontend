@@ -3,6 +3,7 @@ import { translate } from '../localization/service';
 import { observeLogin } from '../redux/observers/loginObserver'
 import { retrieveTodoList} from './todo'
 import store from '../redux/store';
+import { doFetch } from './todo';
 import { TRIAL_PERIOD } from '../constants'
 
 export const signInHandler = (email, password) => {
@@ -22,15 +23,7 @@ export const signInHandler = (email, password) => {
       expiration: TRIAL_PERIOD
     }
   }
-  fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
     if (resdata.errors && resdata.errors.length) {
       throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.errors[0].message: "login_error"))
@@ -69,18 +62,7 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
         type
       }
     }
-  fetch('http://localhost:4000/graphqlapi', {
-    method: 'POST',
-    body: JSON.stringify(reqBody),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error(translate("signup_error"))
-    }
-    return res.json();
-  })
+  doFetch(reqBody)
   .then(resdata => {
     if (resdata.errors && resdata.errors.length) {
       throw new Error(translate(resdata.errors[0].message))

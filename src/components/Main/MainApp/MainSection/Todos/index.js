@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import DropDown from './components/DropDown';
 import { CloseOutlined  } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import moment from 'moment'
 import { todoListSelector } from '../../../../../redux/selectors';
 import Details from './components/Details/index';
-import { deleteTodo } from '../../../../../services/todo';
+import { deleteTodo, updateTodoChanges } from '../../../../../services/todo';
 import { openTodoDetail } from '../../../../../redux/actions/todoActions'
 import './index.scss';
 import '../../../Auth/index.scss';
@@ -14,10 +13,6 @@ const TodosPage = () => {
   const [showDetail, setShowDetail] = useState(false);
   const todos = useSelector(todoListSelector);
   const dispatch = useDispatch();
-  todos.map(item =>{
-    item.projectedStartTime = moment(item.projectedStartTime).local();
-    item.projectedEndTime = moment(item.projectedEndTime).local();
-  })
 
   const handleDeleteTodo = item => {
     // SAMINA: add a confirmation for delete
@@ -30,6 +25,11 @@ const TodosPage = () => {
     dispatch(openTodoDetail(item));
   }
 
+  const changeTodoStatus = item => {
+    item.todo.status = item.status;
+    updateTodoChanges(item.todo);
+  }
+
   return (
     <div className="todo_page">
       <ul className={`todo_list ${showDetail ? 'hide_todo' : ''}`}>
@@ -39,7 +39,7 @@ const TodosPage = () => {
             <span className="todo_title">{`${item.projectedStartTime.format('h:mm a')} - ${item.projectedEndTime.format('h:mm a')}`}</span>
             <div className="list_main" >
               <div onClick={() => openDetail(true, item)} className="list_main_title">{`${item.category} - ${item.title}`}</div>
-              <DropDown status={item.status} todo={item} />
+              <DropDown status={item.status} todo={item} handleStatusChanges={changeTodoStatus} />
               <CloseOutlined className="delete_btn" onClick={() => handleDeleteTodo(item)} />
             </div>
           </div>

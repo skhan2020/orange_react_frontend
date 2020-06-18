@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {  Menu, Dropdown, Button  } from 'antd';
 import { STATUSES } from '../../../../../../constants/index';
 import styled, { css } from 'styled-components'
-import { updateTodoChanges } from '../../../../../../services/todo';
 
 const cssList = {
   redButton : css`
@@ -26,30 +25,40 @@ const StyledButton = styled(Button)`
   width: 140px;
   height: 40px;
   display: flex;
+  font-size: 1.2em;
   align-items: center;
   justify-content: center;
+  margin-right: 20px;
   @media (min-width: 600px) {
     width: 160px;
   }
   ${props =>
-   props.status || 1000}
+   props.status}
 `;
 
 StyledButton.displayName = 'StyledButton';
 
 const DropDown = props => {
+  const [localStatus, setLocalStatus] = useState();
 
-  const status = props.status ? parseInt(props.status) : 1000;
+  useEffect(() => {
+    debugger;
+    setLocalStatus(parseInt(props.status));
+  }, [props.status])
 
   const handleMenuClick = event => {
     // handle status change
-    const newStatus = event.key;
-    props.todo.status = newStatus;
-    updateTodoChanges(props.todo);
+    debugger;
+    if (props.handleStatusChanges) {
+      props.handleStatusChanges({status: parseInt(event.key), todo: props.todo});
+    }
   }
 
   const menu = (
     <Menu onClick={handleMenuClick}>
+      <Menu.Item key="1000">
+        {STATUSES.get(1000).label}
+      </Menu.Item>
       <Menu.Item key="2000">
         {STATUSES.get(2000).label}
       </Menu.Item>
@@ -65,8 +74,10 @@ const DropDown = props => {
    return (
     <Dropdown
       overlay={menu} placement="bottomCenter" >
-      <StyledButton className="statusDropdownButton" status={cssList[STATUSES.get(status).css]}>
-        {STATUSES.get(status).label}</StyledButton>
+      <StyledButton className="statusDropdownButton"
+        status={localStatus > 0 ? cssList[STATUSES.get(localStatus).css] : null}>
+        {localStatus > 0 ? STATUSES.get(localStatus).label : 'Select ..'}
+      </StyledButton>
     </Dropdown>
   );
 }

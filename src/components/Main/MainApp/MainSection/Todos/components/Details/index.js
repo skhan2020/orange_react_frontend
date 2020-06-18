@@ -27,6 +27,7 @@ const TodoDetails = props => {
   }  
   
   const onConfirm = values => {
+    debugger;
     const todoObject = {
       ...todo,
       projectedStartTime: values.startDate[0].toISOString(),
@@ -53,6 +54,11 @@ const TodoDetails = props => {
 
   const closeDetailsPage = () => {
     props.openTodoDetail(false, props.item);
+  }
+
+  const changeTodoStatus = item => {
+    item.todo.status = item.status;
+    updateTodoChanges(item.todo);
   }
 
   return (
@@ -98,7 +104,7 @@ const TodoDetails = props => {
           className="form-control" 
           label={translate("status")} name="status"
         >
-          <DropDown status={todo.status} todo={todo} />
+          <DropDown status={todo.status} todo={todo} handleStatusChanges={changeTodoStatus} />
         </Form.Item>
         <Form.Item
           className="form-control column_box" 

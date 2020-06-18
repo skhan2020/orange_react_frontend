@@ -1,5 +1,3 @@
-import Immutable from 'immutable';
-
 const getAuthReducer = (state) => {
   return state.authReducer;
 }
@@ -25,6 +23,10 @@ export const getLoginError = (state) => {
            errorMessage: getAuthReducer(state).get('errorMessage') };
 } 
 
+export const getUserFullName = (state) => {
+  return { firstName: getAuthReducer(state).get('firstName'), lastName: getAuthReducer(state).get('lastName')};
+}
+
 export const getUserId = (state) => {
   return getAuthReducer(state).get('userId');
 }
@@ -42,8 +44,7 @@ export const isModalOpen = (state) => {
 }
 
 export const todoListSelector = (state) => {
-  return getTodoReducer(state).get('todoList') ||
-  Immutable.List([]);
+  return getTodoReducer(state).get('filteredList').length ? getTodoReducer(state).get('filteredList') : getTodoReducer(state).get('todoList');
 }
 
 export const todoStatusesSelector = (state) => {

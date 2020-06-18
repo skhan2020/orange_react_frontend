@@ -40,7 +40,6 @@
           font-size: 1.2em;
         }
         .list_main {
-          font-size: 1.2em;
           margin-right: 20px;
           display: flex;
           flex-direction: row;
@@ -53,6 +52,7 @@
           .list_main_title {
             padding: 0 20px;
             width: 100%;
+            font-size: 1.2em;
             cursor: pointer;
           }
           .list_main_status {
@@ -64,7 +64,7 @@
             padding: 10px;
           }
           .delete_btn {
-            font-size: 1.3em;
+            font-size: 1.8em;
             font-weight: bold;
             color: orange;
             margin: 20px;
