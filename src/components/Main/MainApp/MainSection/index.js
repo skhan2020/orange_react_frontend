@@ -13,7 +13,7 @@ const MainSection = () => {
   const { Search } = Input;
   const { Option } = Select;
 
-  const [searchCategory, setCategoryValue] = useState('status');
+  const [searchCategory, setSearchCategory] = useState('status');
   const [searchValue, setSearchValue] = useState(null);
 
   const onSearch = () => {
@@ -25,7 +25,7 @@ const MainSection = () => {
 
   const onDropdownChange = value => {
     clearSearch();
-    setCategoryValue(value);
+    setSearchCategory(value);
   }
 
   const onSearchChange = item => {
@@ -39,7 +39,7 @@ const MainSection = () => {
 
   const clearSearch = () => {
     setSearchValue(null);
-    setCategoryValue('status');
+    setSearchCategory('status');
     dispatch(updateFilteredTodoList([]));
   }
 
@@ -49,8 +49,9 @@ const MainSection = () => {
       <div className="page_heading">TODO</div>
       <Input.Group >
         <div className="filter_label" >Filter By:</div>
-        <Select defaultValue='status'
+        <Select defaultValue={searchCategory}
           className="select_dropdown"
+          value={searchCategory}
           onChange={onDropdownChange}>
           <Option value="status">Status</Option>
           <Option value="tags">Tags</Option>

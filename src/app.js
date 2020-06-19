@@ -9,6 +9,9 @@ import MainApp from './components/Main/MainApp/index';
 import MainHeader from './components/MainHeader/MainHeader';
 import Modal from './components/Main/Modal/index'
 
+// import dependencies
+import './services/notification'
+
 class App extends Component {
   render() {
    const { isLoggedIn } = this.props;

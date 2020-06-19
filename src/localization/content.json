@@ -133,5 +133,8 @@
   },
   "status_time_line" : {
     "en" : "Status Timeline"
+  },
+  "information" : {
+    "en" : "Information"
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { closeModal } from '../../../../../../../redux/actions/modalAction';
+import { closeModal } from '../../../../../../../redux/actions/modalActions';
 import { Button, Form, DatePicker, Input } from 'antd';
 import { createTodo } from '../../../../../../../services/todo'
 import { translate } from '../../../../../../../localization/service';

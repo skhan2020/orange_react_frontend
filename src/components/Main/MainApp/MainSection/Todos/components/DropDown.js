@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {  Menu, Dropdown, Button  } from 'antd';
-import { STATUSES } from '../../../../../../constants/index';
+import { STATUSES, NOT_STARTED_CODE, IN_PROGRESS, IN_PROGRESS_CODE, ON_HOLD_CODE, DONE_CODE } from '../../../../../../constants/index';
 import styled, { css } from 'styled-components'
 
 const cssList = {
@@ -42,13 +42,11 @@ const DropDown = props => {
   const [localStatus, setLocalStatus] = useState();
 
   useEffect(() => {
-    debugger;
     setLocalStatus(parseInt(props.status));
   }, [props.status])
 
   const handleMenuClick = event => {
     // handle status change
-    debugger;
     if (props.handleStatusChanges) {
       props.handleStatusChanges({status: parseInt(event.key), todo: props.todo});
     }
@@ -57,16 +55,16 @@ const DropDown = props => {
   const menu = (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="1000">
-        {STATUSES.get(1000).label}
+        {STATUSES.get(NOT_STARTED_CODE).label}
       </Menu.Item>
       <Menu.Item key="2000">
-        {STATUSES.get(2000).label}
+        {STATUSES.get(IN_PROGRESS_CODE).label}
       </Menu.Item>
       <Menu.Item key="3000">
-        {STATUSES.get(3000).label}
+        {STATUSES.get(ON_HOLD_CODE).label}
       </Menu.Item>
       <Menu.Item key="4000">
-        {STATUSES.get(4000).label}
+        {STATUSES.get(DONE_CODE).label}
       </Menu.Item>
     </Menu>
   );

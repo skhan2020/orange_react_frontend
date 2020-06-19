@@ -2,7 +2,9 @@ import { getLoginToken, getUserId } from '../redux/selectors/index';
 import { updateTodoList, addTodo, 
   updateFilteredTodoList,
   updateTodo, todoDeleted } from '../redux/actions/todoActions';
+import { showModal } from '../redux/actions/modalActions'
 import store from '../redux/store';
+import { NOT_STARTED_CODE } from '../constants';
 
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
@@ -93,13 +95,15 @@ export const updateTodoChanges = updateObj => {
   doFetch(reqBody)
   .then(resdata => {
     const resObj = resdata.data.updateTodo;
+    store.dispatch(showModal('information', {message: 'Todo updated Successfully!'}));
     store.dispatch(updateTodo({
       _id: resObj._id, 
       projectedStartTime: resObj.projectedStartTime,
       projectedEndTime: resObj.projectedEndTime,
       notes: resObj.notes,
       statusUpdatedTime: resObj.statusUpdatedTime,
-      status: resObj.status
+      status: resObj.status,
+      tags: resObj.tags,
     }));
   })
   .catch(err => {
@@ -146,7 +150,7 @@ export const createTodo = todoObj => {
     variables: {
       category: todoObj.category,
       title: todoObj.title,
-      status: 1000, //STATUSES['not_started'],
+      status: NOT_STARTED_CODE, //STATUSES['not_started'],
       statusUpdatedTime: new Date().toISOString(),
       projectedEndTime: todoObj.projectedEndTime,
       projectedStartTime: todoObj.projectedStartTime,
@@ -158,6 +162,7 @@ export const createTodo = todoObj => {
   .then(resdata => {
     const resObj = resdata.data.createTodo;
     const userId = getUserId(store.getState());
+    store.dispatch(showModal('information', {message: 'Todo created Successfully!'}));
     store.dispatch(addTodo({
       _id: resObj._id, 
       title: resObj.title,
@@ -211,8 +216,6 @@ export const getFilteredTodos = (type, filter) => {
   }
   doFetch(reqBody)
   .then(resdata => {
-    console.log(resdata)
-    debugger;
     // save the todos
     store.dispatch(updateFilteredTodoList(resdata.data.filteredTodos));
   })
@@ -240,6 +243,7 @@ export const deleteTodo = todoId => {
   doFetch(reqBody)
   .then(resdata => {
     const deletedId = resdata.data.deleteTodo._id;
+    store.dispatch(showModal('information', {message: 'Todo deleted Successfully!'}));
     store.dispatch(todoDeleted(deletedId));
   })
   .catch(err => {

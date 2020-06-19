@@ -27,7 +27,6 @@ const TodoDetails = props => {
   }  
   
   const onConfirm = values => {
-    debugger;
     const todoObject = {
       ...todo,
       projectedStartTime: values.startDate[0].toISOString(),

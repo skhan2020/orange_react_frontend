@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
-import { showModal } from '../../../../redux/actions/modalAction'
+import { showModal } from '../../../../redux/actions/modalActions'
 
 import { CarryOutOutlined,
   UnorderedListOutlined,

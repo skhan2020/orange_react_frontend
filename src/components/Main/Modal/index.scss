@@ -10,8 +10,14 @@
   z-index: 500;
 }
 
+.alert {
+  min-width: 400px;
+  min-height: 100px;
+  font-size: 1.2em;
+  padding: 30px;
+}
+
 .modal {
-  width: 60%;
   background: white;
   box-shadow: 0 2px 8px black;
   border: 1px orange solid;
@@ -37,9 +43,16 @@
     background-color: orange;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    display: flex;
     .modal_header_label {
       margin: 0;
-      font-size: 1.8em;
+      font-size: 1.5em;
+      color: white;
+      width: 100%;
+    }
+    .delete_btn {
+      font-size: 2em;
+      font-weight: bold;
       color: white;
     }
   }

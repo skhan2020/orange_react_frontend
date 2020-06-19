@@ -42,7 +42,8 @@
   margin: 4rem auto;
   .ant-form-item {
     font-size: 1.1em;
-    .ant-form-item-label {
+    .ant-form-item-label > label {
+      font-size: 1.1em;
       width: 100px;
     }
     input {

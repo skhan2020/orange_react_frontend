@@ -50,10 +50,11 @@ const todoReducer = (state = initialState, action) => {
       const todo = state.get('todoList').map(item => item._id === payload.todo._id ? 
         { ...item,
           status :payload.todo.status,
-          statusUpdatedTime: payload.todo.statusUpdatedTime,
-          projectedStartTime: payload.todo.projectedStartTime,
-          projectedEndTime: payload.todo.projectedEndTime,
-          notes: payload.todo.notes
+          statusUpdatedTime: moment(payload.todo.statusUpdatedTime).local(),
+          projectedStartTime: moment(payload.todo.projectedStartTime).local(),
+          projectedEndTime: moment(payload.todo.projectedEndTime).local(),
+          notes: payload.todo.notes,
+          tags: payload.todo.tags
         } : item);
       return state.set('todoList', todo);
     case OPEN_TODO_DETAIL : 
