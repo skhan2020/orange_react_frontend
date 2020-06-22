@@ -75,7 +75,7 @@
     "en" : "Welcome {name} to Orange. Your trial period ends in 15 days. Sign in and begin your journey to success!"
   },
   "trial_expired" : {
-    "en" : "Your trial period has expired!! You can continue with our services for just 5 oranges/month!"
+    "en" : "Your trial period has expired!! You can continue with our services for just 5 oranges per month!"
   },
   "enter_search" : {
     "en" : "Enter to search in {item}..."
@@ -136,5 +136,17 @@
   },
   "information" : {
     "en" : "Information"
+  },
+  "create_notes" : {
+    "en" : "Create a Note"
+  },
+  "empty_todo" : {
+    "en" : "Your todo list is empty! Click the '+' icon to add a new todo!"
+  },
+  "empty_notes_message" : {
+    "en" : "You have no notes yet! Click the '+' icon to take notes!"
+  },
+  "signup_failed" : {
+    "en" : "Your Registration to Orange failed. Please contact admin or try again later."
   }
 }

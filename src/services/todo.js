@@ -16,9 +16,6 @@ export const doFetch = reqBody => {
       "Authorization": `Bearer ${authToken}`
     }
   }).then(res => {
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Failed!")
-    }
     return res.json();
   })
 }
@@ -47,7 +44,6 @@ export const retrieveTodoList = () => {
   }
   doFetch(reqBody)
   .then(resdata => {
-    console.log(resdata)
     // save the todos
     store.dispatch(updateTodoList(resdata.data.todos));
   })
@@ -162,7 +158,6 @@ export const createTodo = todoObj => {
   .then(resdata => {
     const resObj = resdata.data.createTodo;
     const userId = getUserId(store.getState());
-    store.dispatch(showModal('information', {message: 'Todo created Successfully!'}));
     store.dispatch(addTodo({
       _id: resObj._id, 
       title: resObj.title,

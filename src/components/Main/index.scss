@@ -63,6 +63,18 @@
   }
 }
 
+.form_notes {
+  width: 40vw;
+  border: 2px solid yellowgreen;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 30px;
+  @include form-control;
+  .form-action {
+    @extend %custom-button
+  }
+}
+
 .form_narrow {
   width: 300px;
   border: 2px solid yellowgreen;

@@ -5,7 +5,6 @@ import { Button, Form, DatePicker, Input } from 'antd';
 import { createTodo } from '../../../../../../../services/todo'
 import { translate } from '../../../../../../../localization/service';
 import EditableTagGroup from './Tags';
-import '../index.scss';
 import './index.scss';
 
 const CreateTodo = () => {
@@ -47,7 +46,7 @@ const CreateTodo = () => {
 
   }
     return (
-    <Form className="form" 
+    <Form className="form_notes" 
         onFinish={onConfirm}
         onFinishFailed={onFinishFailed}
         onCancel={onCancel}

@@ -10,6 +10,10 @@ const getTodoReducer = (state) => {
   return state.todoReducer;
 }
 
+const getNoteReducer = (state) => {
+  return state.noteReducer;
+}
+
 export const isLoggedIn = (state) => {
   return getAuthReducer(state).get('isLoggedIn');
 }
@@ -62,4 +66,8 @@ export const todoStatusesSelector = (state) => {
 
 export const todoSelectedSelector = (state) => {
   return getTodoReducer(state).get('selectedTodo') || {};
+}
+
+export const noteListSelector = (state) => {
+  return getNoteReducer(state).get('noteList');
 }

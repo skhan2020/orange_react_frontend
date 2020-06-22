@@ -2,6 +2,7 @@ import React from 'react';
 import './index.scss';
 import BackDrop from './BackDrop';
 import CreateTodo from './../MainApp/MainSection/Todos/components/CreateTodo/index';
+import AddNotes from './../MainApp/MainSection/Notes/components/AddNotes/index'
 import { useSelector, useDispatch } from 'react-redux'
 import { getModalType, isModalOpen } from '../../../redux/selectors';
 import { translate } from '../../../localization/service'
@@ -10,7 +11,8 @@ import { CloseOutlined  } from '@ant-design/icons';
 import Alert from './Alert';
 
 const TITLE_MAP = { createTodo: 'create_todo',
-                    information: 'information'}
+                    information: 'information',
+                    createNotes: 'create_notes'}
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -37,6 +39,7 @@ const Modal = () => {
         <section className="modal_content">
           {type === 'createTodo' && <CreateTodo />}
           {type === 'information' && <Alert />}
+          {type === 'createNotes' && <AddNotes />}
         </section>
       </div>
     </React.Fragment>

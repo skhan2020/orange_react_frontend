@@ -1,9 +1,9 @@
 import {  notification  } from 'antd';
 
-export const openNotification = (title, futureTodo) => {
+export const openNotification = (title, todo) => {
   notification.info({
     message: title,
-    description: futureTodo? futureTodo.title : '',
+    description: todo? todo.title : '',
     style: {
       width: 300,
       marginLeft: 335 - 300,

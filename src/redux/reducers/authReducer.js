@@ -43,10 +43,12 @@ const authReducer = (state = initialState, action) => {
                     .set('loginError', false)
                     .set('errorMessage', '')
                     .set('userType', payload.userInfo.userType || state.userType);
-                } else {
-                  return state.set('showSignup', payload.showSignup)
-                              .set('userId', payload.userId || state.userId)
-                }
+        } else {
+          return state.set('showSignup', payload.showSignup)
+                      .set('loginError', false)
+                      .set('errorMessage', '')
+                      .set('userId', payload.userId || state.userId)
+        }
     default:
       break
   }

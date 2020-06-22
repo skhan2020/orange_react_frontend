@@ -4,89 +4,11 @@
   display: flex;
   flex-direction: column;
   padding: 10px 0;
-  .header_box {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 15px;
-    .page_heading {
-      width: 100px;
-      font-size: 1.5em;
-      color: orange;
-      font-weight: bold;
-      padding-top: 7px;
-      padding-left: 7px;
-    }
-    .ant-input-group {
-      display: flex;
-      .ant-input-group-addon {
-        width: 46px;
-        margin-right: 20px;
-      }
-      .filter_label {
-        width: 90px;
-        font-size: 1.2em;
-        height: 40px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-      }
-      .clear_btn {
-        width: 60px;
-        font-size: 1.2em;
-        text-decoration: underline;
-        height: 40px;
-        text-align: center;
-        color: green;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-      .select_dropdown {
-        .ant-select-selector {
-          height: 40px;
-          width: 120px;
-          .ant-select-selection-item {
-            font-size: 1.2em;
-            align-items: center;
-            height: 40px;
-            display: flex;
-          }
-        }
-      }
-      .search_input {
-        border-radius: 5px;
-        z-index: 0px;
-        .ant-input {
-          font-size: 1.2em;
-          height: 40px;
-          .ant-input-group-addon {
-            width: 46px;
-            margin-right: 20px;
-          }
-        }
-        .ant-btn-primary {
-          width: 46px;
-          height: 40px;
-          background-color: rgb(70, 196, 70);
-          border-color: rgb(70, 196, 70);
-        }
-      }
-    }
-  }
 }
 
 
 @media only screen and (min-width: 600px) {
   .main_section {
     padding: 15px 20px 0 20px;
-    .header_box {
-      .page_heading {
-        width: 100%;
-      }
-      .search_input {
-        max-width: 40%;
-      }
-    }
   }
 }

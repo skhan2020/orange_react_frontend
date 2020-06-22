@@ -25,11 +25,10 @@ export const signInHandler = (email, password) => {
   }
   doFetch(reqBody)
   .then(resdata => {
-    if (resdata.errors && resdata.errors.length) {
-      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.errors[0].message: "login_error"))
-    }
-    if (resdata.data.login.token) {
+    if (resdata.data && resdata.data.login && resdata.data.login.token) {
       store.dispatch(setLoginToken(resdata.data.login));
+    } else { 
+      throw new Error(translate(resdata.errors && resdata.errors[0].message ? resdata.errors[0].message: "login_error"))
     }
   })
   .catch(err => {
@@ -72,7 +71,9 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
     }
   })
   .catch(err => {
-    store.dispatch(setLoginFailed(err.message));
+    debugger;
+    console.log('Signup failed', err.message);
+    store.dispatch(setLoginFailed(translate('signup_failed')));
   }
   );
 }

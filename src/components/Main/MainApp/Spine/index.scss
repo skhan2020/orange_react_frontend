@@ -2,22 +2,22 @@
   width: 100vw;
   ul {
     list-style-type: none;
-    margin: 0;
-    padding : 0px;
     background-color: rgb(253, 248, 201);
     height: inherit;
-    li {
-      display: inline-block;
-      padding-left: 10px;
+    .create_link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 50px;
       height: 50px;
       font-size: 30px;
       border-radius: 5px;
       color: orange;
-      margin: 10px 0 10px;
+      margin: 10px 0 15px;
       cursor: pointer;
     }
-    li:hover {
+    .create_link:hover, .create_link:active {
       background-color: rgb(247, 221, 108);
     }
   }
