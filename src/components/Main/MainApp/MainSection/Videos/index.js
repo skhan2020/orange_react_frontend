@@ -1,8 +1,10 @@
 import React from 'react'
+import EmptyUI from '../../EmptyUI';
+import { translate } from '../../../../../localization/service'
 
 const Videos = () => {
   return (
-    <div>Videos</div>
+    <EmptyUI message={translate('empty_video')} />
   )
 }
 

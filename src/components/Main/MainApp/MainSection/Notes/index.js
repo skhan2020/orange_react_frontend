@@ -19,7 +19,6 @@ const Notes = () => {
     }, []
   )
   const updateSelectedNote = item => {
-    debugger;
     dispatch(setSelectedItem(item));
   }
 

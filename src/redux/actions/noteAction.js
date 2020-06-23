@@ -18,7 +18,6 @@ export function updateNotesList(data) {
 }
 
 export function setSelectedItem(selectedNote) {
-  debugger;
   return {
     type: SET_SELECTED_NOTE,
     payload: {

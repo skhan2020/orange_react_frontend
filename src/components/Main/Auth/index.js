@@ -5,7 +5,6 @@ import { getUserId, getLoginError, getUserFullName } from '../../../redux/select
 import { Button, Form, Input, Select, Alert } from 'antd';
 import 'antd/dist/antd.css';
 import './index.scss';
-import '../index.scss';
 import { signInHandler, signUpHandler} from '../../../services/authentication';
 import { STUDENT, PROFESSIONAL, UNDERGRAD} from '../../../constants';
 

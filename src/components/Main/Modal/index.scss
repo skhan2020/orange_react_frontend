@@ -1,5 +1,3 @@
-@import "../index.scss";
-
 .backDrop {
   position: fixed;
   width: 100vw;
@@ -23,7 +21,7 @@
   border: 1px orange solid;
   border-radius: 10px;
   position: fixed;
-  top: 20vh;
+  width: 100vw;
   margin: auto;
   left: 50%;
   z-index: 700;
@@ -32,6 +30,7 @@
     padding: 5px;
   }
   .modal_header {
+    width: 100vw;
     padding: 1rem;
     border: 1px orange solid;
     background-color: orange;
@@ -48,6 +47,16 @@
       font-size: 2em;
       font-weight: bold;
       color: white;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .modal {
+    width: 44vw;
+    top: 20vh;
+    .modal_header {
+      width: 100%;
     }
   }
 }

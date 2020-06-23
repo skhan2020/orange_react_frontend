@@ -29,7 +29,6 @@ const sortAndUpdateNote = list => {
 
 const noteReducer = (state = initialState, action) => {
  let payload = action.payload;
- debugger;
  switch (action.type) {
    case UPDATE_NOTE_LIST:
      const list = payload.notes;

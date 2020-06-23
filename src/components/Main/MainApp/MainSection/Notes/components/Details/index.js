@@ -69,9 +69,6 @@ const Details = props => {
         onCancel={onCancel}
         form={form}
       >
-        {detailsMode && <div className="delete_box">
-          <CloseOutlined className="delete_btn" onClick={closeDetailsPage} />
-        </div> }
         <Form.Item className="form-control" 
           label={translate("title")} name="title"
         >

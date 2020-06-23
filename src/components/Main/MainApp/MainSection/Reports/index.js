@@ -1,8 +1,10 @@
 import React from 'react'
+import EmptyUI from '../../EmptyUI';
+import { translate } from '../../../../../localization/service'
 
 const Reports = () => {
   return (
-    <div>Reports</div>
+    <EmptyUI message={translate('empty_reports')} />
   )
 }
 

@@ -1,9 +1,7 @@
-@import "../../../index.scss";
-
 .header_box {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-bottom: 15px;
   .page_heading {
     width: 100px;
@@ -12,6 +10,9 @@
     font-weight: bold;
     padding-top: 7px;
     padding-left: 7px;
+  }
+  .ant-input-group {
+    padding-left: 10px;
   }
 }
 
@@ -61,6 +62,7 @@
 
 @media only screen and (min-width: 600px) {
   .header_box {
+    flex-direction: row;
     .page_heading {
       width: 100%;
     }
@@ -69,6 +71,7 @@
     }
   }
   .todo_page {
+    overflow: auto;
     .todo_list {
       width: 100%;
       .todo_list_item {

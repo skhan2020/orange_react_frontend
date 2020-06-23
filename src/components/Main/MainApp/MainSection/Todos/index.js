@@ -69,7 +69,7 @@ const TodosPage = () => {
 
   return (
     <>
-      <div className="header_box">
+      <div className={`header_box ${showDetail ? 'hide_todo' : ''}`}>
         <div className="page_heading">TODO</div>
         <Input.Group >
           <div className="filter_label" >Filter By:</div>

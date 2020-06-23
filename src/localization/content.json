@@ -146,6 +146,12 @@
   "empty_notes_message" : {
     "en" : "You have no notes yet! Click the '+' icon to take notes!"
   },
+  "empty_video" : {
+    "en" : "Videos are not implemented yet.. coming up next!"
+  },
+  "empty_reports" : {
+    "en" : "Reports are not implemented yet.. coming up next!"
+  },
   "signup_failed" : {
     "en" : "Your Registration to Orange failed. Please contact admin or try again later."
   },

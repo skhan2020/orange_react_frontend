@@ -64,7 +64,7 @@
 }
 
 .form_notes {
-  width: 40vw;
+  width: 80vw;
   border: 2px solid yellowgreen;
   padding: 30px;
   border-radius: 10px;
@@ -80,7 +80,7 @@
   border: 2px solid yellowgreen;
   padding: 30px;
   border-radius: 10px;
-  margin: 30px;
+  margin: auto;
   @include form-control;
   .form-action {
     @extend %custom-button
@@ -91,6 +91,10 @@
   .form_narrow {
     width: 400px;
     margin: 40px 30px;
+    margin: 30px;
+  }
+  .form_notes {
+    width: 40vw;
   }
   %form {
     max-width: 30%;

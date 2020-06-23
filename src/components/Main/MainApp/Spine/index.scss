@@ -1,12 +1,14 @@
 .spine {
   width: 100vw;
   ul {
+    display: flex;
+    flex-direction: row;
     list-style-type: none;
     background-color: rgb(253, 248, 201);
+    padding: 0px;
     height: inherit;
     .create_link {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 50px;
@@ -31,6 +33,7 @@
     height: inherit;
     width: 70px;
     ul {
+      flex-direction: column;
       padding: 10px 1px 10px 10px ;
     }
   }

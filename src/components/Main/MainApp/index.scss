@@ -1,6 +1,6 @@
 .main_app {
+  height: calc(100vh - 75px);
   width: 100vw;
-  padding-top: 20px;
 }
 
 .empty_message {
@@ -16,7 +16,6 @@
 
 @media only screen and (min-width: 600px) {
   .main_app {
-    height: calc(100vh - 5rem);
     display: grid;
     grid-template-columns: 70px auto;
   }

@@ -12,7 +12,7 @@ from '@ant-design/icons';
 import './index.scss';
 
 const Spine = () => {
-  const [selectedTab, setSelectedTab] = useState();
+  const [selectedTab, setSelectedTab] = useState('todos');
   const dispatch = useDispatch();
   let { url } = useRouteMatch();
 
