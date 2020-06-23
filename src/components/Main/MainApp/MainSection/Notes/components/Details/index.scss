@@ -1,0 +1,75 @@
+  
+@import "../../../../../index.scss";
+.note_details {
+  height: 100%;
+  .note_form_detail {
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 10px 26px;
+    margin-right: 10px;
+    width: 100%;
+    margin-top: 10px;
+    height: inherit;
+    border: 1px solid orange;
+    .delete_box {
+      width: 100%;
+      text-align: right;
+      .delete_btn {
+        font-size: 2em;
+        font-weight: bold;
+        color: orange;
+      }
+    }
+    .ant-form-item{
+      .ant-form-item-label > label {
+        width: 100px;
+        text-align: left;
+        color: orange;
+      }
+    }
+    .form-control {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+      .input, textArea, label, .value_label {
+        font-size: 1.2em;
+        display: block;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        height: 25px;
+      }
+      .ant-timeline {
+        padding-left: 20px;
+        margin-top: 10px;
+      }
+    }
+    .column_box {
+      flex-direction: column;
+    }
+    .form-action {
+      .ant-form-item-control {
+        align-items: center;
+        padding-left: 100px;
+        .ant-form-item-control-input-content {
+          margin: auto;
+          @extend %custom-button
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .note_details {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .note_details {
+    width: 100%;
+  }
+}

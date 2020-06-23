@@ -1,21 +1,54 @@
 
-.editor {
+
+%editor_btns {
+  font-size: 1.2em;
+  width: 50px;
+  border: 1px solid darkorange;
+  height: 30px;
+  color: darkorange;
+  align-items: center;
+  padding-top: 5px;
+  font-weight: 100;
+  text-align: center;
+}
+
+%DraftEditor-root {
+  height: calc(100% - 30px);
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  padding: 1em;
+  overflow: auto;
+  font-size: 1.2em;
+  .DraftEditor-editorContainer {
+    height: 100%;
+    .public-DraftEditor-content {
+      height: 100%;
+    }
+  }
+}
+.editor_page {
+  height: 30vh;
   .editor_btns {
-    font-size: 1.2em;
-    width: 50px;
-    border: 1px solid darkorange;
-    height: 30px;
-    color: darkorange;
-    align-items: center;
-    padding-top: 5px;
-    font-weight: 100;
+    @extend %editor_btns;
   }
   .DraftEditor-root {
-    border: 1px solid #d9d9d9;
-    background: #fff;
-    min-height: 115px;
-    padding: 1em;
-    max-height: 150px;
-    overflow: auto;
+    @extend %DraftEditor-root;
+  }
+}
+
+.view_page {
+  height: 60vh;
+  .editor_btns {
+    @extend %editor_btns;
+  }
+  .DraftEditor-root {
+    @extend %DraftEditor-root;
+  }
+  .edit_btn {
+    color: orange;
+    width: 100%;
+    font-size: 1.2em;
+    padding-right: 10px;
+    text-align: right;
   }
 }

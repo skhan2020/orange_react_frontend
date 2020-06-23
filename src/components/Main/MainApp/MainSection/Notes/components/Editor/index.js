@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Editor, 
   EditorState, RichUtils, convertFromRaw,
   convertToRaw, } from 'draft-js';
@@ -19,7 +19,15 @@ const styleMap = {
 };
 
 const Notes = props => {
+  const { readOnly } = props;
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+  useEffect(() => {
+    if (props.note && props.note.text) {
+    const contentSt = convertFromRaw(JSON.parse(props.note.text));
+      setEditorState(EditorState.createWithContent(contentSt));
+    }
+  },[props.note])
 
   const onChange = editorState => {
     const contentState = editorState.getCurrentContent();
@@ -55,16 +63,20 @@ const Notes = props => {
   }
 
   return (
-    <div className="editor">
-      <UnderlineOutlined className="editor_btns" onClick={onUnderlineClick} />
-      <BoldOutlined className="editor_btns" onClick={onBoldClick} />
-      <ItalicOutlined className="editor_btns" onClick={onItalicClick} />
-      <HighlightOutlined className="editor_btns" onClick={onHighlightClick} />
+    <div className={props.styleName}>
+      {!readOnly &&
+      <>
+        <UnderlineOutlined className="editor_btns" onClick={onUnderlineClick} />
+        <BoldOutlined className="editor_btns" onClick={onBoldClick} />
+        <ItalicOutlined className="editor_btns" onClick={onItalicClick} />
+        <HighlightOutlined className="editor_btns" onClick={onHighlightClick} />
+      </>}
       <Editor
         editorState={editorState}
         handleKeyCommand={handleKeyDown}
         onChange={onChange} 
-        customStyleMap={styleMap}
+        customStyleMap={styleMap} 
+        readOnly={readOnly}
       />
     </div>
   )

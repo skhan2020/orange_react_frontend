@@ -20,22 +20,38 @@
   flex-direction: row;
   width: 100%;
   height: calc(100vh - 10rem);
-  border-top: 1px solid orange;
   .note_list {
-    border: 1px solid orange;
-    overflow:hidden; 
+    overflow: hidden;
     overflow-y: auto;
     height: inherit;
-    width: 30vw;
+    width: 45vw;
     list-style: none;
-    padding: 0px;
+    margin: 10px;
+    border: 1px solid orange;
     .note_list_item {
-      width: inherit;
-      height: 50px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .note_category {
+        height: 40px;
+        background-color: rgb(253, 248, 201);
+        border-top: 1px solid orange;
+        border-bottom: 1px solid orange;
+        color: orange;
+        padding: 10px;
+        font-size: 1.2em;
+      }
+      .note_title {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+      .note_title:hover {
+        background-color: rgb(250, 247, 225);
+      }
     }
-  }
-  .notes_details {
-    width: 70vw;
   }
 }
 .hide_todo {

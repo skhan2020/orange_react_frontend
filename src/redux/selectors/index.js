@@ -71,3 +71,6 @@ export const todoSelectedSelector = (state) => {
 export const noteListSelector = (state) => {
   return getNoteReducer(state).get('noteList');
 }
+export const selectedNoteSelector = (state) => {
+  return getNoteReducer(state).get('selectedNote');
+}

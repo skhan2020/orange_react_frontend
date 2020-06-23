@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import BackDrop from './BackDrop';
 import CreateTodo from './../MainApp/MainSection/Todos/components/CreateTodo/index';
-import AddNotes from './../MainApp/MainSection/Notes/components/AddNotes/index'
+import Details from './../MainApp/MainSection/Notes/components/Details/index'
 import { useSelector, useDispatch } from 'react-redux'
 import { getModalType, isModalOpen } from '../../../redux/selectors';
 import { translate } from '../../../localization/service'
@@ -39,7 +39,7 @@ const Modal = () => {
         <section className="modal_content">
           {type === 'createTodo' && <CreateTodo />}
           {type === 'information' && <Alert />}
-          {type === 'createNotes' && <AddNotes />}
+          {type === 'createNotes' && <Details detailsMode={false} />}
         </section>
       </div>
     </React.Fragment>

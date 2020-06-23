@@ -8,7 +8,6 @@ import Reports from './Reports/index';
 
 const MainSection = () => {
   let { sectionID } = useParams('todo');
-  debugger;
   return (
     <div className="main_section">
       {sectionID === 'todo'&& <TodosPage /> }

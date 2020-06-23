@@ -6,12 +6,23 @@ export const ADD_NEW_NOTE = "ADD_NEW_NOTE";
 export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
 export const OPEN_NOTE_DETAIL = 'OPEN_NOTE_DETAIL';
+export const SET_SELECTED_NOTE = 'SET_SELECTED_NOTE';
 
 export function updateNotesList(data) {
   return {
     type: UPDATE_NOTE_LIST,
     payload: {
       notes: data,
+    },
+  };
+}
+
+export function setSelectedItem(selectedNote) {
+  debugger;
+  return {
+    type: SET_SELECTED_NOTE,
+    payload: {
+      note: selectedNote,
     },
   };
 }
@@ -43,7 +54,7 @@ export function getNoteList() {
   };
 }
 
-export function updateNote(data) {
+export function updateExistingNote(data) {
   return {
     type: UPDATE_NOTE,
     payload: {

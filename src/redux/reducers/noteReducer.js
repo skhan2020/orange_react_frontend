@@ -1,6 +1,7 @@
 import { ADD_NEW_NOTE, 
   UPDATE_NOTE_LIST, UPDATE_NOTE,
-  DELETE_NOTE, OPEN_NOTE_DETAIL
+  DELETE_NOTE,
+  SET_SELECTED_NOTE
  } from '../actions/noteAction';
 import moment from 'moment';
 import Immutable from 'immutable';
@@ -12,7 +13,9 @@ const initialState = new Immutable.Map({
 
 const sortAndUpdateNote = list => {
  const group = new Map();
+ // sort the notes in ascending order as per created date
  list.sort((a, b) => moment(a.createdAt).diff(moment(b.createdAt)));
+ // and group them by category
  list.forEach(item => {
    if (!group.get(item.category)) {
      group.set(item.category, true);
@@ -26,27 +29,34 @@ const sortAndUpdateNote = list => {
 
 const noteReducer = (state = initialState, action) => {
  let payload = action.payload;
+ debugger;
  switch (action.type) {
    case UPDATE_NOTE_LIST:
-     // sort the notes in ascending order
      const list = payload.notes;
-     return state.set('noteList', sortAndUpdateNote(list));
+     const newRetreivedList = sortAndUpdateNote(list);
+     const selectedItem = newRetreivedList.length ? newRetreivedList[0] : {};
+     return state.set('noteList', newRetreivedList)
+                 .set('selectedNote', selectedItem);
    case ADD_NEW_NOTE:
-     const newList = [...state.get('noteList'), payload.NOTE]
-     return state.set('noteList', sortAndUpdateNote(newList));
+     const newList = [...state.get('noteList'), payload.notes]
+     return state.set('noteList', sortAndUpdateNote(newList))
+                 .set('selectedNote', payload.notes);
    case DELETE_NOTE:
      const newReducedList = state.get('noteList').filter(item => item._id !== payload.noteID);
-     return state.set('noteList', sortAndUpdateNote([...newReducedList]));
+     const newSortedList = sortAndUpdateNote([...newReducedList]);
+     const selectedFirstItem = newSortedList.length ? newSortedList[0] : {};
+     return state.set('noteList', newSortedList)
+                 .set('selectedNote', selectedFirstItem);
    case UPDATE_NOTE:
-     const note = state.get('noteList').map(item => item._id === payload.noteObj._id ? 
+     const note = state.get('noteList').map(item => item._id === payload.notes._id ? 
        { ...item,
-         title :payload.noteObj.title,
-         category: payload.noteObj.category,
-         text: payload.noteObj.text
+         title :payload.notes.title,
+         category: payload.notes.category,
+         text: payload.notes.text
        } : item);
      return state.set('noteList', note);
-   case OPEN_NOTE_DETAIL : 
-     return state.set('selectedNote', payload.NOTE);
+   case SET_SELECTED_NOTE :
+     return state.set('selectedNote', payload.note);
    default:
      return state;
  }

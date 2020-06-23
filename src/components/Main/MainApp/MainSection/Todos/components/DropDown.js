@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {  Menu, Dropdown, Button  } from 'antd';
-import { STATUSES, NOT_STARTED_CODE, IN_PROGRESS, IN_PROGRESS_CODE, ON_HOLD_CODE, DONE_CODE } from '../../../../../../constants/index';
+import { STATUSES, NOT_STARTED_CODE, IN_PROGRESS_CODE, ON_HOLD_CODE, DONE_CODE } from '../../../../../../constants/index';
 import styled, { css } from 'styled-components'
 
 const cssList = {
