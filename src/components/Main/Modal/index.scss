@@ -1,3 +1,5 @@
+@import '../../css/variables';
+
 .backDrop {
   position: fixed;
   width: 100vw;
@@ -18,7 +20,7 @@
 .modal {
   background-color: #fdf8c9;
   box-shadow: 0 2px 8px black;
-  border: 1px orange solid;
+  border: 1px $main_theme_color solid;
   border-radius: 10px;
   position: fixed;
   width: 100vw;
@@ -32,21 +34,21 @@
   .modal_header {
     width: 100vw;
     padding: 1rem;
-    border: 1px orange solid;
-    background-color: orange;
+    border: 1px $main_theme_color solid;
+    background-color: $main_theme_color;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
     .modal_header_label {
       margin: 0;
       font-size: 1.5em;
-      color: white;
+      color: $color_4;
       width: 100%;
     }
     .delete_btn {
       font-size: 2em;
       font-weight: bold;
-      color: white;
+      color: $color_4;
     }
   }
 }

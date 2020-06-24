@@ -1,11 +1,12 @@
 
-@import "../../../../../index.scss";
+@import "../../../../../../css/index.scss";
+@import '../../../../../../css/variables';
 
 .form_detail {
   overflow: hidden;
   overflow-y: auto;
   width: 100%;
-  border: 1px solid orange;
+  border: 1px solid $main_theme_color;
   padding: 30px;
   margin: 10px;
   .delete_box {
@@ -14,14 +15,14 @@
     .delete_btn {
       font-size: 2em;
       font-weight: bold;
-      color: orange;
+      color: $main_theme_color;
     }
   }
   .ant-form-item{
     .ant-form-item-label > label {
       width: 100px;
       text-align: left;
-      color: orange;
+      color: $main_theme_color;
     }
   }
   .form-control {

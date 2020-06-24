@@ -1,4 +1,4 @@
-
+@import '../../../../../../css//variables';
 
 %editor_btns {
   font-size: 1.2em;
@@ -45,7 +45,7 @@
     @extend %DraftEditor-root;
   }
   .edit_btn {
-    color: orange;
+    color: $main_theme_color;
     width: 100%;
     font-size: 1.2em;
     padding-right: 10px;

@@ -1,0 +1,158 @@
+@import '../css/variables';
+
+%custom-button {
+  button {
+    background: $border_color_2;
+    font: inherit;
+    color: $color_4;
+    border-color: $border_color_2;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    font-size: 1em;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  button:hover, button:active  {
+    background-color: rgb(111, 163, 7);
+    border-color: rgb(111, 163, 7);
+    border-radius: 5px;
+  }
+}
+%green-text {
+  color: $color_1;
+}
+
+@mixin form-control {
+  label, input, textArea {
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+  }
+  input {
+    height: 25px;
+  }
+}
+  
+%form {
+  width: 80%;
+  padding: 30px;
+  margin: 4rem auto;
+  .ant-form-item {
+    font-size: 1.1em;
+    .ant-form-item-label > label {
+      font-size: 1.1em;
+      width: 100px;
+    }
+    input {
+      height: 30px;
+    }
+  }
+  @include form-control;
+  .ant-picker {
+    margin-right: 20px;
+    height: 35px;
+  }
+  .form-action {
+    .ant-form-item-required {
+      margin: 0px
+    }
+    @extend %custom-button
+  }
+}
+
+.form_notes {
+  width: 80vw;
+  padding: 30px;
+  margin: 30px;
+  @include form-control;
+  .form-action {
+    @extend %custom-button
+  }
+}
+
+.sign_in_form {
+  margin: 40px 0;
+  .ant-form-item {
+    display: flex;
+    flex-direction: column;
+    .ant-form-item-control {
+      max-width: 100%;
+      .ant-form-item-control-input {
+        height: 50px;
+        .ant-form-item-control-input-content, .ant-input-affix-wrapper {
+          border: none;
+          padding: 0px;
+          color: gray;
+          font-size: 1.2em;
+          .ant-input:focus, .ant-input-focused {
+            box-shadow: none;
+            -webkit-box-shadow: none;
+          }
+          .ant-input-password-icon {
+            color: $color_2;
+          }
+          > input, .ant-select-selector {
+            border: none;
+            text-indent: 10px;
+            padding-left: 0px;
+            border-bottom: 1px solid orange;
+          }
+          .ant-select-arrow {
+            color: orange;
+          }
+        }
+        .ant-input-affix-wrapper-focused {
+          box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+    .ant-form-item-label {
+      text-align: left;
+      max-width: 100%;
+      > label {
+        color: $color_2;
+        font-size: 1.1em;
+      }
+      label::before {
+        content: '';
+      }
+      label::after {
+        content: '';
+      }
+    }
+  }
+  .form-action {
+    display: flex;
+    .ant-form-item-control {
+      margin: 0px;
+      .ant-form-item-control-input-content{
+        display: flex;
+        flex-direction: row;
+        @extend %custom-button;
+        .content3 {
+          line-height: 40px;
+          padding-top: 8px;
+          color: $color_8;
+          cursor: pointer;
+        }
+        .content3:hover {
+          color: $color_9;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .sign_in_form {
+    justify-content: center;
+  }
+  .form_notes {
+    width: 40vw;
+  }
+  %form {
+    max-width: 30%;
+  }
+}

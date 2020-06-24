@@ -1,3 +1,5 @@
+@import '../../../../css/variables';
+
 .header_box {
   width: 100%;
   display: flex;
@@ -6,7 +8,7 @@
   .page_heading {
     width: 100px;
     font-size: 1.5em;
-    color: orange;
+    color: $main_theme_color;
     font-weight: bold;
     padding-top: 7px;
     padding-left: 7px;
@@ -28,17 +30,17 @@
     width: 45vw;
     list-style: none;
     margin: 10px;
-    border: 1px solid orange;
+    border: 1px solid $main_theme_color;
     .note_list_item {
       width: 100%;
       display: flex;
       flex-direction: column;
       .note_category {
         height: 40px;
-        background-color: rgb(253, 248, 201);
-        border-top: 1px solid orange;
-        border-bottom: 1px solid orange;
-        color: orange;
+        background-color: $color_7;
+        border-top: 1px solid $main_theme_color;
+        border-bottom: 1px solid $main_theme_color;
+        color: $main_theme_color;
         padding: 10px;
         font-size: 1.2em;
       }
@@ -50,15 +52,11 @@
         cursor: pointer;
       }
       .note_title:hover {
-        background-color: rgb(250, 247, 225);
+        background-color: $color_6;
       }
     }
   }
 }
-.hide_todo {
-  display: none;
-}
-
 
 @media only screen and (min-width: 600px) {
   .header_box {
@@ -69,25 +67,5 @@
     .search_input {
       max-width: 40%;
     }
-  }
-  .todo_page {
-    overflow: auto;
-    .todo_list {
-      width: 100%;
-      .todo_list_item {
-        align-items: center;
-        flex-direction: row;
-        .todo_title {
-          width: 190px;
-          margin-left: 10px;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .hide_todo {
-    display: inline-block;
   }
 }

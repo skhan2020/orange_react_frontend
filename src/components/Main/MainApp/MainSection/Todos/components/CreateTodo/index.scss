@@ -1,20 +1,22 @@
+@import '../../../../../../css/variables';
+
 .tag-box {
   display: flex;
   Input {
     height: 30px;
     font-size: 1.2em;
     width: 100px;
-    background-color:white;
+    background-color:$color_4;
   }
   .ant-tag {
     height: 30px;
     display: flex;
     align-items: center;
     font-size: 1.1em;
-    background-color: rgb(247, 221, 108);
-    border: 1px solid orange;
+    background-color: $color_3;
+    border: 1px solid $main_theme_color;
   }
   .site-tag-plus {
-    background-color: white;
+    background-color: $color_4;
   }
 }

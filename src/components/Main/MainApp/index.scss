@@ -1,10 +1,12 @@
+@import '../../css/variables';
+
 .main_app {
   height: calc(100vh - 75px);
   width: 100vw;
 }
 
 .empty_message {
-  color: orange;
+  color: $main_theme_color;
   font-size: 1.8em;
   width: inherit;
   height: 100%;

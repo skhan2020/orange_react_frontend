@@ -1,29 +1,21 @@
+@import '../css/variables';
+
 .main-header {
   width: 100vw;
-  height: 75px;
+  height: $header-height;
   position: fixed;
   display: flex;
   left: 0;
   top: 0;
   z-index: 10;
-  background-color: orange;
+  background-color: $main_theme_color;
   padding: 0 1rem;
+  align-items: center;
   justify-content: space-between;
-
-  .header_logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.8em;
-    color: white;
-    .logo {
-      width: 70px;
-      height: 70px;
-    }
-  }
   
   button {
     text-decoration: none;
-    color: white;
+    color: $color_4;
     padding: 0.25rem 0.5rem;
     border: none;
     font: inherit;
@@ -32,21 +24,21 @@
   }
   a, button {
     padding: 8px;
-    margin: 10px;
+    margin: 15px 10px;
     height: 43px;
     font-size: 1.3em;
     list-style: none;
     text-decoration: none;
-    color: white;
+    color: $color_4;
   }
   a:hover {
-    color: yellow;
+    color: $color_5;
   }
   a:active {
-    color: yellow;
+    color: $color_5;
   }
   a.active {
-    color: yellow;
+    color: $color_5;
   }
 }
 

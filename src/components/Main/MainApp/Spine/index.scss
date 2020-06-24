@@ -1,10 +1,12 @@
+@import '../../../css/variables';
+
 .spine {
   width: 100vw;
   ul {
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    background-color: rgb(253, 248, 201);
+    background-color: $color_7;
     padding: 0px;
     height: inherit;
     .create_link {
@@ -14,18 +16,17 @@
       width: 50px;
       height: 50px;
       font-size: 30px;
-      border-radius: 5px;
-      color: orange;
+      color: $main_theme_color;
       margin: 10px 0 15px;
       cursor: pointer;
     }
     .create_link:hover, .create_link:active {
-      background-color: rgb(247, 221, 108);
+      background-color: $color_3;
     }
   }
 }
 .activeButton {
-  background-color: rgb(247, 221, 108);
+  background-color: $color_3;
 }
 
 @media only screen and (min-width: 600px) {

@@ -1,3 +1,5 @@
+@import '../../../../css/variables';
+
 .header_box {
   width: 100%;
   display: flex;
@@ -6,7 +8,7 @@
   .page_heading {
     width: 100px;
     font-size: 1.5em;
-    color: orange;
+    color: $main_theme_color;
     font-weight: bold;
     padding-top: 7px;
     padding-left: 7px;
@@ -24,7 +26,7 @@
       text-align: center;
       display: flex;
       align-items: center;
-      color: orange;
+      color: $main_theme_color;
     }
     .clear_btn {
       width: 60px;
@@ -32,7 +34,7 @@
       text-decoration: underline;
       height: 40px;
       text-align: center;
-      color: green;
+      color: $color_2;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -63,8 +65,8 @@
       .ant-btn-primary {
         width: 46px;
         height: 40px;
-        background-color: rgb(70, 196, 70);
-        border-color: rgb(70, 196, 70);
+        background-color: $color_1;
+        border-color: $color_1;
       }
     }
   }
@@ -76,10 +78,9 @@
   flex-direction: row;
   width: 100%;
   height: calc(100vh - 10rem);
-  border-top: 1px solid orange;
+  border-top: 1px solid $main_theme_color;
   .todo_list {
     overflow:hidden; 
-    overflow-y: auto;
     height: inherit;
     width: 100vw;
     list-style: none;
@@ -89,7 +90,7 @@
       margin: 10px;
       height: 30px;
       font-size: 1.5em;
-      color: orange;
+      color: $main_theme_color;
     }
       .todo_list_item {
         display: flex;
@@ -104,8 +105,8 @@
           display: flex;
           flex-direction: row;
           align-items: center;
-          border: 1px solid orange;
-          background-color: rgb(253, 248, 201);
+          border: 1px solid $main_theme_color;
+          background-color: $color_7;
           border-radius: 5px;
           width: 100%;
           height: 80px;
@@ -126,7 +127,7 @@
           .delete_btn {
             font-size: 1.8em;
             font-weight: bold;
-            color: orange;
+            color: $main_theme_color;
             margin: 20px;
           }
         }
@@ -147,7 +148,9 @@
     }
   }
   .todo_page {
+    overflow-y: hidden;
     .todo_list {
+      overflow-y: auto;
       width: 100%;
       .todo_list_item {
         align-items: center;
