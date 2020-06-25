@@ -8,7 +8,7 @@
   .page_heading {
     width: 100px;
     font-size: 1.5em;
-    color: $main_theme_color;
+    color: $color_2;
     font-weight: bold;
     padding-top: 7px;
     padding-left: 7px;
@@ -21,12 +21,12 @@
     }
     .filter_label {
       width: 90px;
-      font-size: 1.2em;
+      font-size: 1.4em;
       height: 40px;
       text-align: center;
       display: flex;
       align-items: center;
-      color: $main_theme_color;
+      color: $color_2;
     }
     .clear_btn {
       width: 60px;
@@ -34,7 +34,7 @@
       text-decoration: underline;
       height: 40px;
       text-align: center;
-      color: $color_2;
+      color: $border_color_2;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -43,6 +43,8 @@
       .ant-select-selector {
         height: 40px;
         width: 120px;
+        border: none;
+        border-bottom: $bottom_border_only;
         .ant-select-selection-item {
           font-size: 1.2em;
           align-items: center;
@@ -50,12 +52,20 @@
           display: flex;
         }
       }
+      .ant-select-arrow {
+        color: orange;
+      }
+    }
+    .ant-btn {
+      border: 1px solid orange;
+      margin-left: 10px;
     }
     .search_input {
       border-radius: 5px;
       z-index: 0px;
       .ant-input {
         font-size: 1.2em;
+        border: 1px solid $color_2;
         height: 40px;
         .ant-input-group-addon {
           width: 46px;
@@ -78,7 +88,6 @@
   flex-direction: row;
   width: 100%;
   height: calc(100vh - 10rem);
-  border-top: 1px solid $main_theme_color;
   .todo_list {
     overflow:hidden; 
     height: inherit;

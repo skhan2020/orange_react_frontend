@@ -81,7 +81,7 @@
     "en" : "Enter to search in {item}..."
   },
   "create_todo" : {
-    "en" : "Create a Todo"
+    "en" : "Create a TODO"
   },
   "create" : {
     "en" : "Create"
@@ -90,16 +90,16 @@
     "en" : "Cancel"
   },
   "title" : {
-    "en" : "Title"
+    "en" : "TITLE"
   },
   "start_time" : {
-    "en" : "Start Time"
+    "en" : "START TIME"
   },
   "notes" : {
-    "en" : "Notes"
+    "en" : "NOTES"
   },
   "tags" : {
-    "en" : "Tags"
+    "en" : "TAGS"
   },
   "add_tag" : {
     "en" : "Add Tag"
@@ -117,10 +117,10 @@
     "en" : "Done"
   },
   "status" : {
-    "en" : "Status"
+    "en" : "STATUS"
   },
   "category" : {
-    "en" : "Category"
+    "en" : "CATEGORY"
   },
   "statusTimeline" : {
     "en" : "Status Timeline"
@@ -157,5 +157,8 @@
   },
   "edit_note" : {
     "en" : "Edit Note"
+  },
+  "filter_by" : {
+    "en" : "Filter By:"
   }
 }

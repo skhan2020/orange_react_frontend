@@ -13,10 +13,20 @@
     display: flex;
     align-items: center;
     font-size: 1.1em;
-    background-color: $color_3;
-    border: 1px solid $main_theme_color;
+    cursor: pointer;
+    color: $color_10;
+    background-color:$color_2;
+    cursor: pointer;
+    border-color: $color_2;
+    .anticon-close {
+      color: $color_10;
+      font-size: 1em;
+    }
   }
   .site-tag-plus {
-    background-color: $color_4;
+    background-color: $color_10;
+    color: $color_2;
+    cursor: pointer;
+    border-color: $color_2;
   }
 }

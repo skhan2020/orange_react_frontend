@@ -6,7 +6,6 @@ import './app.scss';
 import AuthPage from './components/Main/Auth';
 import LandingPage from './components/Main/Landing/index';
 import MainApp from './components/Main/MainApp/index';
-import MainHeader from './components/MainHeader/MainHeader';
 import Modal from './components/Main/Modal/index'
 
 // import dependencies
@@ -19,7 +18,6 @@ class App extends Component {
       <BrowserRouter>
         <>
           <Modal />
-          <MainHeader />
           <main className="main">
             <Switch>
               {isLoggedIn && <Redirect from="/auth" to="/main" exact/>}

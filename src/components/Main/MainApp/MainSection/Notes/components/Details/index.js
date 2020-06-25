@@ -63,7 +63,7 @@ const Details = props => {
 
   return (
     <div className="note_details" >
-      <Form className={detailsMode ? 'note_form_detail' : 'form_notes'} 
+      <Form className={detailsMode ? 'note_form_detail' : 'sign_in_form'} 
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
         onCancel={onCancel}

@@ -2,7 +2,6 @@
 
 .main {
   height: 100vh;    
-  padding-top: 75px;
   overflow: hidden;
   .main_container {
     overflow:auto;
@@ -31,7 +30,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: linear-gradient(#ff7b00, orange);
+      background: url("../../../images/autumn-leaves-5019574_1920.png") repeat-x left bottom cadetblue; 
+      background-size: 40vh;
       .main_content{
         font-size: 1.5em;
         color: $color_4;
@@ -54,7 +54,7 @@
   }
 
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .main {
     .main_container {
       flex-direction: row;
@@ -75,7 +75,7 @@
           margin: 20px;
         }
         .logo_box {
-          padding-bottom: 30px; 
+          padding: 0; 
           .sign_up {
             font-size: 1em;
             padding-top: 35px;

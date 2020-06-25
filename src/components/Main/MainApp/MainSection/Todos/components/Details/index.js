@@ -61,7 +61,7 @@ const TodoDetails = props => {
   }
 
   return (
-      <Form className="form_detail" 
+      <Form className="sign_in_form" 
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
         onCancel={onCancel}

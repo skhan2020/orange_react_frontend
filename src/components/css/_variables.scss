@@ -5,13 +5,20 @@ $border_color_1: $main_theme_color;
 $border_color_2: #52c41a;
 $color_1: black;
 $color_2: orange;
-$color_3: rgb(247, 221, 108);
+$color_3: green;
 $color_4: rgb(252, 253, 243);
 $color_5: yellow;
 $color_6: rgb(250, 247, 225);
 $color_7: rgb(253, 248, 201);
 $color_8: rgb(92, 90, 90);
 $color_9: rgb(79, 81, 209);
+$color_10: white;
+$color_11: gray;
+
+$bottom_border_only: 1px solid $color_2;
+$orange_background_image_inverse: linear-gradient(orange, #ff7b00);
+
+$orange_background_image: linear-gradient(#ff7b00, orange);
 
 $border_1: 1px solid $border_color_1;
 $border_2: 2px solid $border_color_2;

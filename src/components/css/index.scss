@@ -83,8 +83,11 @@
         .ant-form-item-control-input-content, .ant-input-affix-wrapper {
           border: none;
           padding: 0px;
-          color: gray;
+          color: $color_11;
           font-size: 1.2em;
+          .ant-picker-range {
+            width: 100%;
+          }
           .ant-input:focus, .ant-input-focused {
             box-shadow: none;
             -webkit-box-shadow: none;
@@ -96,10 +99,10 @@
             border: none;
             text-indent: 10px;
             padding-left: 0px;
-            border-bottom: 1px solid orange;
+            border-bottom: $bottom_border_only;
           }
           .ant-select-arrow {
-            color: orange;
+            color: $color_2;
           }
         }
         .ant-input-affix-wrapper-focused {
@@ -145,7 +148,7 @@
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .sign_in_form {
     justify-content: center;
   }

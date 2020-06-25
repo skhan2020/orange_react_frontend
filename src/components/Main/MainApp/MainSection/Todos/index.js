@@ -72,7 +72,7 @@ const TodosPage = () => {
       <div className={`header_box ${showDetail ? 'hide_todo' : ''}`}>
         <div className="page_heading">TODO</div>
         <Input.Group >
-          <div className="filter_label" >Filter By:</div>
+          <div className="filter_label" >{translate("filter_by")}</div>
           <Select defaultValue={searchCategory}
             className="select_dropdown"
             value={searchCategory}

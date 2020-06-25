@@ -46,7 +46,7 @@ const CreateTodo = () => {
 
   }
     return (
-    <Form className="form_notes" 
+    <Form className="sign_in_form" 
         onFinish={onConfirm}
         onFinishFailed={onFinishFailed}
         onCancel={onCancel}
@@ -62,35 +62,33 @@ const CreateTodo = () => {
         >
           <Input />
         </Form.Item>
-        <div style={{display: "flex", flexDirection: "row"}}>
-          <Form.Item
-            className="form-action" 
-            label={translate("start_time")} name="startDate"
-            rules={[
-              {
-                required: true,
-                message: translate("start_date_missing"),
-              },
-            ]}
-            >
-            <RangePicker renderExtraFooter={() => 'extra footer'} showTime format="YYYY-DD-MM HH:mm"/>
-          </Form.Item>
-          <Form.Item
-            label={translate("category")} name="category"
-            rules={[
-              {
-                required: true,
-                message: translate("todo_category_missing"),
-              },
-            ]}
-            >
-            <Input />
-          </Form.Item>
-        </div>
+        <Form.Item
+          className="form-action" 
+          label={translate("start_time")} name="startDate"
+          rules={[
+            {
+              required: true,
+              message: translate("start_date_missing"),
+            },
+          ]}
+          >
+          <RangePicker renderExtraFooter={() => 'extra footer'} showTime format="YYYY-DD-MM HH:mm"/>
+        </Form.Item>
+        <Form.Item
+          label={translate("category")} name="category"
+          rules={[
+            {
+              required: true,
+              message: translate("todo_category_missing"),
+            },
+          ]}
+          >
+          <Input />
+        </Form.Item>
         <Form.Item
           label={translate("notes")} name="notes"
         >
-          <TextArea rows={4} />
+          <TextArea rows={2} />
         </Form.Item>
         <Form.Item 
           label={translate("tags")} name="tags">

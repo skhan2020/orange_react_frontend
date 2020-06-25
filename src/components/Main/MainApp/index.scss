@@ -1,12 +1,12 @@
 @import '../../css/variables';
 
 .main_app {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 60px);
   width: 100vw;
 }
 
 .empty_message {
-  color: $main_theme_color;
+  color: $color_8;
   font-size: 1.8em;
   width: inherit;
   height: 100%;
@@ -14,11 +14,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@media only screen and (min-width: 600px) {
-  .main_app {
-    display: grid;
-    grid-template-columns: 70px auto;
-  }
 }

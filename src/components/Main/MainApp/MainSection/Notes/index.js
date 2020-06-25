@@ -25,7 +25,7 @@ const Notes = () => {
   return (
     <>
       <div className="header_box">
-        <div className="page_heading">Notes</div>
+        <div className="page_heading">NOTES</div>
       </div>
       <div className="note_page">
         { noteList.length === 0 ? <EmptyUI message={translate("empty_notes_message")} /> :
