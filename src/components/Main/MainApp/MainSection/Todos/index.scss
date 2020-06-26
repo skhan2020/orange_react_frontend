@@ -27,9 +27,10 @@
       display: flex;
       font-weight: bold;
       align-items: center;
-      color: $color_2;
+      color: $color_10;
     }
     .clear_btn {
+      margin-left: 10px;
       width: 60px;
       font-size: 1.2em;
       text-decoration: underline;
@@ -57,7 +58,7 @@
         }
       }
       .ant-select-arrow {
-        color: orange;
+        color: $color_10;
         top: 25%;
         margin-top: 0;
         right: 30px;
@@ -89,84 +90,59 @@
 }
 
 .todo_page {
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  height: calc(100vh - 10rem);
-  .todo_list {
-    overflow:hidden; 
-    height: inherit;
-    width: 100vw;
-    list-style: none;
-    padding-right: 20px;
-    .todo_date_label {
-      margin: 10px;
-      height: 30px;
-      font-size: 1.2em;
-      color: $color_8;
-    }
-      .todo_list_item {
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        margin: 0 1em;
-        .todo_title {
-          width: 190px;
-          font-size: 1.2em;
-        }
-        .list_main {
-          margin-right: 20px;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          width: 100%;
-          height: 80px;
-          .list_main_title {
-            padding: 0 20px;
-            width: 100%;
-            font-size: 1.2em;
-            cursor: pointer;
-          }
-          .list_main_status {
-            width: 170px !important;
-            padding: 10px;
-          }
-          .list_main_end {
-            width: 170px;
-            padding: 10px;
-          }
-          .delete_btn {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 20px;
-          }
-        }
+  .carousal {
+    height: 500px;
+    .btn_box {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      .carousal_btn {
+        width: 108px;
+        margin: 10px;
+        background: rgba(128, 128, 128, 0.4);
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        height: 31px;
+        border-radius: 4px;
       }
     }
-    .detail_box {
-      width: 40%;
-      overflow: auto;
-      height: inherit;
-      border: 2px solid cadetblue;
-      padding: 20px;
-      height: 100%;
-      background-color: $color_10;
-      box-sizing: border-box;
-    }
   }
+  .detail_box {
+    width: 40%;
+    overflow: auto;
+    height: inherit;
+    border: 2px solid cadetblue;
+    padding: 20px;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    box-sizing: border-box;
+  }
+}
+.ant-drawer-content-wrapper {
+  height: calc(100vh - 40px) !important;
+  background: transparent;
+  vertical-align: center;
+  margin: 40px 0;
+  border-radius: 28px;
+  .ant-drawer-content {
+    border-radius: 15px 0 0 15px;
+  }
+}
+
 .hide_todo {
   display: none;
 }
 
 .created_bg {
-  background-color: #fdcec5;
+  background-color: #e2d3d1;
 }
 .on_hold_bg {
   background-color: #bcd9da;
 }
 .done_bg {
-  background-color: #dae8bc;
+  background-color: #dfebc5;
 }
 .in_progress_bg {
   background-color: #f9f9b6;
@@ -179,21 +155,6 @@
     }
     .search_input {
       max-width: 40%;
-    }
-  }
-  .todo_page {
-    overflow-y: hidden;
-    .todo_list {
-      overflow-y: auto;
-      width: 100%;
-      .todo_list_item {
-        align-items: center;
-        flex-direction: row;
-        margin: 1rem 0;
-        .todo_title {
-          margin-left: 10px;
-        }
-      }
     }
   }
 }

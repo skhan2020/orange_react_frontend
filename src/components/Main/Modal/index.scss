@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.75);
-  z-index: 1500;
+  z-index: 500;
 }
 
 .alert {
@@ -25,7 +25,7 @@
   position: fixed;
   width: 100vw;
   left: 50%;
-  z-index: 1500;
+  z-index: 700;
   transform: translateX(-50%);
   .modal_content {
     padding: 5px;

@@ -1,0 +1,79 @@
+@import '../../../../../../css/variables';
+
+.day_renderer {
+  background-color: rgba(62, 72, 82, 0.2);
+  border-radius: 9px;
+  margin: 0 10px;
+  padding: 10px;
+  .todo_date_label {
+    margin: 10px;
+    height: 30px;
+    font-size: 1.2em;
+    color: $color_8;
+  }
+  .date_label {
+    color: $color_10;
+    font-size: 1.4em;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+  }
+  .day_renderer_list {
+    padding: 5px;
+    max-height: calc(100vh - 230px);
+    overflow: auto;
+    .todo_list_item {
+      margin: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      .status_dd {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .time_container {
+        display: flex;
+        justify-content: space-between;
+        color: gray;
+      }
+      .todo_title {
+        width: 190px;
+        font-size: 1em;
+        color: gray;
+        cursor: pointer;
+      }
+      .list_main_title {
+        width: 100%;
+        font-size: 1.2em;
+        overflow: hidden;
+        text-align: center;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+      .list_main_category {
+        width: 100%;
+        font-size: 1em;
+        overflow: hidden;
+        color: gray;
+        cursor: pointer;
+      }
+      .list_main_status {
+        width: 170px !important;
+        padding: 10px;
+      }
+      .list_main_end {
+        width: 170px;
+        padding: 10px;
+      }
+      .delete_btn {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+    }
+  }
+}
+.today_renderer {
+  background-color: rgba(0, 0, 0, 0.5)
+}

@@ -5,8 +5,8 @@ import styled, { css } from 'styled-components'
 
 const cssList = {
   redButton : css`
-  border: 1px solid red;
-  background-color: rgb(253, 218, 218);
+  background-color: #dc7c7c;
+  border: 1px solid #dc7c7c;
 `, 
   greenButton: css`
   border: 1px solid rgb(79, 199, 68);
@@ -19,18 +19,20 @@ const cssList = {
   yellowButton : css`
   border: 1px solid orange;
   background-color: white;
+  color: orange;
 `}
 
 const StyledButton = styled(Button)`
-  width: 140px;
-  height: 40px;
+  width: 100px;
+  height: 30px;
   display: flex;
   font-size: 1.2em;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  color: white;
+  background: rgba(128, 128, 128, 0.4);
   @media (min-width: 600px) {
-    width: 160px;
+    width: 130px;
   }
   ${props =>
    props.status}

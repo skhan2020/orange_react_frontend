@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import DropDown from './components/DropDown';
-import { CloseOutlined  } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { todoListSelector } from '../../../../../redux/selectors';
 import Details from './components/Details/index';
-import { deleteTodo, updateTodoChanges } from '../../../../../services/todo';
 import { openTodoDetail } from '../../../../../redux/actions/todoActions'
 import { Select, Input, Drawer } from 'antd'
 import { updateFilteredTodoList } from '../../../../../redux/actions/todoActions'
 import { getFilteredTodos } from '../../../../../services/todo'
 import { translate } from '../../../../../localization/service' 
-import { STATUSES } from '../../../../../constants/index'
 import './index.scss';
 import '../../../Auth/index.scss';
 import EmptyUI from '../../EmptyUI';
+import TodoListRenderer from './components/TodoListRenderer';
 
 const TodosPage = () => {
   const [showDetail, setShowDetail] = useState(false);
@@ -53,11 +53,6 @@ const TodosPage = () => {
     dispatch(updateFilteredTodoList([]));
   }
 
-  const handleDeleteTodo = item => {
-    // SAMINA: add a confirmation for delete
-    deleteTodo(item._id);
-  }
-
   const openDetail = (show, item) => {
     // SAMINA: add a confirmation for delete
     setShowDetail(show);
@@ -68,12 +63,6 @@ const TodosPage = () => {
   const onClose = () => {
     setShowDetail(false);
   }
-
-  const changeTodoStatus = item => {
-    item.todo.status = item.status;
-    updateTodoChanges(item.todo);
-  }
-
   return (
     <>
       <div className={`header_box ${showDetail ? 'hide_todo' : ''}`}>
@@ -103,26 +92,32 @@ const TodosPage = () => {
       </div>
       <div className="todo_page">
         { todos.length === 0 ? <EmptyUI message={translate('empty_todo')} /> :
-        <ul className={`todo_list ${showDetail ? 'hide_todo' : ''}`}>
-          {todos.map(item => <li key={item._id}>
-            {item.showDate && <div className="todo_date_label" >{item.projectedStartTime.format('MM-DD-YYYY, dddd')} </div>}
-            <div className={`todo_list_item ${STATUSES.get(parseInt(item.status)) ? STATUSES.get(parseInt(item.status)).bg_css: ''}`}>
-              <span className="todo_title">{`${item.projectedStartTime.format('h:mm a')} - ${item.projectedEndTime.format('h:mm a')}`}</span>
-              <div className="list_main" >
-                <div onClick={() => openDetail(true, item)} className="list_main_title">{`${item.category} - ${item.title}`}</div>
-                <DropDown status={item.status} todo={item} handleStatusChanges={changeTodoStatus} />
-                <CloseOutlined className="delete_btn" onClick={() => handleDeleteTodo(item)} />
-              </div>
+          <CarouselProvider
+            naturalSlideWidth={400}
+            naturalSlideHeight={125}
+            totalSlides={todos.length}
+            className="carousal"
+            visibleSlides={5}
+            step={1}
+            isIntrinsicHeight
+          >
+            <div className="btn_box">
+              <ButtonNext className="carousal_btn">Next</ButtonNext>
+              <ButtonBack className="carousal_btn">Back</ButtonBack>
             </div>
-          </li>)}
-          </ul> }
-        <Drawer
-          placement="right"
-          closable={false}
-          onClose={onClose}
-          visible={showDetail}
-          width={500}
-        >
+            <Slider>
+              {todos.map((item, key) => 
+                <Slide index={key}><TodoListRenderer todoList={item} openDetail={openDetail}/></Slide>
+              ) }
+            </Slider>
+          </CarouselProvider> }
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={onClose}
+            visible={showDetail}
+            width={500}
+          >
           <div className="detail_box">
             <Details openTodoDetail={openDetail} todo={todo}></Details>
           </div>

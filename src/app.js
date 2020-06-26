@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isLoggedIn } from './redux/selectors';
-import './app.scss';
+import './app.css';
 import AuthPage from './components/Main/Auth';
 import LandingPage from './components/Main/Landing/index';
 import MainApp from './components/Main/MainApp/index';

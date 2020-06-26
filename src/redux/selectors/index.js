@@ -52,11 +52,11 @@ export const isModalOpen = (state) => {
 }
 
 export const todoListSelector = (state) => {
-  return getTodoReducer(state).get('filteredList').length ? getTodoReducer(state).get('filteredList') : getTodoReducer(state).get('todoList');
+  return Array.from(getTodoReducer(state).get('filteredList')).length ? Array.from(getTodoReducer(state).get('filteredList')) : Array.from(getTodoReducer(state).get('todoList'));
 }
 
 export const justTodoListSelector = (state) => {
-  return getTodoReducer(state).get('todoList');
+  return Array.from(getTodoReducer(state).get('todoList'));
 }
 
 export const todoStatusesSelector = (state) => {

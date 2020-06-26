@@ -45,29 +45,29 @@ const Navbar = () => {
         <li >
           <NavLink className="create_link"
             onClick={() => saveSelectedTab('todos')}
-            activeStyle={{ backgroundColor: "#5a5757" }}
+            activeStyle={{ backgroundColor: "rgb(107, 99, 87)", border: "#b59d9d 1px solid" }}
             to={`${url}/todo`}><CarryOutOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
             onClick={() => saveSelectedTab('notes')}
-            activeStyle={{ backgroundColor: "#5a5757" }}
+            activeStyle={{ backgroundColor: "rgb(107, 99, 87)", border: "#b59d9d 1px solid" }}
             to={`${url}/notes`}><UnorderedListOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
-            activeStyle={{ backgroundColor: "#5a5757" }}
+            activeStyle={{ backgroundColor: "rgb(107, 99, 87)", border: "#b59d9d 1px solid" }}
             to={`${url}/videos`}><CaretRightOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
-            activeStyle={{ backgroundColor: "#5a5757" }}
+            activeStyle={{ backgroundColor: "rgb(107, 99, 87)", border: "#b59d9d 1px solid" }}
             to={`${url}/charts`}><LineChartOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
             onClick={executeLogout}
-            activeStyle={{ backgroundColor: "#5a5757" }}
+            activeStyle={{ backgroundColor: "rgb(107, 99, 87)", border: "#b59d9d 1px solid" }}
             to={`${url}/none`}><ExportOutlined /></NavLink>
         </li>
       </ul>

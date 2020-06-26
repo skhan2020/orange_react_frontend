@@ -8,7 +8,7 @@ import moment from 'moment';
 import Immutable from 'immutable';
 
 const initialState = new Immutable.Map({
-  todoList: Immutable.List([]),
+  todoList: Immutable.Map({}),
   selectedTodo: {},
   statuses: Immutable.Map({}),
   filteredList: Immutable.List([]),
@@ -23,9 +23,7 @@ const sortAndUpdateTodo = list => {
     item.projectedStartTime = moment(item.projectedStartTime).local();
     item.projectedEndTime = moment(item.projectedEndTime).local();
   });
-  debugger;
-  const newList = Array.from(group);
-  return list;
+  return group;
 }
 
 const todoReducer = (state = initialState, action) => {
@@ -39,8 +37,15 @@ const todoReducer = (state = initialState, action) => {
       const filteredList = payload.todos;
       return state.set('filteredList', sortAndUpdateTodo(filteredList));
     case ADD_NEW_TODO:
-      const newList = [...state.get('todoList'), payload.todo]
-      return state.set('todoList', sortAndUpdateTodo(newList));
+      const formattedTime = moment(payload.todo.projectedStartTime).local().format('MM-DD-YYYY');
+      let currentList = state.getIn(['todoList']).get(formattedTime);
+      payload.todo.projectedStartTime = moment(payload.todo.projectedStartTime).local();
+      payload.todo.projectedEndTime = moment(payload.todo.projectedEndTime).local();
+      currentList = [...currentList, payload.todo];
+      const sortedList = currentList.sort((a, b) => moment(a.projectedStartTime).diff(moment(b.projectedStartTime)));
+      const newList = state.getIn(['todoList']);
+      newList.set(formattedTime, sortedList);
+      return state.set('todoList', newList);
     case DELETE_TODO:
       const newReducedList = state.get('todoList').filter(item => item._id !== payload.todoID);
       return state.set('todoList', sortAndUpdateTodo([...newReducedList]));

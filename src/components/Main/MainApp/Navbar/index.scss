@@ -7,8 +7,7 @@
   justify-content: space-between;
   padding-right: 20px;
   align-items: center;
-  background-color: $color_11;
-  opacity: .8;
+  background-color: rgba(0,0,0, 0.5);
   ul {
     display: flex;
     flex-direction: row;
@@ -18,7 +17,7 @@
     .create_link {
       box-sizing: border-box;
       border-radius: 5px;
-      background-color: #a29a9a;
+      background-color: #988259;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,10 +29,12 @@
       cursor: pointer;
     }
     .create_link:hover {
-      background-color: #5a5757;
+      background-color: rgb(49, 38, 38);
+      border: #b59d9d 1px solid;
     }
     .create_link:active {
-      background-color: #635e5e;
+      background-color: rgb(49, 38, 38);
+      border: #b59d9d 1px solid;
     }
   }
 }
