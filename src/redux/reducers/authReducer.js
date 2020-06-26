@@ -1,4 +1,4 @@
-import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP, SET_LOGIN_FAILED } from '../actions/authActions';
+import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP, SET_LOGIN_FAILED, RESET_LOGIN } from '../actions/authActions';
 import Immutable from 'immutable';
 
 export const initialState = new Immutable.Map({
@@ -26,6 +26,9 @@ const authReducer = (state = initialState, action) => {
     case SET_LOGIN_FAILED:
       return state.set('loginError', true)
                   .set('errorMessage', payload.message);
+    case RESET_LOGIN:
+      return state.set('loginError', false)
+                  .set('errorMessage', '');
     case CLEAR_LOGIN:
       return state.set('loginToken', "")
                   .set('tokenExpiration', "")

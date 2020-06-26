@@ -3,13 +3,11 @@
   height: inherit;
   display: flex;
   flex-direction: column;
-  background: url("../../../../images/autumn-leaves-5019574_1920.png") repeat-x left bottom ;
-  background-size: 40vh;
 }
 
 
 @media only screen and (min-width: 600px) {
   .main_section {
-    padding: 20px 20px 0 20px;
+    padding: 10px 20px 0 20px;
   }
 }

@@ -21,6 +21,9 @@
           display: flex;
           font-size: 1.6em;
           justify-content: space-between;
+          .sign_in {
+            padding-bottom: 25px;
+          }
         }
       }
     }
@@ -33,7 +36,7 @@
       background: url("../../../images/autumn-leaves-5019574_1920.png") repeat-x left bottom cadetblue; 
       background-size: 40vh;
       .main_content{
-        font-size: 1.5em;
+        font-size: 1.2em;
         color: $color_4;
         margin: 20px 40px;
       }

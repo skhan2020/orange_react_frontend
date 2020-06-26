@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, DatePicker, Input } from 'antd';
 import { translate } from '../../../../../../../localization/service';
-import { todoSelectedSelector } from '../../../../../../../redux/selectors/index'
 import { updateTodoChanges, deleteTodo } from '../../../../../../../services/todo'
 import EditableTagGroup from '../CreateTodo/Tags';
 import StatusTimeLine from './StatusTimeLine/index'
-import { useSelector } from 'react-redux';
-import { CloseOutlined  } from '@ant-design/icons';
 import DropDown from '../DropDown';
-import './index.scss';
 
 const TodoDetails = props => {
+  const { todo } = props;
   const [tagsItems, setTagsItems] = useState([]);
   const [form] = Form.useForm();
   const { RangePicker } = DatePicker;
   const { TextArea } = Input;
-  const todo = useSelector(todoSelectedSelector);
-
-  useEffect(() => {
-    form.resetFields();
-    setTagsItems(todo.tags);
-  }, [todo._id]);
-
-  const onCancel = () => {
-    closeDetailsPage();
-  }  
   
   const onConfirm = values => {
     const todoObject = {
@@ -52,7 +39,7 @@ const TodoDetails = props => {
   }
 
   const closeDetailsPage = () => {
-    props.openTodoDetail(false, props.item);
+    props.openTodoDetail(false, todo);
   }
 
   const changeTodoStatus = item => {
@@ -64,7 +51,7 @@ const TodoDetails = props => {
       <Form className="sign_in_form" 
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
-        onCancel={onCancel}
+        onCancel={closeDetailsPage}
         form={form}
         initialValues= {{
           notes: todo.notes || '',
@@ -74,9 +61,6 @@ const TodoDetails = props => {
           ]
         }}
       >
-        <div className="delete_box">
-          <CloseOutlined className="delete_btn" onClick={closeDetailsPage} />
-        </div>
         <Form.Item className="form-control" 
           label={translate("title")} name="title"
         >
@@ -122,9 +106,9 @@ const TodoDetails = props => {
           <EditableTagGroup updateTags={updateTags} tags={tagsItems}/>
         </Form.Item>
         <Form.Item className="form-action" >
-          <Button htmlType="submit" onClick={() => onCancel()}>{ translate('cancel')}</Button>
+          <Button htmlType="button" onClick={() => closeDetailsPage()}>{ translate('close')}</Button>
           <Button htmlType="submit" type="primary">{ translate('save')}</Button>
-          <Button htmlType="submit" onClick={() => onDeleteClick()}>{ translate('delete')}</Button>
+          <Button htmlType="button" onClick={() => onDeleteClick()}>{ translate('delete')}</Button>
         </Form.Item>
       </Form>
   )

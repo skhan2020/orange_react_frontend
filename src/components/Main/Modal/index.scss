@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.75);
-  z-index: 500;
+  z-index: 1500;
 }
 
 .alert {
@@ -25,7 +25,7 @@
   position: fixed;
   width: 100vw;
   left: 50%;
-  z-index: 700;
+  z-index: 1500;
   transform: translateX(-50%);
   .modal_content {
     padding: 5px;
@@ -34,8 +34,8 @@
   .modal_header {
     width: 100vw;
     padding: 1rem;
-    border: 1px $main_theme_color solid;
-    background-color: $main_theme_color;
+    border: 1px $color_8 solid;
+    background-color: $color_8;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;

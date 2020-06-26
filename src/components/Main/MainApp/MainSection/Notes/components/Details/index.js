@@ -7,7 +7,6 @@ import { createNote, updateNote, deleteNote } from '../../../../../../../service
 import { CloseOutlined  } from '@ant-design/icons';
 import { closeModal } from '../../../../../../../redux/actions/modalActions';
 
-import './index.scss'
 import '../Editor/index.scss'
 import '../../../Todos/components/Details/index.scss'
 

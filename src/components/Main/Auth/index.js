@@ -1,14 +1,16 @@
 import React from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { translate } from '../../../localization/service';
 import { getUserId, getLoginError } from '../../../redux/selectors';
 import { Button, Form, Input, Select, Alert } from 'antd';
 import 'antd/dist/antd.css';
 import './index.scss';
-import { signInHandler, signUpHandler} from '../../../services/authentication';
+import { signInHandler, signUpHandler } from '../../../services/authentication';
+import { resetLogin } from '../../../redux/actions/authActions'
 import { STUDENT, PROFESSIONAL, UNDERGRAD} from '../../../constants';
 
 const AuthPage = props => {
+  const dispatch = useDispatch();
   const { isLogin } = props;
   const DEFAULT_TYPE = STUDENT;
   const userId = useSelector(getUserId);
@@ -44,7 +46,7 @@ const AuthPage = props => {
     return function cleanup() {
       form.resetFields();
     };
-  }, [userId, form]);
+  }, [userId, form, isLogin]);
 
   const submitHandler = values => {
     if (showLogin) {
@@ -66,6 +68,9 @@ const AuthPage = props => {
   };
 
   const toggleSignIn = () => {
+    if (hasError) {
+      dispatch(resetLogin());
+    }
     props.toggleSignIn(!isLogin);
   }
   return (

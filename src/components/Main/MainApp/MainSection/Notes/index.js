@@ -28,7 +28,7 @@ const Notes = () => {
         <div className="page_heading">NOTES</div>
       </div>
       <div className="note_page">
-        { noteList.length === 0 ? <EmptyUI message={translate("empty_notes_message")} /> :
+        {noteList.length === 0 ? <EmptyUI message={translate("empty_notes_message")} /> :
           <>
             <div className="note_list">
               { noteList.map(item => {

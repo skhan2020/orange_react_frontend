@@ -6,10 +6,11 @@ import { todoListSelector } from '../../../../../redux/selectors';
 import Details from './components/Details/index';
 import { deleteTodo, updateTodoChanges } from '../../../../../services/todo';
 import { openTodoDetail } from '../../../../../redux/actions/todoActions'
-import { Select, Input } from 'antd'
+import { Select, Input, Drawer } from 'antd'
 import { updateFilteredTodoList } from '../../../../../redux/actions/todoActions'
 import { getFilteredTodos } from '../../../../../services/todo'
 import { translate } from '../../../../../localization/service' 
+import { STATUSES } from '../../../../../constants/index'
 import './index.scss';
 import '../../../Auth/index.scss';
 import EmptyUI from '../../EmptyUI';
@@ -17,6 +18,7 @@ import EmptyUI from '../../EmptyUI';
 const TodosPage = () => {
   const [showDetail, setShowDetail] = useState(false);
   const todos = useSelector(todoListSelector);
+  const [todo, setTodo ] = useState();
   const dispatch = useDispatch();
   const { Search } = Input;
   const { Option } = Select;
@@ -59,7 +61,12 @@ const TodosPage = () => {
   const openDetail = (show, item) => {
     // SAMINA: add a confirmation for delete
     setShowDetail(show);
+    setTodo(item);
     dispatch(openTodoDetail(item));
+  }
+
+  const onClose = () => {
+    setShowDetail(false);
   }
 
   const changeTodoStatus = item => {
@@ -70,7 +77,6 @@ const TodosPage = () => {
   return (
     <>
       <div className={`header_box ${showDetail ? 'hide_todo' : ''}`}>
-        <div className="page_heading">TODO</div>
         <Input.Group >
           <div className="filter_label" >{translate("filter_by")}</div>
           <Select defaultValue={searchCategory}
@@ -100,7 +106,7 @@ const TodosPage = () => {
         <ul className={`todo_list ${showDetail ? 'hide_todo' : ''}`}>
           {todos.map(item => <li key={item._id}>
             {item.showDate && <div className="todo_date_label" >{item.projectedStartTime.format('MM-DD-YYYY, dddd')} </div>}
-            <div className="todo_list_item">
+            <div className={`todo_list_item ${STATUSES.get(parseInt(item.status)) ? STATUSES.get(parseInt(item.status)).bg_css: ''}`}>
               <span className="todo_title">{`${item.projectedStartTime.format('h:mm a')} - ${item.projectedEndTime.format('h:mm a')}`}</span>
               <div className="list_main" >
                 <div onClick={() => openDetail(true, item)} className="list_main_title">{`${item.category} - ${item.title}`}</div>
@@ -110,7 +116,17 @@ const TodosPage = () => {
             </div>
           </li>)}
           </ul> }
-        { showDetail && <Details className="todo_details" openTodoDetail={openDetail} ></Details>}
+        <Drawer
+          placement="right"
+          closable={false}
+          onClose={onClose}
+          visible={showDetail}
+          width={500}
+        >
+          <div className="detail_box">
+            <Details openTodoDetail={openDetail} todo={todo}></Details>
+          </div>
+        </Drawer>
       </div>
       </>
   )

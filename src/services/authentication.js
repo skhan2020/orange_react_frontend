@@ -71,8 +71,7 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
     }
   })
   .catch(err => {
-    console.log('Signup failed', err.message);
-    store.dispatch(setLoginFailed(translate('signup_failed')));
+    store.dispatch(setLoginFailed(translate(err.message? err.message : 'signup_failed')));
   }
   );
 }

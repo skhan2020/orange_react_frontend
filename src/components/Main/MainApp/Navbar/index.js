@@ -45,29 +45,29 @@ const Navbar = () => {
         <li >
           <NavLink className="create_link"
             onClick={() => saveSelectedTab('todos')}
-            activeStyle={{ borderBottom: "4px solid green" }}
+            activeStyle={{ backgroundColor: "#5a5757" }}
             to={`${url}/todo`}><CarryOutOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
             onClick={() => saveSelectedTab('notes')}
-            activeStyle={{ borderBottom: "4px solid green" }}
+            activeStyle={{ backgroundColor: "#5a5757" }}
             to={`${url}/notes`}><UnorderedListOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
-            activeStyle={{ borderBottom: "4px solid green" }}
+            activeStyle={{ backgroundColor: "#5a5757" }}
             to={`${url}/videos`}><CaretRightOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
-            activeStyle={{ borderBottom: "4px solid green" }}
+            activeStyle={{ backgroundColor: "#5a5757" }}
             to={`${url}/charts`}><LineChartOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
             onClick={executeLogout}
-            activeStyle={{ borderBottom: "4px solid green" }}
+            activeStyle={{ backgroundColor: "#5a5757" }}
             to={`${url}/none`}><ExportOutlined /></NavLink>
         </li>
       </ul>

@@ -19,8 +19,8 @@ export const TRIAL_PERIOD = 15;
 export const TAG_LIMIT = 3;
 
 export const STATUSES = new Map(
-  [[ NOT_STARTED_CODE, { label: translate(NOT_STARTED), css: 'redButton' } ],
-  [ IN_PROGRESS_CODE, { label: translate(IN_PROGRESS), css: 'yellowButton'} ],
-  [ ON_HOLD_CODE, { label: translate(ON_HOLD), css: 'blueButton' } ],
-  [ DONE_CODE, { label: translate(DONE), css: 'greenButton' } ]]
+  [[ NOT_STARTED_CODE, { label: translate(NOT_STARTED), css: 'redButton', bg_css: 'created_bg' } ],
+  [ IN_PROGRESS_CODE, { label: translate(IN_PROGRESS), css: 'yellowButton', bg_css: 'in_progress_bg'} ],
+  [ ON_HOLD_CODE, { label: translate(ON_HOLD), css: 'blueButton', bg_css: 'on_hold_bg' } ],
+  [ DONE_CODE, { label: translate(DONE), css: 'greenButton', bg_css: 'done_bg' } ]]
 );

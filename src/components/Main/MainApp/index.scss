@@ -1,8 +1,9 @@
 @import '../../css/variables';
 
 .main_app {
-  height: calc(100vh - 60px);
+  height: 100vh;
   width: 100vw;
+  background: linear-gradient(181deg, rgba(95,158,160,1) 0%, rgba(112,108,108,1) 100%);
 }
 
 .empty_message {

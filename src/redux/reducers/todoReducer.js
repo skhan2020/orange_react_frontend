@@ -18,15 +18,13 @@ const sortAndUpdateTodo = list => {
   const group = new Map();
   list.sort((a, b) => moment(a.projectedStartTime).diff(moment(b.projectedStartTime)));
   list.forEach(item => {
-    if (!group.get(moment(item.projectedStartTime).local().format('MM-DD-YYYY'))) {
-      group.set(moment(item.projectedStartTime).local().format('MM-DD-YYYY'), true);
-      item.showDate = true; 
-    } else {
-      item.showDate = false; 
-    }
+    const time = moment(item.projectedStartTime).local().format('MM-DD-YYYY');
+    group.set(time, (group.get(time) ? [...group.get(time), item] : [item]));
     item.projectedStartTime = moment(item.projectedStartTime).local();
     item.projectedEndTime = moment(item.projectedEndTime).local();
   });
+  debugger;
+  const newList = Array.from(group);
   return list;
 }
 

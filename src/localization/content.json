@@ -29,6 +29,9 @@
   "user_type" : {
       "en": "I AM A"
   },
+  "close" : {
+      "en": "Close"
+  },
   "email_missing": {
       "en": "Please enter a E-mail"
   },
@@ -51,7 +54,7 @@
     "en": "Could not login you in at this time!"
   },
   "user_exits" : {
-    "en": "An account with this E-mail already exist!"
+    "en": "Opps! An account with this E-mail already exist!"
   },
   "signup_error" : {
     "en" : "Could not sign you up at this time. Please try again later!"
@@ -159,6 +162,6 @@
     "en" : "Edit Note"
   },
   "filter_by" : {
-    "en" : "Filter By:"
+    "en" : "FILTER TODOS BY:"
   }
 }

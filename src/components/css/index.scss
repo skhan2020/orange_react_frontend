@@ -72,14 +72,14 @@
 }
 
 .sign_in_form {
-  margin: 40px 0;
   .ant-form-item {
     display: flex;
     flex-direction: column;
+    margin-bottom: 14px;
     .ant-form-item-control {
       max-width: 100%;
       .ant-form-item-control-input {
-        height: 50px;
+        min-height: 50px;
         .ant-form-item-control-input-content, .ant-input-affix-wrapper {
           border: none;
           padding: 0px;
@@ -87,6 +87,12 @@
           font-size: 1.2em;
           .ant-picker-range {
             width: 100%;
+          }
+          .value_label {
+            padding-left: 10px;
+          }
+          .ant-timeline-item {
+            padding-bottom: 0;
           }
           .ant-input:focus, .ant-input-focused {
             box-shadow: none;

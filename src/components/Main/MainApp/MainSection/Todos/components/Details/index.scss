@@ -1,77 +1,9 @@
 
-@import "../../../../../../css/index.scss";
 @import '../../../../../../css/variables';
 
-.form_detail {
-  overflow: hidden;
-  overflow-y: auto;
-  width: 100%;
-  border: 1px solid $main_theme_color;
-  padding: 30px;
-  margin: 10px;
-  .delete_box {
-    width: 100%;
-    text-align: right;
-    .delete_btn {
-      font-size: 2em;
-      font-weight: bold;
-      color: $main_theme_color;
-    }
-  }
-  .ant-form-item{
-    .ant-form-item-label > label {
-      width: 100px;
-      text-align: left;
-      color: $main_theme_color;
-    }
-  }
-  .form-control {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    .input, textArea, label, .value_label {
-      font-size: 1.2em;
-      display: block;
-      width: 100%;
-      margin-bottom: 0.5rem;
-    }
-    input {
-      height: 25px;
-    }
-    .ant-timeline {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-  }
-  .column_box {
-    flex-direction: column;
-  }
-  .form-action {
-    .ant-form-item-control-input-content {
-      margin: auto;
-      @extend %custom-button
-    }
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .form_detail {
-    width: 100%;
-  }
-  .ant-calendar-range {
-    width: 276px;
-    .ant-calendar-range-part {
-      width: 100%;
-    }
-    .ant-calendar-range-right {
-      float: left;
-      border-top: 1px solid #e8e8e8;
-    }
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .form_detail {
-    width: 40%;
-  }
+.delete_box {
+  font-size: 1.3px;
+  color: $color_11;
+  width: 25px;
+  height: 25px;
 }
