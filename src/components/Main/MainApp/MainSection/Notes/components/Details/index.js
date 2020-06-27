@@ -61,7 +61,7 @@ const Details = props => {
   }
 
   return (
-    <div className="note_details" >
+    <div className={detailsMode ? 'note_details' : 'noe_edit'} >
       <Form className='sign_in_form'
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
@@ -79,8 +79,7 @@ const Details = props => {
           <Input />
         </Form.Item>}
         <Form.Item className="form-control" shouldUpdate
-          style={{textSize: "1.5em"}}
-          label={selectedNote.title} name="notes"
+          label={selectedNote? selectedNote.title : translate('title')} name="notes"
         >
           <Editor styleName={detailsMode ? "view_page" : "editor_page"}
             readOnly={viewOnly}

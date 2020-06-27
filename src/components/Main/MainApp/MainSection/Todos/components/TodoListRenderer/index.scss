@@ -21,7 +21,8 @@
   .day_renderer_list {
     padding: 5px;
     max-height: calc(100vh - 230px);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     .todo_list_item {
       margin: 15px;
       padding: 10px;

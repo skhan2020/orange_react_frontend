@@ -9,7 +9,7 @@
     border-radius: 5px;
     height: 40px;
     width: 150px;
-    font-size: 1em;
+    font-size: 1.2em;
     margin-right: 1rem;
     cursor: pointer;
   }
@@ -21,54 +21,6 @@
 }
 %green-text {
   color: $color_1;
-}
-
-@mixin form-control {
-  label, input, textArea {
-    display: block;
-    width: 100%;
-    font-size: 1.2em;
-  }
-  input {
-    height: 25px;
-  }
-}
-  
-%form {
-  width: 80%;
-  padding: 30px;
-  margin: 4rem auto;
-  .ant-form-item {
-    font-size: 1.1em;
-    .ant-form-item-label > label {
-      font-size: 1.1em;
-      width: 100px;
-    }
-    input {
-      height: 30px;
-    }
-  }
-  @include form-control;
-  .ant-picker {
-    margin-right: 20px;
-    height: 35px;
-  }
-  .form-action {
-    .ant-form-item-required {
-      margin: 0px
-    }
-    @extend %custom-button
-  }
-}
-
-.form_notes {
-  width: 80vw;
-  padding: 30px;
-  margin: 30px;
-  @include form-control;
-  .form-action {
-    @extend %custom-button
-  }
 }
 
 .sign_in_form {
@@ -84,7 +36,6 @@
           border: none;
           padding: 0px;
           color: $color_11;
-          font-size: 1.2em;
           .ant-picker-range {
             width: 100%;
           }

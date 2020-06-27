@@ -8,16 +8,17 @@ import { updateTodoChanges } from '../../../../../../../services/todo';
 import { deleteTodo } from '../../../../../../../services/todo';
 
 const TodoListRenderer = props => {
-  const todos = props.todoList && props.todoList[1].sort((a, b) => a.status - b.status);
+  const todos = props.todoList && props.todoList[1];
 
-  const changeTodoStatus = item => {
-    debugger;
+  const changeTodoStatus = (event, item) => {
     item.todo.status = item.status;
     updateTodoChanges(item.todo);
   }
 
-  const handleDeleteTodo = item => {
+  const handleDeleteTodo = (event, item) => {
     // SAMINA: add a confirmation for delete
+    event.stopPropagation()
+    event.preventDefault();
     deleteTodo(item._id);
   }
   return (
@@ -25,13 +26,14 @@ const TodoListRenderer = props => {
       <div className="date_label" >{props.todoList[0]}</div>
       <ul className="day_renderer_list">
         {todos && todos.map(item => <div key={item._id}>
-          <div className={`todo_list_item ${STATUSES.get(parseInt(item.status)) ? STATUSES.get(parseInt(item.status)).bg_css: ''}`}>
+          <div className={`todo_list_item ${STATUSES.get(parseInt(item.status)) ? STATUSES.get(parseInt(item.status)).bg_css: ''}`}
+            onClick={() => props.openDetail(true, item)} >
             <div className="time_container"  onClick={() => props.openDetail(true, item)} >
               <div onClick={() => props.openDetail(true, item)} className="list_main_category">{item.category}</div>
-              <CloseOutlined className="delete_btn" onClick={() => handleDeleteTodo(item)} />
+              <CloseOutlined className="delete_btn" onClick={(evt) => handleDeleteTodo(evt, item)} />
             </div> 
             <span className="todo_title">{`${item.projectedStartTime.format('h:mm a')} - ${item.projectedEndTime.format('h:mm a')}`}</span>
-            <div onClick={() => props.openDetail(true, item)} className="list_main_title">{item.title}</div>
+            <div className="list_main_title">{item.title}</div>
             <div className="status_dd"><DropDown status={item.status} todo={item} handleStatusChanges={changeTodoStatus}/></div>
           </div>
         </div>)}

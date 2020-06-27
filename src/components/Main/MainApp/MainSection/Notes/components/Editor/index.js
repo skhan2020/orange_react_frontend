@@ -65,12 +65,12 @@ const Notes = props => {
   return (
     <div className={props.styleName}>
       {!readOnly &&
-      <>
+      <div className="edit_btn_box">
         <UnderlineOutlined className="editor_btns" onClick={onUnderlineClick} />
         <BoldOutlined className="editor_btns" onClick={onBoldClick} />
         <ItalicOutlined className="editor_btns" onClick={onItalicClick} />
         <HighlightOutlined className="editor_btns" onClick={onHighlightClick} />
-      </>}
+      </div>}
       <Editor
         editorState={editorState}
         handleKeyCommand={handleKeyDown}

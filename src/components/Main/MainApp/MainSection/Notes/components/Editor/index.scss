@@ -1,11 +1,11 @@
 @import '../../../../../../css//variables';
 
 %editor_btns {
-  font-size: 1.2em;
+  font-size: 1em;
   width: 50px;
-  border: 1px solid darkorange;
+  border: 1px solid orange;
   height: 30px;
-  color: darkorange;
+  color: orange;
   align-items: center;
   padding-top: 5px;
   font-weight: 100;
@@ -18,13 +18,21 @@
   background: #fff;
   padding: 1em;
   overflow: auto;
-  font-size: 1.2em;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 1.1em;
   .DraftEditor-editorContainer {
     height: 100%;
     .public-DraftEditor-content {
       height: 100%;
     }
   }
+}
+.edit_btn_box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
 }
 .editor_page {
   height: 30vh;
@@ -37,7 +45,7 @@
 }
 
 .view_page {
-  height: 60vh;
+  height: calc(100vh - 272px);
   .editor_btns {
     @extend %editor_btns;
   }

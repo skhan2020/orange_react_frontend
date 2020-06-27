@@ -10,16 +10,15 @@ const cssList = {
 `, 
   greenButton: css`
   border: 1px solid rgb(79, 199, 68);
-  background-color: rgb(182, 250, 142);
+  background-color: rgb(79, 199, 68);
 `,
   blueButton : css`
   border: 1px solid rgb(2, 150, 219);
-  background-color: rgb(179, 228, 247);
+  background-color: rgb(2, 150, 219);
 `,
   yellowButton : css`
   border: 1px solid orange;
-  background-color: white;
-  color: orange;
+  background-color: orange;
 `}
 
 const StyledButton = styled(Button)`

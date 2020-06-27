@@ -97,7 +97,7 @@ const TodosPage = () => {
             naturalSlideHeight={125}
             totalSlides={todos.length}
             className="carousal"
-            visibleSlides={5}
+            visibleSlides={window.innerWidth > 600 ? 5 : 1}
             step={1}
             isIntrinsicHeight
           >
@@ -116,7 +116,7 @@ const TodosPage = () => {
             closable={false}
             onClose={onClose}
             visible={showDetail}
-            width={500}
+            width={window.innerWidth > 600 ? 500 : 350}
           >
           <div className="detail_box">
             <Details openTodoDetail={openDetail} todo={todo}></Details>

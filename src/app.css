@@ -1,19 +1,19 @@
 html * {
-  --scrollbarBG: #CFD8DC;
-  --thumbBG: #90A4AE;
+  --scrollbarBG: transparent;
+  --thumbBG: rgba(62, 72, 82, 0.3);
   font-family: sans-serif !important;
 }
-body::-webkit-scrollbar {
-  width: 11px;
+::-webkit-scrollbar {
+  width: 8px;
 }
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG) ;
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);

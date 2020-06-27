@@ -3,11 +3,13 @@
 .main_app {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(90deg,  orange 0%, #efdbb5 100%)
+
+  background: #efdbb5;
+  background: url("../../../images/autumn-leaves-5019574_1920.png") no-repeat right bottom, linear-gradient(#ab7003, #efdbb5);
+  background-size: 40vh;
 }
 
 .empty_message {
-  color: $color_8;
   font-size: 1.8em;
   width: inherit;
   height: 100%;
