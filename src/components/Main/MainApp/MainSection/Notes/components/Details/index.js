@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { translate } from '../../../../../../../localization/service'
 import { createNote, updateNote, deleteNote } from '../../../../../../../services/notes'
-import { CloseOutlined  } from '@ant-design/icons';
 import { closeModal } from '../../../../../../../redux/actions/modalActions';
 
 import '../Editor/index.scss'
+import './index.scss'
 import '../../../Todos/components/Details/index.scss'
 
 const Details = props => {
@@ -62,26 +62,25 @@ const Details = props => {
 
   return (
     <div className="note_details" >
-      <Form className={detailsMode ? 'note_form_detail' : 'sign_in_form'} 
+      <Form className='sign_in_form'
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
         onCancel={onCancel}
         form={form}
       >
-        <Form.Item className="form-control" 
+        {!detailsMode && <Form.Item className="form-control" 
           label={translate("title")} name="title"
         >
-          {detailsMode ? <div className="value_label" >{selectedNote && selectedNote.title}</div> : 
-          <Input />}
-        </Form.Item>
-        <Form.Item className="form-control" 
+         <Input />
+        </Form.Item>}
+        {!detailsMode && <Form.Item className="form-control" 
           label={translate("category")} name="category"
           >
-          {detailsMode ? <div className="value_label">{selectedNote && selectedNote.category}</div> : 
-          <Input />}
-        </Form.Item>
+          <Input />
+        </Form.Item>}
         <Form.Item className="form-control" shouldUpdate
-          label={translate("notes")} name="notes"
+          style={{textSize: "1.5em"}}
+          label={selectedNote.title} name="notes"
         >
           <Editor styleName={detailsMode ? "view_page" : "editor_page"}
             readOnly={viewOnly}

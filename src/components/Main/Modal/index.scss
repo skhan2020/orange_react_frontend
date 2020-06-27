@@ -34,8 +34,8 @@
   .modal_header {
     width: 100vw;
     padding: 1rem;
-    border: 1px $color_8 solid;
-    background-color: $color_8;
+    border: 1px $color_2 solid;
+    background: linear-gradient(90deg, $color_2 0%, #efdbb5 100%);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;

@@ -3,7 +3,12 @@
 @import '../../../../../../css/variables';
 
 .note_details {
-  height: 100%;
+  width: calc(100vw - 450px);
+  margin: 0 60px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  height: 100vh;
+  border-radius: 20px;
   .note_form_detail {
     overflow: hidden;
     overflow-y: auto;
@@ -24,9 +29,10 @@
     }
     .ant-form-item{
       .ant-form-item-label > label {
-        width: 100px;
-        text-align: left;
         color: $main_theme_color;
+        text-align: left;
+        max-width: 100%;
+        width: 110px;
       }
     }
     .form-control {
@@ -65,13 +71,7 @@
 
 
 @media only screen and (min-width: 600px) {
-  .note_details {
-    width: 100%;
-  }
 }
 
 @media only screen and (min-width: 1000px) {
-  .note_details {
-    width: 100%;
-  }
 }

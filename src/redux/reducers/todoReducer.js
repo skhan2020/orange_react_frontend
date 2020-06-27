@@ -41,10 +41,11 @@ const todoReducer = (state = initialState, action) => {
       let currentList = state.getIn(['todoList']).get(formattedTime);
       payload.todo.projectedStartTime = moment(payload.todo.projectedStartTime).local();
       payload.todo.projectedEndTime = moment(payload.todo.projectedEndTime).local();
-      currentList = [...currentList, payload.todo];
+      currentList = currentList ? [...currentList, payload.todo] : [payload.todo];
       const sortedList = currentList.sort((a, b) => moment(a.projectedStartTime).diff(moment(b.projectedStartTime)));
       const newList = state.getIn(['todoList']);
       newList.set(formattedTime, sortedList);
+      debugger;
       return state.set('todoList', newList);
     case DELETE_TODO:
       const newReducedList = state.get('todoList').filter(item => item._id !== payload.todoID);
