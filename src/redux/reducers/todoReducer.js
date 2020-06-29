@@ -10,8 +10,9 @@ import Immutable from 'immutable';
 const initialState = new Immutable.Map({
   todoList: Immutable.Map({}),
   selectedTodo: {},
+  rawListData: Immutable.List([]),
   statuses: Immutable.Map({}),
-  filteredList: Immutable.List([]),
+  filteredList: Immutable.Map({}),
 })
 
 const sortAndUpdateTodo = list => {
@@ -32,26 +33,22 @@ const todoReducer = (state = initialState, action) => {
     case UPDATE_TODO_LIST:
       // sort the todos in ascending order
       const list = payload.todos;
-      return state.set('todoList', sortAndUpdateTodo(list));
+      return state.set('todoList', sortAndUpdateTodo(list))
+                  .set('rawListData', list);
     case UPDATE_FILTERED_TODO_LIST:
       const filteredList = payload.todos;
       return state.set('filteredList', sortAndUpdateTodo(filteredList));
     case ADD_NEW_TODO:
-      const formattedTime = moment(payload.todo.projectedStartTime).local().format('MM-DD-YYYY');
-      let currentList = state.getIn(['todoList']).get(formattedTime);
-      payload.todo.projectedStartTime = moment(payload.todo.projectedStartTime).local();
-      payload.todo.projectedEndTime = moment(payload.todo.projectedEndTime).local();
-      currentList = currentList ? [...currentList, payload.todo] : [payload.todo];
-      const sortedList = currentList.sort((a, b) => moment(a.projectedStartTime).diff(moment(b.projectedStartTime)));
-      const newList = state.getIn(['todoList']);
-      newList.set(formattedTime, sortedList);
-      debugger;
-      return state.set('todoList', newList);
+      const curr = state.get('rawListData');
+      return state.set('todoList', sortAndUpdateTodo([...curr, payload.todo]))
+                  .set('rawListData', [...curr, payload.todo]);
     case DELETE_TODO:
-      const newReducedList = state.get('todoList').filter(item => item._id !== payload.todoID);
-      return state.set('todoList', sortAndUpdateTodo([...newReducedList]));
+      debugger;
+      const newReducedList = state.get('rawListData').filter(item => item._id !== payload.todo._id);
+      return state.set('todoList', sortAndUpdateTodo([...newReducedList]))
+                  .set('rawListData', [...newReducedList]);
     case UPDATE_TODO:
-      const todo = state.get('todoList').map(item => item._id === payload.todo._id ? 
+      const updatedTodoList = state.get('rawListData').map(item => item._id === payload.todo._id ? 
         { ...item,
           status :payload.todo.status,
           statusUpdatedTime: moment(payload.todo.statusUpdatedTime).local(),
@@ -60,7 +57,8 @@ const todoReducer = (state = initialState, action) => {
           notes: payload.todo.notes,
           tags: payload.todo.tags
         } : item);
-      return state.set('todoList', todo);
+      return state.set('todoList', sortAndUpdateTodo([...updatedTodoList]))
+                  .set('rawListData', [...updatedTodoList]);
     case OPEN_TODO_DETAIL : 
       return state.set('selectedTodo', payload.todo);
     case UPDATE_STATUS_TIMELINE :

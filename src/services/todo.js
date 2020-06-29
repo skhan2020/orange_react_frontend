@@ -228,6 +228,7 @@ export const deleteTodo = todoId => {
             todoId: $todoId,
         ) {
           _id
+          projectedStartTime
         }
       }
     `,
@@ -237,9 +238,10 @@ export const deleteTodo = todoId => {
   }
   doFetch(reqBody)
   .then(resdata => {
-    const deletedId = resdata.data.deleteTodo._id;
+    debugger;
+    const deletedItem = resdata.data.deleteTodo;
     store.dispatch(showModal('information', {message: 'Todo deleted Successfully!'}));
-    store.dispatch(todoDeleted(deletedId));
+    store.dispatch(todoDeleted(deletedItem));
   })
   .catch(err => {
     console.log(err)

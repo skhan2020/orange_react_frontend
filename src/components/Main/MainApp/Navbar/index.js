@@ -19,13 +19,11 @@ const Navbar = () => {
   const dispatch = useDispatch();
   let { url } = useRouteMatch();
 
-  const startCreatingTodos = () => {
-    dispatch(showModal('createTodo'));
+  const startCreatingItems = () => {
+    if (selectedTab !== 'none') {
+      dispatch(showModal(selectedTab));
+    }
   }  
-  
-  const startCreatingNotes = () => {
-    dispatch(showModal('createNotes'));
-  }
 
   const saveSelectedTab = type => {
      setSelectedTab(type);
@@ -39,7 +37,7 @@ const Navbar = () => {
     <div className="navbar">
       <ul>
         <li className="create_link" 
-            onClick={selectedTab === 'todos' ? startCreatingTodos : startCreatingNotes} >
+            onClick={startCreatingItems} >
           <PlusOutlined />
         </li>
         <li >
@@ -56,11 +54,13 @@ const Navbar = () => {
         </li>
         <li >
           <NavLink className="create_link"
+            onClick={() => saveSelectedTab('video')}
             activeStyle={{ backgroundColor: "rgb(90, 59, 16)", border: "#b59d9d 1px solid" }}
             to={`${url}/videos`}><CaretRightOutlined /></NavLink>
         </li>
         <li >
           <NavLink className="create_link"
+            onClick={() => saveSelectedTab('none')}
             activeStyle={{ backgroundColor: "rgb(90, 59, 16)", border: "#b59d9d 1px solid" }}
             to={`${url}/charts`}><LineChartOutlined /></NavLink>
         </li>

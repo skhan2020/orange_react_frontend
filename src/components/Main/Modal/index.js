@@ -3,6 +3,7 @@ import './index.scss';
 import BackDrop from './BackDrop';
 import CreateTodo from './../MainApp/MainSection/Todos/components/CreateTodo/index';
 import Details from './../MainApp/MainSection/Notes/components/Details/index'
+import CreateVideo from './../MainApp/MainSection/Videos/components/CreateVideo/index';
 import { useSelector, useDispatch } from 'react-redux'
 import { getModalType, isModalOpen } from '../../../redux/selectors';
 import { translate } from '../../../localization/service'
@@ -10,9 +11,10 @@ import { closeModal} from '../../../redux/actions/modalActions'
 import { CloseOutlined  } from '@ant-design/icons';
 import Alert from './Alert';
 
-const TITLE_MAP = { createTodo: 'create_todo',
+const TITLE_MAP = { todos: 'create_todo',
                     information: 'information',
-                    createNotes: 'create_notes'}
+                    notes: 'create_notes',
+                    video: 'create_video'}
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -37,9 +39,10 @@ const Modal = () => {
           <CloseOutlined className="delete_btn" onClick={onCancel} />
         </header>
         <section className="modal_content">
-          {type === 'createTodo' && <CreateTodo />}
+          {type === 'todos' && <CreateTodo />}
           {type === 'information' && <Alert />}
-          {type === 'createNotes' && <Details detailsMode={false} />}
+          {type === 'notes' && <Details detailsMode={false} />}
+          {type === 'video' && <CreateVideo />}
         </section>
       </div>
     </React.Fragment>

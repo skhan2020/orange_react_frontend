@@ -14,6 +14,10 @@ const getNoteReducer = (state) => {
   return state.noteReducer;
 }
 
+const getVideoReducer = (state) => {
+  return state.videoReducer;
+}
+
 export const isLoggedIn = (state) => {
   return getAuthReducer(state).get('isLoggedIn');
 }
@@ -73,4 +77,12 @@ export const noteListSelector = (state) => {
 }
 export const selectedNoteSelector = (state) => {
   return getNoteReducer(state).get('selectedNote');
+}
+
+export const videoPlayerListSelector = (state) => {
+  return getVideoReducer(state).get('videoList');
+}
+
+export const selectedVideoSelector = (state) => {
+  //return getNoteReducer(state).get('selectedNote');
 }

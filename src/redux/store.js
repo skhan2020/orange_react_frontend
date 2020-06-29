@@ -6,6 +6,7 @@ import authReducer from '../redux/reducers/authReducer';
 import todoReducer from '../redux/reducers/todoReducer';
 import modalReducer from '../redux/reducers/modalReducer';
 import noteReducer from '../redux/reducers/noteReducer';
+import videoReducer from '../redux/reducers/videoReducer';
 
 const middleware = []
 if (process.env.NODE_ENV !== 'production') middleware.push(logger)
@@ -15,7 +16,8 @@ const store = createStore(
     authReducer,
     todoReducer,
     modalReducer,
-    noteReducer
+    noteReducer,
+    videoReducer
   }),
   {},
   composeWithDevTools(applyMiddleware(...middleware))

@@ -67,7 +67,7 @@ export function todoDeleted(data) {
   return {
     type: DELETE_TODO,
     payload: {
-      todoID: data,
+      todo: data,
     },
   };
 }

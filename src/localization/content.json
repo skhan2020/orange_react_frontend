@@ -3,10 +3,10 @@
     "en": "Welcome to "
   },
   "main_content": {
-    "en": "At Orange we try to make every students life easy and organized. Are you lost between what to practice and what to revise? What projects you need to tackle first?"
+    "en": "Orange(beta) helps you organize your study and learning process so you can meet your goal more quickly and efficiently."
   },
   "main_content2": {
-    "en": "Sweat no more!! With Orange you can easily prioritize your work. Its your very own personal manager/coach that will help you organize your daily study load and help you meet your goals more quickly and efficiently!"
+    "en": "Its your very own personal manager/coach that will help you organize your daily goals, notes and learning videos in one application! Give it a try today!"
   },
   "main_content3" : {
     "en": "Sign into my account"
@@ -149,8 +149,8 @@
   "empty_notes_message" : {
     "en" : "You have no notes yet! Click the '+' icon to take notes!"
   },
-  "empty_video" : {
-    "en" : "Videos are not implemented yet.. coming up next!"
+  "empty_videoPlayer_message" : {
+    "en" : "You have no Videos in your play list! Click the '+' icon to add videos!"
   },
   "empty_reports" : {
     "en" : "Reports are not implemented yet.. coming up next!"
@@ -163,5 +163,17 @@
   },
   "filter_by" : {
     "en" : "FILTER TODOS BY:"
+  },
+  "video_url" : {
+    "en" : "VIDEO URL"
+  },
+  "create_video" : {
+    "en" : "Add a video link"
+  },
+  "stop" : {
+    "en" : "Stop"
+  },
+  "video_player" : {
+    "en" : "VIDEO PLAYER"
   }
 }

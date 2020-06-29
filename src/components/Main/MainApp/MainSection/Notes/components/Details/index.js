@@ -40,10 +40,6 @@ const Details = props => {
     deleteNote(selectedNote._id);
   }
 
-  const closeDetailsPage = () => {
-    // props.openTodoDetail(false, props.item);
-  }
-
   const onConfirm = values => {
     const noteObj = {
       title: selectedNote ? selectedNote.title : values.title,
