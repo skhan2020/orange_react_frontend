@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { findDOMNode } from 'react-dom'
-import { translate } from '../../../../../../../localization/service'
 import { Button } from 'antd'
 import { deleteVideo } from '../../../../../../../services/video'
 import screenfull from 'screenfull'

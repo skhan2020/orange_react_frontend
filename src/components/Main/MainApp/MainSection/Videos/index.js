@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EmptyUI from '../../EmptyUI';
-import { videoPlayerListSelector, selectedVideoSelector } from '../../../../../redux/selectors/index'
+import { videoPlayerListSelector } from '../../../../../redux/selectors/index'
 import { translate } from '../../../../../localization/service' 
 import { retrieveVideoList } from '../../../../../services/video'
 import { useSelector } from 'react-redux'
@@ -20,7 +20,7 @@ const VideoPlayer = () => {
   const updateSelectedVideoPlayer = item => {
     setSelectedVideo(item);
   }
-  
+
   return (
     <>
       <div className="header_box">
