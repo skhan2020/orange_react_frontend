@@ -149,6 +149,9 @@
   "empty_notes_message" : {
     "en" : "You have no notes yet! Click the '+' icon to take notes!"
   },
+  "empty_video_message" : {
+    "en" : "You have no Videos saved yet! Click the '+' icon to start your playlist!"
+  },
   "empty_videoPlayer_message" : {
     "en" : "You have no Videos in your play list! Click the '+' icon to add videos!"
   },

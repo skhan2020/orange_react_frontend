@@ -27,7 +27,7 @@ const VideoPlayer = () => {
         <div className="page_heading">{translate("video_player")}</div>
       </div>
       <div className="note_page">
-        {!videoPlayerList || videoPlayerList.length === 0 ? <EmptyUI message={translate("empty_note_message")} /> :
+        {!videoPlayerList || videoPlayerList.length === 0 ? <EmptyUI message={translate("empty_video_message")} /> :
           <>
             <div className="note_list">
               { videoPlayerList.map(item => {
