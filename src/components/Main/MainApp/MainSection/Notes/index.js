@@ -40,7 +40,7 @@ const Notes = () => {
                 }
               )}
             </div>
-              {selectedItem  && <Details selectedNote={selectedItem} detailsMode={true} ></Details> }
+              {selectedItem && selectedItem._id && <Details selectedNote={selectedItem} detailsMode={true} ></Details> }
           </>
         }
       </div>

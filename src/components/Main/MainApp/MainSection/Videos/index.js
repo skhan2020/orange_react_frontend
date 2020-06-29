@@ -20,7 +20,7 @@ const VideoPlayer = () => {
   const updateSelectedVideoPlayer = item => {
     setSelectedVideo(item);
   }
-
+  
   return (
     <>
       <div className="header_box">
