@@ -3,6 +3,7 @@ import { updateTodoList, addTodo,
   updateFilteredTodoList,
   updateTodo, todoDeleted } from '../redux/actions/todoActions';
 import { showModal } from '../redux/actions/modalActions'
+import { doLogout } from '../redux/actions/authActions'
 import store from '../redux/store';
 import { NOT_STARTED_CODE } from '../constants';
 
@@ -17,6 +18,15 @@ export const doFetch = reqBody => {
     }
   }).then(res => {
     return res.json();
+  }).then(results => {
+    debugger;
+    if (results.errors && results.errors.length && results.errors[0].message.toLowerCase() === 'unauthenticated!') {
+      // log user out and ask him to log back in
+      store.dispatch(doLogout());
+      store.dispatch(showModal('information', {message: 'Your login has expired. Please log back in again!'}));
+    } else {
+      return results;
+    }
   })
 }
 
@@ -45,6 +55,7 @@ export const retrieveTodoList = () => {
   doFetch(reqBody)
   .then(resdata => {
     // save the todos
+    debugger;
     store.dispatch(updateTodoList(resdata.data.todos));
   })
   .catch(err => {

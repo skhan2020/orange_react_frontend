@@ -79,10 +79,15 @@ export const selectedNoteSelector = (state) => {
   return getNoteReducer(state).get('selectedNote');
 }
 
+export const notesFetchedSelector = (state) => {
+  return getNoteReducer(state).get('notesFetched');
+}
+
+export const videosFetchedSelector = (state) => {
+  return getVideoReducer(state).get('videosFetched');
+}
+
 export const videoPlayerListSelector = (state) => {
   return getVideoReducer(state).get('videoList');
 }
 
-export const selectedVideoSelector = (state) => {
-  //return getNoteReducer(state).get('selectedNote');
-}

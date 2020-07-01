@@ -3,18 +3,24 @@ import { ADD_NEW_NOTE,
   DELETE_NOTE,
   SET_SELECTED_NOTE
  } from '../actions/noteAction';
-import moment from 'moment';
 import Immutable from 'immutable';
 
 const initialState = new Immutable.Map({
  noteList: Immutable.List([]),
  selectedNote: {},
+ notesFetched: false,
 })
 
 const sortAndUpdateNote = list => {
  const group = new Map();
- // sort the notes in ascending order as per created date
- list.sort((a, b) => moment(a.createdAt).diff(moment(b.createdAt)));
+ // sort the notes as per category
+ list.sort((a, b) => {
+   if (a.category < b.category) {
+     return -1;
+   } else if (a.category > b.category) {
+      return 1;
+   } return 0;
+ });
  // and group them by category
  list.forEach(item => {
    if (!group.get(item.category)) {
@@ -35,7 +41,8 @@ const noteReducer = (state = initialState, action) => {
      const newRetreivedList = sortAndUpdateNote(list);
      const selectedItem = newRetreivedList.length ? newRetreivedList[0] : {};
      return state.set('noteList', newRetreivedList)
-                 .set('selectedNote', selectedItem);
+                 .set('selectedNote', selectedItem)
+                 .set('notesFetched', true);
    case ADD_NEW_NOTE:
      const newList = [...state.get('noteList'), payload.notes]
      return state.set('noteList', sortAndUpdateNote(newList))

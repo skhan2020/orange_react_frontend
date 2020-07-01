@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EmptyUI from '../../EmptyUI';
-import { videoPlayerListSelector } from '../../../../../redux/selectors/index'
+import { videoPlayerListSelector, videosFetchedSelector } from '../../../../../redux/selectors/index'
 import { translate } from '../../../../../localization/service' 
 import { retrieveVideoList } from '../../../../../services/video'
 import { useSelector } from 'react-redux'
@@ -12,10 +12,14 @@ import '../../../Auth/index.scss';
 const VideoPlayer = () => {
   const [selectedVideo, setSelectedVideo] = useState();
   const videoPlayerList = useSelector(videoPlayerListSelector);
+  const videosFetched = useSelector(videosFetchedSelector);
   
   useEffect(() => {
-    retrieveVideoList();
-    }, []
+    debugger;
+    if (!videosFetched) {
+        retrieveVideoList();
+      }
+    }, [videosFetched]
   )
   const updateSelectedVideoPlayer = item => {
     setSelectedVideo(item);
@@ -26,7 +30,7 @@ const VideoPlayer = () => {
       <div className="header_box">
         <div className="page_heading">{translate("video_player")}</div>
       </div>
-      <div className="note_page">
+      <div className="list_page">
         {!videoPlayerList || videoPlayerList.length === 0 ? <EmptyUI message={translate("empty_video_message")} /> :
           <>
             <div className="note_list">

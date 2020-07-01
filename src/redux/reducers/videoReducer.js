@@ -9,12 +9,19 @@ import Immutable from 'immutable';
 const initialState = new Immutable.Map({
  videoList: Immutable.List([]),
  selectedVideo: {},
+ videosFetched: false,
 })
 
 const sortAndUpdateVideo = list => {
  const group = new Map();
- // sort the videos in ascending order as per created date
- list.sort((a, b) => moment(a.createdAt).diff(moment(b.createdAt)));
+ // sort the videos as per category
+ list.sort((a, b) => {
+    if (a.category < b.category) {
+      return -1;
+    } else if (a.category > b.category) {
+      return 1;
+    } return 0;
+  });
  // and group them by category
  list.forEach(item => {
    if (!group.get(item.category)) {
@@ -35,7 +42,8 @@ const videoReducer = (state = initialState, action) => {
      const newRetreivedList = sortAndUpdateVideo(list);
      const selectedItem = newRetreivedList.length ? newRetreivedList[0] : {};
      return state.set('videoList', newRetreivedList)
-                 .set('selectedVideo', selectedItem);
+                 .set('selectedVideo', selectedItem)
+                 .set('videosFetched', true);
    case ADD_NEW_VIDEO:
      const newList = [...state.get('videoList'), payload.videos]
      return state.set('videoList', sortAndUpdateVideo(newList))
