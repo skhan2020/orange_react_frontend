@@ -18,7 +18,9 @@ const StatusTimeLine = ({ todo }) => {
 
   // get list of statuses
   useEffect(() => {
-    getStatusTimeline(todo);
+    if (todo) {
+      getStatusTimeline(todo);
+    }
   }, [todo]);
 
   return (

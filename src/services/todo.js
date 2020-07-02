@@ -9,7 +9,7 @@ import { NOT_STARTED_CODE } from '../constants';
 
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
-  return fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', {
+  return fetch('https://cryptic-depths-54668.herokuapp.com/graphqlapi', { // http://localhost:4000/graphqlapi
     method: 'POST',
     body: JSON.stringify(reqBody),
     headers: {
@@ -19,7 +19,6 @@ export const doFetch = reqBody => {
   }).then(res => {
     return res.json();
   }).then(results => {
-    debugger;
     if (results.errors && results.errors.length && results.errors[0].message.toLowerCase() === 'unauthenticated!') {
       // log user out and ask him to log back in
       store.dispatch(doLogout());
@@ -55,7 +54,6 @@ export const retrieveTodoList = () => {
   doFetch(reqBody)
   .then(resdata => {
     // save the todos
-    debugger;
     store.dispatch(updateTodoList(resdata.data.todos));
   })
   .catch(err => {
@@ -249,7 +247,6 @@ export const deleteTodo = todoId => {
   }
   doFetch(reqBody)
   .then(resdata => {
-    debugger;
     const deletedItem = resdata.data.deleteTodo;
     store.dispatch(showModal('information', {message: 'Todo deleted Successfully!'}));
     store.dispatch(todoDeleted(deletedItem));

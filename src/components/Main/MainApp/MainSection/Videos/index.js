@@ -10,17 +10,24 @@ import '../Notes/index.scss';
 import '../../../Auth/index.scss';
 
 const VideoPlayer = () => {
-  const [selectedVideo, setSelectedVideo] = useState();
   const videoPlayerList = useSelector(videoPlayerListSelector);
+  const [selectedVideo, setSelectedVideo] = useState(videoPlayerList[0]);
   const videosFetched = useSelector(videosFetchedSelector);
   
   useEffect(() => {
-    debugger;
     if (!videosFetched) {
         retrieveVideoList();
       }
     }, [videosFetched]
   )
+  
+  useEffect(() => {
+    if (videoPlayerList && videoPlayerList.length) {
+      setSelectedVideo(videoPlayerList[0]);
+      }
+    }, [videoPlayerList]
+  )
+
   const updateSelectedVideoPlayer = item => {
     setSelectedVideo(item);
   }

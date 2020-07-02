@@ -8,6 +8,7 @@ export const DELETE_TODO = "DELETE_TODO";
 export const OPEN_TODO_DETAIL = 'OPEN_TODO_DETAIL';
 export const UPDATE_STATUS_TIMELINE = "UPDATE_STATUS_TIMELINE";
 export const UPDATE_FILTERED_TODO_LIST = "UPDATE_FILTERED_TODO_LIST";
+export const UPDATE_FILTER_STATUS = 'UPDATE_FILTER_STATUS';
 
 export function updateTodoList(data) {
   return {
@@ -27,6 +28,14 @@ export function updateFilteredTodoList(data) {
   };
 }
 
+export function updateFilterStatus(value) {
+  return {
+    type: UPDATE_FILTER_STATUS,
+    payload: {
+      value,
+    }
+  }
+}
 export function addTodo(data) {
   return {
     type: ADD_NEW_TODO,

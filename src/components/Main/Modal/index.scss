@@ -61,4 +61,11 @@
       width: 100%;
     }
   }
+  .narrow {
+    width: 400px;
+    .modal_content {
+      padding: 5px;
+      margin: 0 auto;
+    }
+  }
 }

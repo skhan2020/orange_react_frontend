@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, DatePicker, Input } from 'antd';
+import { useDispatch } from 'react-redux';
 import { translate } from '../../../../../../../localization/service';
 import { updateTodoChanges, deleteTodo } from '../../../../../../../services/todo'
+import { openTodoDetail } from '../../../../../../../redux/actions/todoActions'
 import EditableTagGroup from '../CreateTodo/Tags';
 import StatusTimeLine from './StatusTimeLine/index'
 import DropDown from '../DropDown';
@@ -12,6 +14,7 @@ const TodoDetails = props => {
   const [form] = Form.useForm();
   const { RangePicker } = DatePicker;
   const { TextArea } = Input;
+  const dispatch = useDispatch();
   
   const onConfirm = values => {
     const todoObject = {
@@ -39,7 +42,7 @@ const TodoDetails = props => {
   }
 
   const closeDetailsPage = () => {
-    props.openTodoDetail(false, todo);
+    dispatch(openTodoDetail({}));
   }
 
   const changeTodoStatus = item => {

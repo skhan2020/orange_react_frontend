@@ -33,7 +33,7 @@ const Modal = () => {
   return (
     <React.Fragment>
       <BackDrop />
-      <div className="modal">
+      <div className={`modal ${TITLE_MAP[type] === 'information'? 'narrow' : ''}`}>
         <header className="modal_header">
           <div className="modal_header_label">{translate(TITLE_MAP[type])}</div>
           <CloseOutlined className="delete_btn" onClick={onCancel} />

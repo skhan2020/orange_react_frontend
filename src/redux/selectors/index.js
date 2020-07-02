@@ -55,8 +55,12 @@ export const isModalOpen = (state) => {
   return getModalReducer(state).get('modalOpen');
 }
 
+export const isFilterStateSelector = (state) => {
+  return getTodoReducer(state).get('inFilterState');
+}
+
 export const todoListSelector = (state) => {
-  return Array.from(getTodoReducer(state).get('filteredList')).length ? Array.from(getTodoReducer(state).get('filteredList')) : Array.from(getTodoReducer(state).get('todoList'));
+  return getTodoReducer(state).get('inFilterState') === true ? getTodoReducer(state).get('filteredList') : getTodoReducer(state).get('todoList');
 }
 
 export const justTodoListSelector = (state) => {
@@ -64,12 +68,12 @@ export const justTodoListSelector = (state) => {
 }
 
 export const todoStatusesSelector = (state) => {
-  const selectedItem = getTodoReducer(state).get('selectedTodo')
+  const selectedItem = getTodoReducer(state).get('selectedDetailTodo')
   return getTodoReducer(state).getIn(['statuses', selectedItem._id]) || [];
 }
 
 export const todoSelectedSelector = (state) => {
-  return getTodoReducer(state).get('selectedTodo') || {};
+  return getTodoReducer(state).get('selectedDetailTodo') || {};
 }
 
 export const noteListSelector = (state) => {
