@@ -1,4 +1,7 @@
 import { setLoginToken, setShowSignUp, setLoginFailed } from '../redux/actions/authActions';
+import { resetNoteState } from '../redux/actions/noteAction';
+import { resetVideoState } from '../redux/actions/videoAction';
+import { resetTodosState } from '../redux/actions/todoActions';
 import { translate } from '../localization/service';
 import { observeLogin } from '../redux/observers/loginObserver'
 import { retrieveTodoList} from './todo'
@@ -78,6 +81,9 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
 
 observeLogin(store, loggedIn => {
   if (!loggedIn) {
+    store.dispatch(resetNoteState());
+    store.dispatch(resetVideoState());
+    store.dispatch(resetTodosState());
     return;
   }
   retrieveTodoList();

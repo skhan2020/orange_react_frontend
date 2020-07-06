@@ -7,6 +7,7 @@ export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
 export const OPEN_NOTE_DETAIL = 'OPEN_NOTE_DETAIL';
 export const SET_SELECTED_NOTE = 'SET_SELECTED_NOTE';
+export const CLEAR_NOTES_DETAILS = 'CLEAR_NOTES_DETAILS';
 
 export function updateNotesList(data) {
   return {
@@ -77,5 +78,11 @@ export function openNoteDetail(data) {
     payload: {
       notes: data,
     }
+  }
+}
+
+export function resetNoteState() {
+  return {
+    type: CLEAR_NOTES_DETAILS,
   }
 }

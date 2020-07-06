@@ -1,9 +1,9 @@
 import { ADD_NEW_VIDEO, 
   UPDATE_VIDEO_LIST, UPDATE_VIDEO,
   DELETE_VIDEO,
-  SET_SELECTED_VIDEO
+  SET_SELECTED_VIDEO,
+  CLEAR_VIDEOS_DETAILS
  } from '../actions/videoAction';
-import moment from 'moment';
 import Immutable from 'immutable';
 
 const initialState = new Immutable.Map({
@@ -64,6 +64,10 @@ const videoReducer = (state = initialState, action) => {
      return state.set('videoList', video);
    case SET_SELECTED_VIDEO :
      return state.set('selectedVideo', payload.video);
+   case CLEAR_VIDEOS_DETAILS:
+     return state.set('selectedVideo', {})
+                 .set('videosFetched', false)
+                 .set('videoList', Immutable.List([]));
    default:
      return state;
  }

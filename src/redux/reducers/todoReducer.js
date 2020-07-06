@@ -3,7 +3,8 @@ import { ADD_NEW_TODO,
    UPDATE_FILTERED_TODO_LIST,
    DELETE_TODO, OPEN_TODO_DETAIL,
    UPDATE_STATUS_TIMELINE,
-   UPDATE_FILTER_STATUS
+   UPDATE_FILTER_STATUS,
+   CLEAR_TODO_DETAILS
   } from '../actions/todoActions';
 import moment from 'moment';
 import Immutable from 'immutable';
@@ -50,6 +51,12 @@ const todoReducer = (state = initialState, action) => {
       return state.set('selectedDetailTodo', payload.todo);
     case UPDATE_STATUS_TIMELINE :
       return state.setIn(['statuses', payload.id], payload.statusList);
+    case CLEAR_TODO_DETAILS :
+      return state.set('todoList', Immutable.List([]))
+                  .set('selectedDetailTodo', {})
+                  .set('statuses', Immutable.Map({}))
+                  .set('filteredList', Immutable.List([]))
+                  .set('inFilterState', false);
     default:
       return state;
   }

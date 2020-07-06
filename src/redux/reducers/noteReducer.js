@@ -1,7 +1,8 @@
 import { ADD_NEW_NOTE, 
   UPDATE_NOTE_LIST, UPDATE_NOTE,
   DELETE_NOTE,
-  SET_SELECTED_NOTE
+  SET_SELECTED_NOTE,
+  CLEAR_NOTES_DETAILS,
  } from '../actions/noteAction';
 import Immutable from 'immutable';
 
@@ -63,6 +64,10 @@ const noteReducer = (state = initialState, action) => {
      return state.set('noteList', note);
    case SET_SELECTED_NOTE :
      return state.set('selectedNote', payload.note);
+   case CLEAR_NOTES_DETAILS:
+     return state.set('selectedNote', {})
+                 .set('notesFetched', false)
+                 .set('noteList', Immutable.List([]));
    default:
      return state;
  }

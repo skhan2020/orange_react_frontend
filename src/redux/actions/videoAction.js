@@ -7,6 +7,7 @@ export const UPDATE_VIDEO = "UPDATE_VIDEO";
 export const DELETE_VIDEO = "DELETE_VIDEO";
 export const OPEN_VIDEO_DETAIL = 'OPEN_VIDEO_DETAIL';
 export const SET_SELECTED_VIDEO = 'SET_SELECTED_VIDEO';
+export const CLEAR_VIDEOS_DETAILS = 'CLEAR_VIDEOS_DETAILS';
 
 export function updateVideoList(data) {
   return {
@@ -77,5 +78,11 @@ export function openVideoDetail(data) {
     payload: {
       videos: data,
     }
+  }
+}
+
+export function resetVideoState() {
+  return {
+    type: CLEAR_VIDEOS_DETAILS,
   }
 }

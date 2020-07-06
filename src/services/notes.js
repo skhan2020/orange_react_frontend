@@ -1,7 +1,8 @@
 import { showModal } from '../redux/actions/modalActions'
 import store from '../redux/store';
 import { doFetch } from './todo';
-import { updateNotesList, addNote, setNoteDeleted, updateExistingNote} from '../redux/actions/noteAction'
+import { updateNotesList, addNote,
+  setNoteDeleted, updateExistingNote} from '../redux/actions/noteAction'
 
 export const retrieveNotesList = () => {
   const reqBody = {

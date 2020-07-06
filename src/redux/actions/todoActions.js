@@ -9,6 +9,7 @@ export const OPEN_TODO_DETAIL = 'OPEN_TODO_DETAIL';
 export const UPDATE_STATUS_TIMELINE = "UPDATE_STATUS_TIMELINE";
 export const UPDATE_FILTERED_TODO_LIST = "UPDATE_FILTERED_TODO_LIST";
 export const UPDATE_FILTER_STATUS = 'UPDATE_FILTER_STATUS';
+export const CLEAR_TODO_DETAILS = 'CLEAR_TODO_DETAILS';
 
 export function updateTodoList(data) {
   return {
@@ -98,4 +99,10 @@ export function updateStatusTimeline(id, statusList) {
       id,
     }
   };
+}
+
+export function resetTodosState() {
+  return {
+    type: CLEAR_TODO_DETAILS,
+  }
 }
