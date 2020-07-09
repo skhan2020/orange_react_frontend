@@ -30,7 +30,10 @@ Run `npm install` to install all dependecies
 Run `npm start` to start and the run the application locally
 
 The application makes API calls against an Express backend hosted at `https://cryptic-depths-54668.herokuapp.com/graphqlapi`
-Code for the backend can be found at https://github.com/skhan2020/orange_express_backend (please follow instructions in the read me file for how to run the server locally. Do change the graphQL URL in https://github.com/skhan2020/orange_react_frontend/blob/master/src/services/todo.js to `http://localhost:4000/graphqlapi` for APIs to point to your local Epress server).
+
+Code for the backend can be found at https://github.com/skhan2020/orange_express_backend (please follow instructions in the read me file for how to run the server locally. 
+
+Do change the graphQL URL in https://github.com/skhan2020/orange_react_frontend/blob/master/src/services/todo.js to `http://localhost:4000/graphqlapi` for APIs to point to your local Epress server).
 
 **General functionality:**
 
