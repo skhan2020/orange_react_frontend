@@ -51,7 +51,8 @@
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.0",
-    "react-dom": "^16.12.0",
+    "react-dom": "npm:@hot-loader/react-dom@^16.13.0",
+    "react-hot-loader": "^4.12.21",
     "react-player": "^2.3.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -152,6 +153,9 @@
     ]
   },
   "babel": {
+    "plugins": [
+      "react-hot-loader/babel"
+    ],
     "presets": [
       "react-app"
     ]

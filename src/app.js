@@ -6,7 +6,8 @@ import './app.css';
 import AuthPage from './components/Main/Auth';
 import LandingPage from './components/Main/Landing/index';
 import MainApp from './components/Main/MainApp/index';
-import Modal from './components/Main/Modal/index'
+import Modal from './components/Main/Modal/index';
+import { hot } from 'react-hot-loader/root';
 
 // import dependencies
 import './services/notification'
@@ -41,5 +42,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(hot(App))
 

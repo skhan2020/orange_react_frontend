@@ -22,7 +22,8 @@ const cssList = {
 `}
 
 const StyledButton = styled(Button)`
-  width: 100px;
+  max-width: 100px;
+  overflow: hidden;
   height: 30px;
   display: flex;
   font-size: 1.2em;
@@ -30,7 +31,7 @@ const StyledButton = styled(Button)`
   justify-content: center;
   color: white;
   background: rgba(128, 128, 128, 0.4);
-  @media (min-width: 600px) {
+  @media (min-width: 800px) {
     width: 130px;
   }
   ${props =>
