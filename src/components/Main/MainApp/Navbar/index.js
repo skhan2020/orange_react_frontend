@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {NavLink, useRouteMatch } from 'react-router-dom';
+import {NavLink, useRouteMatch, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { showModal } from '../../../../redux/actions/modalActions'
 import { doLogout } from '../../../../redux/actions/authActions'
@@ -16,6 +16,7 @@ import './index.scss';
 
 const Navbar = () => {
   const [selectedTab, setSelectedTab] = useState('todos');
+  const history = useHistory();
   const dispatch = useDispatch();
   let { url } = useRouteMatch();
 
@@ -30,6 +31,7 @@ const Navbar = () => {
   }
 
   const executeLogout = () => {
+    history.push('/');
     dispatch(doLogout());
   }
 
@@ -64,11 +66,9 @@ const Navbar = () => {
             activeStyle={{ backgroundColor: "rgb(90, 59, 16)", border: "#b59d9d 1px solid" }}
             to={`${url}/charts`}><LineChartOutlined /></NavLink>
         </li>
-        <li >
-          <NavLink className="create_link"
-            onClick={executeLogout}
-            activeStyle={{ backgroundColor: "rgb(90, 59, 16)", border: "#b59d9d 1px solid" }}
-            to={`${url}/none`}><ExportOutlined /></NavLink>
+        <li className="create_link"
+            onClick={executeLogout} >
+          <ExportOutlined />
         </li>
       </ul>
       <Logo />
