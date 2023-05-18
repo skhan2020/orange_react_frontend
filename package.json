@@ -77,11 +77,18 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "@types/jest": "^29.5.1",
+    "@types/react": "^16.14.41",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-redux": "^7.1.25",
+    "@types/react-router-dom": "^5.3.3",
+    "prettier": "^2.0.5",
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "typecheck": "tsc",
     "test": "node scripts/test.js --env=jsdom --verbose",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
