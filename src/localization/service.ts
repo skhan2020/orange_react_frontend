@@ -10,15 +10,16 @@ const ROUND_BRACES = /\(\((.+)\)\)/g;
 const defaultLocale = 'en'
 let appLocale = defaultLocale;
 
-const setLocale = locale => {
+const setLocale = (locale: string) => {
   appLocale = locale;
 }
-const getString = (key, locale, options) => {
+// TODO: check object type
+const getString = (key: string, locale: string, options?: object) => {
   // options for interpolation
   // Replacer function for interpolation
-  const interpolate = (match, s) => (options && options[s]) || `{${s}}`;
+  const interpolate = (s: string) => (options && options[s]) || `{${s}}`;
 
-  let string = "";
+  let string: string = "";
   if (strings[key]) {
     string = strings[key][locale];
   } else {
@@ -31,13 +32,13 @@ const getString = (key, locale, options) => {
   // This needs to be done after interpolation
   const escapedString = interpolatedString.replace(
     ROUND_BRACES,
-    (match, s) => `{${s}}`,
+    (s) => `{${s}}`,
   );
 
   return escapedString;
 }
 // match against the local selection
-const translate = (str, options) => {
+const translate = (str: string, options?: object) => {
   return getString(str, appLocale, options);
 }
 // expose a translation component
