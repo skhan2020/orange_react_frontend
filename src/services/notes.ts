@@ -29,6 +29,7 @@ export const retrieveNotesList = () => {
   );
 }
 
+// @ts-ignore
 export const updateNote = updateObj => {
   const reqBody = {
     query: `
@@ -60,6 +61,7 @@ export const updateNote = updateObj => {
   doFetch(reqBody)
   .then(resdata => {
     const resObj = resdata.data.updateNote;
+// @ts-ignore
     store.dispatch(showModal('information', {message: 'Note updated Successfully!'}));
     store.dispatch(updateExistingNote({
       _id: resObj._id, 
@@ -76,6 +78,7 @@ export const updateNote = updateObj => {
   );
 }
 
+// @ts-ignore
 export const createNote = notesObj => {
   if (!notesObj.title || !notesObj.category || !notesObj.text  ) {
     console.log("Some required items are missing!");
@@ -125,6 +128,7 @@ export const createNote = notesObj => {
 
 }
 
+// @ts-ignore
 export const deleteNote = id => {
   const reqBody = {
     query: `
@@ -143,6 +147,7 @@ export const deleteNote = id => {
   doFetch(reqBody)
   .then(resdata => {
     const deletedId = resdata.data.deleteNote._id;
+// @ts-ignore
     store.dispatch(showModal('information', {message: 'Note deleted Successfully!'}));
     store.dispatch(setNoteDeleted(deletedId));
   })

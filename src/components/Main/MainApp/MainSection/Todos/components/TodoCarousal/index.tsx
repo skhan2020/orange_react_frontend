@@ -7,15 +7,24 @@ import { isFilterStateSelector } from '../../../../../../../redux/selectors/inde
 import moment from 'moment';
 import './index.scss'
 import { useSelector } from 'react-redux';
+import { Todo } from '../../../../../../../redux/reducers/todoReducer';
 
-const TodoCarousal = React.memo((props) => {
+interface TodoCarousalProps {
+  todos: Todo[],
+}
+
+const TodoCarousal = React.memo((props: TodoCarousalProps) => {
+// @ts-ignore
   const { todos } = props;
   const [listItems , setListItems] = useState([]);
   const isFilteredState = useSelector(isFilterStateSelector);
 
+// @ts-ignore
   const sortAndUpdateTodo = list => {
     const group = new Map();
+// @ts-ignore
     list.sort((a, b) => moment(a.projectedStartTime).diff(moment(b.projectedStartTime)));
+// @ts-ignore
     list.forEach(item => {
       const time = moment(item.projectedStartTime).local().format('MM-DD-YYYY');
       group.set(time, (group.get(time) ? [...group.get(time), item] : [item]));
@@ -27,6 +36,7 @@ const TodoCarousal = React.memo((props) => {
 
   useEffect(() => {
     const sortedList = sortAndUpdateTodo(todos)
+    // @ts-ignore
     setListItems(sortedList);
   }, [todos])
 
@@ -48,7 +58,7 @@ const TodoCarousal = React.memo((props) => {
             </div>
             <Slider>
               {listItems.map((item, key) => 
-                <Slide key={key}><TodoListRenderer todoList={item}/></Slide>
+                <Slide index={key} key={key}><TodoListRenderer todoList={item}/></Slide>
               ) }
             </Slider>
           </CarouselProvider> }

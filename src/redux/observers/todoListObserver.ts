@@ -1,5 +1,6 @@
 import { justTodoListSelector } from '../selectors/index';
 
+// @ts-ignore
 export const observeTodoList = (store, cb) => {
   let prevState = justTodoListSelector(store.getState());
 

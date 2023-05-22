@@ -9,6 +9,7 @@ html * {
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  margin: 0px;
 }
 ::-webkit-scrollbar-track {
   background: var(--scrollbarBG);

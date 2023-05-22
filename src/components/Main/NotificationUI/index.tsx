@@ -1,5 +1,6 @@
 import {  notification  } from 'antd';
 
+// @ts-ignore
 export const openNotification = (title, todo) => {
   notification.info({
     message: title,

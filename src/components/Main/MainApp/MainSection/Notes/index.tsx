@@ -21,6 +21,7 @@ const Notes = () => {
     }
     }, [notesFetched]
   )
+// @ts-ignore
   const updateSelectedNote = item => {
     dispatch(setSelectedItem(item));
   }
@@ -34,7 +35,8 @@ const Notes = () => {
         {!noteList || noteList.length === 0 ? <EmptyUI message={translate("empty_notes_message")} /> :
           <>
             <div className="note_list">
-              { noteList.map(item => {
+              { // @ts-ignore
+                noteList.map(item => {
                 return <div className="note_list_item" key={item._id}>
                   {item.showCategory && 
                     <div className="note_category">{item.category}</div> }

@@ -7,7 +7,7 @@ import { closeModal } from '../../../../../../../redux/actions/modalActions';
 
 import '../../../Notes/components/Details/index.scss'
 import '../../../Todos/components/Details/index.scss'
-
+// @ts-ignore
 const CreateVideo = props => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
@@ -19,7 +19,7 @@ const CreateVideo = props => {
   const finishFailed = () => {
 
   }
-
+// @ts-ignore
   const onConfirm = values => {
     const videoObj = {
       title: values.title,
@@ -35,7 +35,6 @@ const CreateVideo = props => {
       <Form className='sign_in_form'
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
-        onCancel={onCancel}
         form={form}
       >
         <Form.Item className="form-control" 

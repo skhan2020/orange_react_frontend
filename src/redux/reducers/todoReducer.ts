@@ -9,7 +9,26 @@ import { ADD_NEW_TODO,
 import moment from 'moment';
 import Immutable from 'immutable';
 
-const initialState = new Immutable.Map({
+export interface Todo {
+  projectedStartTime: moment.Moment,
+  projectedEndTime: moment.Moment,
+  notes: string,
+  tags: string[],
+  category: string,
+  title: string,
+  status: number,
+  _id: string,
+}
+
+interface TodoState {
+  todoList: Immutable.List<any>,
+  selectedDetailTodo: Todo,
+  statuses: Immutable.Map<any, any>,
+  filteredList: Immutable.List<any>,
+  inFilterState: false,
+};
+
+const initialState: TodoState = new (Immutable.Map as any)({
   todoList: Immutable.List([]),
   selectedDetailTodo: {},
   statuses: Immutable.Map({}),
@@ -17,7 +36,8 @@ const initialState = new Immutable.Map({
   inFilterState: false,
 })
 
-const todoReducer = (state = initialState, action) => {
+// @ts-ignore
+const todoReducer = (state: Map = initialState, action) => {
   let payload = action.payload;
   switch (action.type) {
     case UPDATE_TODO_LIST:
@@ -34,9 +54,11 @@ const todoReducer = (state = initialState, action) => {
       const curr = state.get('todoList');
       return state.set('todoList', [...curr, payload.todo]);
     case DELETE_TODO:
+// @ts-ignore
       const newReducedList = state.get('todoList').filter(item => item._id !== payload.todo._id);
       return state.set('todoList', [...newReducedList]);
     case UPDATE_TODO:
+// @ts-ignore
       const updatedTodoList = state.get('todoList').map(item => item._id === payload.todo._id ? 
         { ...item,
           status :payload.todo.status,

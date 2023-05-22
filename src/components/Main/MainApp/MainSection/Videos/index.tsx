@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import EmptyUI from '../../EmptyUI';
 import { videoPlayerListSelector, videosFetchedSelector } from '../../../../../redux/selectors/index'

@@ -4,8 +4,19 @@ import { PlusOutlined } from '@ant-design/icons';
 import { translate } from '../../../../../../../localization/service';
 import { TAG_LIMIT } from '../../../../../../../constants';
 
-class EditableTagGroup extends React.Component {
-  constructor(props) {
+interface EditableTagGroupProps {
+  updateTags: (tags: string[]) => void,
+  tags: string[],
+}
+
+interface EditableTagGroupState {
+      inputVisible: boolean,
+      inputValue: string,
+}
+
+class EditableTagGroup extends React.Component<EditableTagGroupProps, EditableTagGroupState> {
+  input: any;
+  constructor(props: EditableTagGroupProps) {
     super(props);
     this.state = {
       inputVisible: false,
@@ -13,8 +24,8 @@ class EditableTagGroup extends React.Component {
     };
   }
 
-  handleClose = removedTag => {
-    const tags = this.props.tags.filter(tag => tag !== removedTag);
+  handleClose = (removedTag: string) => {
+    const tags: string[] = this.props.tags.filter(tag => tag !== removedTag);
     this.props.updateTags(tags);
   };
 
@@ -22,7 +33,7 @@ class EditableTagGroup extends React.Component {
     this.setState({ inputVisible: true }, () => this.input && this.input.focus());
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e: any) => {
     this.setState({ inputValue: e.target.value });
   };
 
@@ -38,9 +49,9 @@ class EditableTagGroup extends React.Component {
     }
   };
 
-  saveInputRef = input => (this.input = input);
+  saveInputRef = (input: any) => (this.input = input);
 
-  forMap = tag => {
+  forMap = (tag: string) => {
     const tagElem = (
       <Tag
         closable

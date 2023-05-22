@@ -6,8 +6,9 @@ import { updateTodoChanges, deleteTodo } from '../../../../../../../services/tod
 import { openTodoDetail } from '../../../../../../../redux/actions/todoActions'
 import EditableTagGroup from '../CreateTodo/Tags';
 import StatusTimeLine from './StatusTimeLine/index'
-import DropDown from '../DropDown';
+import OrDropDown from '../OrDropDown/index';
 
+// @ts-ignore
 const TodoDetails = props => {
   const { todo } = props;
   const [tagsItems, setTagsItems] = useState([]);
@@ -16,6 +17,7 @@ const TodoDetails = props => {
   const { TextArea } = Input;
   const dispatch = useDispatch();
   
+// @ts-ignore
   const onConfirm = values => {
     const todoObject = {
       ...todo,
@@ -37,6 +39,7 @@ const TodoDetails = props => {
     deleteTodo(todo._id);
   }
 
+// @ts-ignore
   const updateTags = tagList => {
     setTagsItems(tagList);
   }
@@ -45,6 +48,7 @@ const TodoDetails = props => {
     dispatch(openTodoDetail({}));
   }
 
+// @ts-ignore
   const changeTodoStatus = item => {
     item.todo.status = item.status;
     updateTodoChanges(item.todo);
@@ -54,7 +58,6 @@ const TodoDetails = props => {
       <Form className="sign_in_form" 
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
-        onCancel={closeDetailsPage}
         form={form}
         initialValues= {{
           notes: todo.notes || '',
@@ -90,7 +93,7 @@ const TodoDetails = props => {
           className="form-control" 
           label={translate("status")} name="status"
         >
-          <DropDown status={todo.status} todo={todo} handleStatusChanges={changeTodoStatus} />
+          <OrDropDown status={todo.status} todo={todo} handleStatusChanges={changeTodoStatus} />
         </Form.Item>
         <Form.Item
           className="form-control column_box" 

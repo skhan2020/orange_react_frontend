@@ -6,15 +6,18 @@ import { ADD_NEW_VIDEO,
  } from '../actions/videoAction';
 import Immutable from 'immutable';
 
-const initialState = new Immutable.Map({
+// @ts-ignore
+const initialState = new (Immutable.Map as any)({
  videoList: Immutable.List([]),
  selectedVideo: {},
  videosFetched: false,
 })
 
+// @ts-ignore
 const sortAndUpdateVideo = list => {
  const group = new Map();
  // sort the videos as per category
+ // @ts-ignore
  list.sort((a, b) => {
     if (a.category < b.category) {
       return -1;
@@ -23,6 +26,7 @@ const sortAndUpdateVideo = list => {
     } return 0;
   });
  // and group them by category
+// @ts-ignore
  list.forEach(item => {
    if (!group.get(item.category)) {
      group.set(item.category, true);
@@ -34,6 +38,7 @@ const sortAndUpdateVideo = list => {
  return list;
 }
 
+// @ts-ignore
 const videoReducer = (state = initialState, action) => {
  let payload = action.payload;
  switch (action.type) {
@@ -49,12 +54,14 @@ const videoReducer = (state = initialState, action) => {
      return state.set('videoList', sortAndUpdateVideo(newList))
                  .set('selectedVideo', payload.videos);
    case DELETE_VIDEO:
+// @ts-ignore
      const newReducedList = state.get('videoList').filter(item => item._id !== payload.videoID);
      const newSortedList = sortAndUpdateVideo([...newReducedList]);
      const selectedFirstItem = newSortedList.length ? newSortedList[0] : {};
      return state.set('videoList', newSortedList)
                  .set('selectedVideo', selectedFirstItem);
    case UPDATE_VIDEO:
+// @ts-ignore
      const video = state.get('videoList').map(item => item._id === payload.videos._id ? 
        { ...item,
          title :payload.videos.title,

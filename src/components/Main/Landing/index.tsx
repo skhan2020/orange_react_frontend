@@ -12,6 +12,7 @@ const Landing = () => {
   const userId = useSelector(getUserId);
   const { firstName, lastName } = useSelector(getUserFullName);
 
+// @ts-ignore
   const toggleSignIn = value => {
     setShowSignin(value);
   }

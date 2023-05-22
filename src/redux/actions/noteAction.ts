@@ -9,6 +9,7 @@ export const OPEN_NOTE_DETAIL = 'OPEN_NOTE_DETAIL';
 export const SET_SELECTED_NOTE = 'SET_SELECTED_NOTE';
 export const CLEAR_NOTES_DETAILS = 'CLEAR_NOTES_DETAILS';
 
+// @ts-ignore
 export function updateNotesList(data) {
   return {
     type: UPDATE_NOTE_LIST,
@@ -18,6 +19,7 @@ export function updateNotesList(data) {
   };
 }
 
+// @ts-ignore
 export function setSelectedItem(selectedNote) {
   return {
     type: SET_SELECTED_NOTE,
@@ -27,6 +29,7 @@ export function setSelectedItem(selectedNote) {
   };
 }
 
+// @ts-ignore
 export function addNote(data) {
   return {
     type: ADD_NEW_NOTE,
@@ -54,6 +57,7 @@ export function getNoteList() {
   };
 }
 
+// @ts-ignore
 export function updateExistingNote(data) {
   return {
     type: UPDATE_NOTE,
@@ -63,6 +67,7 @@ export function updateExistingNote(data) {
   };
 }
 
+// @ts-ignore
 export function setNoteDeleted(data) {
   return {
     type: DELETE_NOTE,
@@ -72,6 +77,7 @@ export function setNoteDeleted(data) {
   };
 }
 
+// @ts-ignore
 export function openNoteDetail(data) {
   return {
     type: OPEN_NOTE_DETAIL,
