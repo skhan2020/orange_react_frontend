@@ -25,14 +25,17 @@ const CreateTodo = () => {
     dispatch(closeModal());
   }
 
+// @ts-ignore
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
-  const updateTags = tagList => {
+// @ts-ignore
+  const updateTags: any = tagList => {
     setTagsItems(tagList);
   }
 
+// @ts-ignore
   const onConfirm = values => {
     dispatch(closeModal());
     const todoObject = {
@@ -49,7 +52,7 @@ const CreateTodo = () => {
     <Form className="sign_in_form" 
         onFinish={onConfirm}
         onFinishFailed={onFinishFailed}
-        onCancel={onCancel}
+        
       >
         <Form.Item
           label={translate("title")} name="title"

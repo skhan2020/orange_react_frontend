@@ -9,7 +9,7 @@ import { closeModal } from '../../../../../../../redux/actions/modalActions';
 import '../Editor/index.scss'
 import './index.scss'
 import '../../../Todos/components/Details/index.scss'
-
+// @ts-ignore
 const Details = props => {
   const [viewOnly, setViewOnly] = useState(true);
   const [editorState, setEditorState] = useState();
@@ -39,12 +39,13 @@ const Details = props => {
   const onDeleteClick = () => {
     deleteNote(selectedNote._id);
   }
-
+// @ts-ignore
   const onConfirm = values => {
     const noteObj = {
       title: selectedNote ? selectedNote.title : values.title,
       category: selectedNote ? selectedNote.category : values.category,
-      text: editorState
+      text: editorState,
+      id: ''
     }
     if (detailsMode) {
       noteObj.id = selectedNote._id;
@@ -61,7 +62,7 @@ const Details = props => {
       <Form className='sign_in_form'
         onFinish={onConfirm}
         onFinishFailed={finishFailed}
-        onCancel={onCancel}
+        
         form={form}
       >
         {!detailsMode && <Form.Item className="form-control" 

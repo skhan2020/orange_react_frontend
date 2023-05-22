@@ -1,5 +1,5 @@
 import React from 'react';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+// import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useDispatch } from 'react-redux';
 import Details from './components/Details/index';
 import { openTodoDetail } from '../../../../../redux/actions/todoActions'

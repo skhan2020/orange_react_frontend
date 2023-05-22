@@ -1,7 +1,7 @@
 import { SET_LOGIN_TOKEN, CLEAR_LOGIN, SHOW_SIGNUP, SET_LOGIN_FAILED, RESET_LOGIN } from '../actions/authActions';
 import Immutable from 'immutable';
 
-export interface authState {
+export interface AuthState {
   isLoggedIn: boolean,
   loginToken: string, 
   userId: string, 
@@ -10,7 +10,8 @@ export interface authState {
   userType: string,
   showSignup: boolean,
   loginError: boolean,
-  errorMessage: string
+  errorMessage: string,
+  tokenExpiration: string
 }
 
 export const initialState = new (Immutable.Map as any)({
@@ -22,10 +23,12 @@ export const initialState = new (Immutable.Map as any)({
   userType: '',
   showSignup: true,
   loginError: false,
-  errorMessage: ''
+  errorMessage: '',
+  tokenExpiration: ''
 });
 
-const authReducer = (state: authState = initialState, action) => {
+// @ts-ignore
+const authReducer = (state = initialState, action) => {
   let payload = action.payload;
   switch (action.type) {
     case SET_LOGIN_TOKEN:

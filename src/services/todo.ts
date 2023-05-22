@@ -7,6 +7,7 @@ import { doLogout } from '../redux/actions/authActions'
 import store from '../redux/store';
 import { NOT_STARTED_CODE } from '../constants';
 
+// @ts-ignore
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
   return fetch('http://localhost:4000/graphqlapi', { // https://cryptic-depths-54668.herokuapp.com/graphqlapi
@@ -22,6 +23,7 @@ export const doFetch = reqBody => {
     if (results.errors && results.errors.length && results.errors[0].message.toLowerCase() === 'unauthenticated!') {
       // log user out and ask him to log back in
       store.dispatch(doLogout());
+// @ts-ignore
       store.dispatch(showModal('information', {message: 'Your login has expired. Please log back in again!'}));
     } else {
       return results;
@@ -62,6 +64,7 @@ export const retrieveTodoList = () => {
   );
 }
 
+// @ts-ignore
 export const updateTodoChanges = updateObj => {
   const reqBody = {
     query: `
@@ -118,6 +121,7 @@ export const updateTodoChanges = updateObj => {
 
 }
 
+// @ts-ignore
 export const createTodo = todoObj => {
   if (!todoObj.title || !todoObj.projectedStartTime ) {
     console.log("Some required items are missing!");
@@ -189,6 +193,7 @@ export const createTodo = todoObj => {
 
 }
 
+// @ts-ignore
 export const getFilteredTodos = (type, filter) => {
   const reqBody = {
     query: `
@@ -229,6 +234,7 @@ export const getFilteredTodos = (type, filter) => {
   );
 }
 
+// @ts-ignore
 export const deleteTodo = todoId => {
   const reqBody = {
     query: `
@@ -248,6 +254,7 @@ export const deleteTodo = todoId => {
   doFetch(reqBody)
   .then(resdata => {
     const deletedItem = resdata.data.deleteTodo;
+// @ts-ignore
     store.dispatch(showModal('information', {message: 'Todo deleted Successfully!'}));
     store.dispatch(todoDeleted(deletedItem));
   })

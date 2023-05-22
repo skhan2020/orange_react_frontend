@@ -1,96 +1,121 @@
+
+// @ts-ignore
 const getAuthReducer = (state) => {
   return state.authReducer;
 }
 
+// @ts-ignore
 const getModalReducer = (state) => {
   return state.modalReducer;
 }
 
+// @ts-ignore
 const getTodoReducer = (state) => {
   return state.todoReducer;
 }
 
+// @ts-ignore
 const getNoteReducer = (state) => {
   return state.noteReducer;
 }
 
+// @ts-ignore
 const getVideoReducer = (state) => {
   return state.videoReducer;
 }
 
+// @ts-ignore
 export const isLoggedIn = (state) => {
   return getAuthReducer(state).get('isLoggedIn');
 }
 
+// @ts-ignore
 export const getLoginToken = (state) => {
   return getAuthReducer(state).get('loginToken');
 }
 
+// @ts-ignore
 export const getLoginError = (state) => {
   return { hasError: getAuthReducer(state).get('loginError'),
            errorMessage: getAuthReducer(state).get('errorMessage') };
 } 
 
+// @ts-ignore
 export const getUserFullName = (state) => {
   return { firstName: getAuthReducer(state).get('firstName'), lastName: getAuthReducer(state).get('lastName')};
 }
 
+// @ts-ignore
 export const getUserId = (state) => {
   return getAuthReducer(state).get('userId');
 }
 
+// @ts-ignore
 export const getShowSignup = (state) => {
   return getAuthReducer(state).get('showSignup');
 }
 
+// @ts-ignore
 export const getModalElement = (state) => {
   return getModalReducer(state).get('modalObject');
 }
 
+// @ts-ignore
 export const getModalType = (state) => {
   return getModalReducer(state).get('modalType');
 }
 
+// @ts-ignore
 export const isModalOpen = (state) => {
   return getModalReducer(state).get('modalOpen');
 }
 
+// @ts-ignore
 export const isFilterStateSelector = (state) => {
   return getTodoReducer(state).get('inFilterState');
 }
 
+// @ts-ignore
 export const todoListSelector = (state) => {
   return getTodoReducer(state).get('inFilterState') === true ? getTodoReducer(state).get('filteredList') : getTodoReducer(state).get('todoList');
 }
 
+// @ts-ignore
 export const justTodoListSelector = (state) => {
   return Array.from(getTodoReducer(state).get('todoList'));
 }
 
+// @ts-ignore
 export const todoStatusesSelector = (state) => {
   const selectedItem = getTodoReducer(state).get('selectedDetailTodo')
   return getTodoReducer(state).getIn(['statuses', selectedItem._id]) || [];
 }
 
+// @ts-ignore
 export const todoSelectedSelector = (state) => {
   return getTodoReducer(state).get('selectedDetailTodo') || {};
 }
 
+// @ts-ignore
 export const noteListSelector = (state) => {
   return getNoteReducer(state).get('noteList');
 }
+// @ts-ignore
 export const selectedNoteSelector = (state) => {
   return getNoteReducer(state).get('selectedNote');
 }
 
+// @ts-ignore
 export const notesFetchedSelector = (state) => {
   return getNoteReducer(state).get('notesFetched');
 }
 
+// @ts-ignore
 export const videosFetchedSelector = (state) => {
   return getVideoReducer(state).get('videosFetched');
 }
 
+// @ts-ignore
 export const videoPlayerListSelector = (state) => {
   return getVideoReducer(state).get('videoList');
 }

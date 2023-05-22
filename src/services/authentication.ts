@@ -9,6 +9,7 @@ import store from '../redux/store';
 import { doFetch } from './todo';
 import { TRIAL_PERIOD } from '../constants'
 
+// @ts-ignore
 export const signInHandler = (email, password) => {
   const reqBody = {
     query: `
@@ -39,6 +40,7 @@ export const signInHandler = (email, password) => {
   });
 }
 
+// @ts-ignore
 export const signUpHandler = (email, password, firstName, lastName, type) => {
    const reqBody = {
       query: `mutation CreateUser ($email: String!, $password: String!, $lastName: String!, $firstName: String!, $type: String!){
@@ -79,6 +81,7 @@ export const signUpHandler = (email, password, firstName, lastName, type) => {
   );
 }
 
+// @ts-ignore
 observeLogin(store, loggedIn => {
   if (!loggedIn) {
     store.dispatch(resetNoteState());

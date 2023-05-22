@@ -17,10 +17,13 @@ const setLocale = (locale: string) => {
 const getString = (key: string, locale: string, options?: object) => {
   // options for interpolation
   // Replacer function for interpolation
+// @ts-ignore
   const interpolate = (s: string) => (options && options[s]) || `{${s}}`;
 
   let string: string = "";
+// @ts-ignore
   if (strings[key]) {
+// @ts-ignore
     string = strings[key][locale];
   } else {
     return key;

@@ -29,6 +29,7 @@ export const retrieveVideoList = () => {
   );
 }
 
+// @ts-ignore
 export const createVideo = videoObj => {
   if (!videoObj.title || !videoObj.category || !videoObj.link  ) {
     console.log("Some required items are missing!");
@@ -78,6 +79,7 @@ export const createVideo = videoObj => {
 
 }
 
+// @ts-ignore
 export const deleteVideo = id => {
   const reqBody = {
     query: `
@@ -96,6 +98,7 @@ export const deleteVideo = id => {
   doFetch(reqBody)
   .then(resdata => {
     const deletedId = resdata.data.deleteVideo._id;
+// @ts-ignore
     store.dispatch(showModal('information', {message: 'Video deleted Successfully!'}));
     store.dispatch(setVideoDeleted(deletedId));
   })

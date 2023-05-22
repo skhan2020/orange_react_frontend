@@ -6,15 +6,30 @@ import { ADD_NEW_NOTE,
  } from '../actions/noteAction';
 import Immutable from 'immutable';
 
-const initialState = new Immutable.Map({
+
+interface Note {
+  title: string,
+  category: string,
+  text: string,
+  id: string
+}
+interface NoteState {
+ noteList: Immutable.List<Note>,
+ selectedNote: Note,
+ notesFetched: boolean,
+}
+
+const initialState = new (Immutable.Map as any)({
  noteList: Immutable.List([]),
  selectedNote: {},
  notesFetched: false,
 })
 
+// @ts-ignore
 const sortAndUpdateNote = list => {
  const group = new Map();
  // sort the notes as per category
+ // @ts-ignore
  list.sort((a, b) => {
    if (a.category < b.category) {
      return -1;
@@ -23,6 +38,7 @@ const sortAndUpdateNote = list => {
    } return 0;
  });
  // and group them by category
+// @ts-ignore
  list.forEach(item => {
    if (!group.get(item.category)) {
      group.set(item.category, true);
@@ -34,6 +50,7 @@ const sortAndUpdateNote = list => {
  return list;
 }
 
+// @ts-ignore
 const noteReducer = (state = initialState, action) => {
  let payload = action.payload;
  switch (action.type) {
@@ -49,12 +66,14 @@ const noteReducer = (state = initialState, action) => {
      return state.set('noteList', sortAndUpdateNote(newList))
                  .set('selectedNote', payload.notes);
    case DELETE_NOTE:
+    // @ts-ignore
      const newReducedList = state.get('noteList').filter(item => item._id !== payload.noteID);
      const newSortedList = sortAndUpdateNote([...newReducedList]);
      const selectedFirstItem = newSortedList.length ? newSortedList[0] : {};
      return state.set('noteList', newSortedList)
                  .set('selectedNote', selectedFirstItem);
    case UPDATE_NOTE:
+    // @ts-ignore
      const note = state.get('noteList').map(item => item._id === payload.notes._id ? 
        { ...item,
          title :payload.notes.title,

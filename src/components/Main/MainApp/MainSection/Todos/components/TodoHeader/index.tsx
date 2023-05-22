@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Select, Input } from 'antd'
-import DropDown from '../../components/DropDown';
+import { Select, Input } from 'antd';
+import OrDropDown from '../OrDropDown/index';
 import { updateFilterStatus } from '../../../../../../../redux/actions/todoActions'
 import { getFilteredTodos } from '../../../../../../../services/todo'
 import { useDispatch } from 'react-redux';
@@ -23,6 +23,7 @@ const TodoHeader = React.memo(() => {
     }
   }
 
+// @ts-ignore
   const onDropdownChange = value => {
     if (searchValue) {
       clearSearch();
@@ -30,10 +31,12 @@ const TodoHeader = React.memo(() => {
     setSearchCategory(value);
   }
 
+// @ts-ignore
   const onSearchChange = item => {
     setSearchValue(item.currentTarget.value);
   }
 
+// @ts-ignore
   const onStatusChange = value => {
     setSearchValue(value.status);
     getFilteredTodos(searchCategory, value.status.toString() );
@@ -59,12 +62,12 @@ const TodoHeader = React.memo(() => {
           <Option value="title">Title</Option>
           <Option value="category">Category</Option>
         </Select>
-        { searchCategory === 'status' ?
-          <DropDown handleStatusChanges={onStatusChange} status={searchValue} />  :
+        { searchValue && searchCategory === 'status' ?
+          <OrDropDown handleStatusChanges={onStatusChange} status={searchValue} />  :
           <Search
             className="search_input"
             onChange={onSearchChange}
-            value={searchValue}
+            value={searchValue || ''}
             placeholder={translate('enter_search', {item: searchCategory})}
             onSearch={onSearch}
             enterButton />

@@ -1,7 +1,10 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import {  Menu, Dropdown, Button  } from 'antd';
-import { STATUSES, NOT_STARTED_CODE, IN_PROGRESS_CODE, ON_HOLD_CODE, DONE_CODE } from '../../../../../../constants/index';
+import {  Dropdown, Button  } from 'antd';
+import type { MenuProps } from 'antd';
+import { STATUSES, NOT_STARTED_CODE, IN_PROGRESS_CODE, ON_HOLD_CODE, DONE_CODE } from '../../../../../../../constants/index';
 import styled, { css } from 'styled-components'
+import { Todo } from '../../../../../../../redux/reducers/todoReducer';
 
 const cssList = {
   redButton : css`
@@ -34,19 +37,27 @@ const StyledButton = styled(Button)`
   @media (min-width: 800px) {
     width: 130px;
   }
-  ${props =>
+  ${(props: DropdownProps) =>
    props.status}
 `;
 
 StyledButton.displayName = 'StyledButton';
 
-const DropDown = props => {
-  const [localStatus, setLocalStatus] = useState();
+interface DropdownProps {
+  status: number,
+  todo? : Todo,
+  handleStatusChanges : ({}) => void
+}
+
+// @ts-ignore
+const OrDropDown = (props: DropdownProps) => {
+  const [localStatus, setLocalStatus] = useState(1000);
 
   useEffect(() => {
+// @ts-ignore
     setLocalStatus(parseInt(props.status));
   }, [props.status])
-
+// @ts-ignore
   const handleMenuClick = event => {
     // handle status change
     if (props.handleStatusChanges) {
@@ -54,32 +65,33 @@ const DropDown = props => {
     }
   }
 
-  const menu = (
-    <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1000">
-        {STATUSES.get(NOT_STARTED_CODE).label}
-      </Menu.Item>
-      <Menu.Item key="2000">
-        {STATUSES.get(IN_PROGRESS_CODE).label}
-      </Menu.Item>
-      <Menu.Item key="3000">
-        {STATUSES.get(ON_HOLD_CODE).label}
-      </Menu.Item>
-      <Menu.Item key="4000">
-        {STATUSES.get(DONE_CODE).label}
-      </Menu.Item>
-    </Menu>
-  );
+  const menuList : MenuProps = {
+  items: [
+    { label: STATUSES.get(NOT_STARTED_CODE)?.label,
+      key: 1000
+    },
+    { label: STATUSES.get(IN_PROGRESS_CODE)?.label,
+      key: 2000
+    },
+    { label: STATUSES.get(ON_HOLD_CODE)?.label,
+      key: 3000
+    },
+    { label: STATUSES.get(DONE_CODE)?.label,
+      key: 4000
+    }
+  ]};
 
    return (
-    <Dropdown
-      overlay={menu} placement="bottomCenter" >
+    <Dropdown 
+      menu={ menuList } placement="bottomCenter"
+      trigger={['click']} >
       <StyledButton className="statusDropdownButton"
+        onClick={(e) => handleMenuClick(e)}
         status={localStatus > 0 ? cssList[STATUSES.get(localStatus).css] : null}>
-        {localStatus > 0 ? STATUSES.get(localStatus).label : 'Select ..'}
+        {localStatus > 0 ? STATUSES.get(localStatus)?.label : 'Select ..'}
       </StyledButton>
     </Dropdown>
   );
 }
 
-export default DropDown;
+export default OrDropDown;

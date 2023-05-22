@@ -9,6 +9,7 @@ export const OPEN_VIDEO_DETAIL = 'OPEN_VIDEO_DETAIL';
 export const SET_SELECTED_VIDEO = 'SET_SELECTED_VIDEO';
 export const CLEAR_VIDEOS_DETAILS = 'CLEAR_VIDEOS_DETAILS';
 
+// @ts-ignore
 export function updateVideoList(data) {
   return {
     type: UPDATE_VIDEO_LIST,
@@ -18,6 +19,7 @@ export function updateVideoList(data) {
   };
 }
 
+// @ts-ignore
 export function setSelectedVideo(selectedVideo) {
   return {
     type: SET_SELECTED_VIDEO,
@@ -27,6 +29,7 @@ export function setSelectedVideo(selectedVideo) {
   };
 }
 
+// @ts-ignore
 export function addVideo(data) {
   return {
     type: ADD_NEW_VIDEO,
@@ -54,6 +57,7 @@ export function getVideoList() {
   };
 }
 
+// @ts-ignore
 export function updateExistingVideo(data) {
   return {
     type: UPDATE_VIDEO,
@@ -63,6 +67,7 @@ export function updateExistingVideo(data) {
   };
 }
 
+// @ts-ignore
 export function setVideoDeleted(data) {
   return {
     type: DELETE_VIDEO,
@@ -72,6 +77,7 @@ export function setVideoDeleted(data) {
   };
 }
 
+// @ts-ignore
 export function openVideoDetail(data) {
   return {
     type: OPEN_VIDEO_DETAIL,

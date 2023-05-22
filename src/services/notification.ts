@@ -7,20 +7,25 @@ import { NOT_STARTED_CODE } from '../constants';
 
 const notificationTitle = 'Ready to start now ..';
 
+// @ts-ignore
 let timerId;
 
+// @ts-ignore
 const initUpcomingTimer = todoList => {
   // get the immediate next item in todolist
+// @ts-ignore
   const futureTodos = todoList.filter(item => moment().diff(item.projectedStartTime) < 0 );
   if (futureTodos.length) {
     setUpTimer(futureTodos[0], todoList);
   }
 }
 const clearAllTimer = () => {
+// @ts-ignore
   if (timerId) {
     clearTimeout(timerId);
   }
 }
+// @ts-ignore
 const setUpTimer = (futureTodo, todoList) => {
   const timerSec = Math.abs(moment().diff(futureTodo.projectedStartTime));
   timerId = setTimeout(
@@ -38,10 +43,12 @@ const setUpTimer = (futureTodo, todoList) => {
   );
 }
 
+// @ts-ignore
 const init = todoList => {
   initUpcomingTimer(todoList);
 }
 
+// @ts-ignore
 observeTodoList(store, todoList => {
   if (!todoList) {
     return;
@@ -49,6 +56,7 @@ observeTodoList(store, todoList => {
   init(todoList);
 });
 
+// @ts-ignore
 observeLogin(store, loggedIn => {
   if (!loggedIn) {
     clearAllTimer();

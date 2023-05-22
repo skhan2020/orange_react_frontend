@@ -1,14 +1,14 @@
+
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { translate } from '../../../localization/service';
 import { getUserId, getLoginError } from '../../../redux/selectors';
 import { Button, Form, Input, Select, Alert } from 'antd';
-import 'antd/dist/antd.css';
 import './index.scss';
 import { signInHandler, signUpHandler } from '../../../services/authentication';
 import { resetLogin } from '../../../redux/actions/authActions'
 import { STUDENT, PROFESSIONAL, UNDERGRAD} from '../../../constants';
-
+// @ts-ignore
 const AuthPage = props => {
   const dispatch = useDispatch();
   const { isLogin } = props;
@@ -47,7 +47,7 @@ const AuthPage = props => {
       form.resetFields();
     };
   }, [userId, form, isLogin]);
-
+// @ts-ignore
   const submitHandler = values => {
     if (showLogin) {
       signInHandler(values.email, values.password);
@@ -55,7 +55,7 @@ const AuthPage = props => {
       signUpHandler(values.email, values.password, values.firstName, values.lastName, (values.type || DEFAULT_TYPE));
     }
   }
-
+// @ts-ignore
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
@@ -69,6 +69,7 @@ const AuthPage = props => {
 
   const toggleSignIn = () => {
     if (hasError) {
+// @ts-ignore
       dispatch(resetLogin());
     }
     props.toggleSignIn(!isLogin);
@@ -133,7 +134,7 @@ const AuthPage = props => {
       </Form.Item>
       {!showLogin && <Form.Item 
         label={translate("user_type")} name="type">
-        <Select name="type">
+        <Select>
             {selectItems.map((item, key) => <Select.Option key={key} value={item.value}>{item.label}</Select.Option>)}
         </Select>
       </Form.Item> }

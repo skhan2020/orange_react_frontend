@@ -18,7 +18,18 @@ export const TRIAL_PERIOD = 15;
 
 export const TAG_LIMIT = 3;
 
-export const STATUSES = new Map(
+export interface StatusDisplayDetail {
+  label: string,
+  css: string,
+  bg_css: string
+}
+
+export interface StatusObjectKeys {
+  [key: number]: StatusDisplayDetail // best way to declare a key value pair
+}
+
+// TypeScript - chnage this to a record
+export const STATUSES: Map<number, StatusDisplayDetail > = new Map(
   [[ NOT_STARTED_CODE, { label: translate(NOT_STARTED), css: 'redButton', bg_css: 'created_bg' } ],
   [ IN_PROGRESS_CODE, { label: translate(IN_PROGRESS), css: 'yellowButton', bg_css: 'in_progress_bg'} ],
   [ ON_HOLD_CODE, { label: translate(ON_HOLD), css: 'blueButton', bg_css: 'on_hold_bg' } ],

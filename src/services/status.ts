@@ -2,6 +2,7 @@ import store from '../redux/store';
 import { doFetch } from './todo';
 import { updateStatusTimeline } from '../redux/actions/todoActions';
 
+// @ts-ignore
 export const getStatusTimeline = todoId => {
   const reqBody = {
     query: `

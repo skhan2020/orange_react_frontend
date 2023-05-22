@@ -17,7 +17,7 @@ const styleMap = {
     'backgroundColor': '#faed27',
   }
 };
-
+// @ts-ignore
 const Notes = props => {
   const { readOnly } = props;
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -28,14 +28,14 @@ const Notes = props => {
       setEditorState(EditorState.createWithContent(contentSt));
     }
   },[props.note])
-
+// @ts-ignore
   const onChange = editorState => {
     const contentState = editorState.getCurrentContent();
     const stringText = JSON.stringify(convertToRaw(contentState));
     setEditorState(editorState);
     props.setParentEditorState(stringText);
   }
-
+// @ts-ignore
   const handleKeyDown = command => {
     let newState = RichUtils.handleKeyCommand(editorState, command);
     if (!newState && command === 'highlight') {

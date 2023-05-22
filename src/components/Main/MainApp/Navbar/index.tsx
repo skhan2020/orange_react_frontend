@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import {NavLink, useRouteMatch, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux'

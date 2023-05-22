@@ -1,6 +1,6 @@
-folder_path="/Users/skhan/Documents/orange_react_frontend/config"
-old_extension=".ts"
-new_extension=".js"
+folder_path="/Users/skhan/Documents/orange_react_frontend/src/components"
+old_extension=".tsc"
+new_extension=".tsx"
 
 change_extension() {
     # for files in /Users/skhan/Documents/orange_react_frontend/*

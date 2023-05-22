@@ -6,12 +6,12 @@ import './app.css';
 import LandingPage from './components/Main/Landing/index';
 import MainApp from './components/Main/MainApp/index';
 import Modal from './components/Main/Modal/index';
-import { hot } from 'react-hot-loader/root';
 
 // import dependencies
 import './services/notification'
 
-class App extends Component {
+interface appProps { isLoggedIn: boolean};
+class App extends Component<appProps> {
   render() {
    const { isLoggedIn } = this.props;
    return (
@@ -32,11 +32,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     isLoggedIn: isLoggedIn(state),
   }
 }
 
-export default connect(mapStateToProps)(hot(App))
+export default connect(mapStateToProps)(App)
 

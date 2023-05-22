@@ -1,5 +1,6 @@
 import { isLoggedIn } from '../selectors/index';
 
+// @ts-ignore
 export const observeLogin = (store, cb) => {
   let prevState = isLoggedIn(store.getState());
 

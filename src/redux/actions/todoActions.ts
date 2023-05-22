@@ -11,6 +11,7 @@ export const UPDATE_FILTERED_TODO_LIST = "UPDATE_FILTERED_TODO_LIST";
 export const UPDATE_FILTER_STATUS = 'UPDATE_FILTER_STATUS';
 export const CLEAR_TODO_DETAILS = 'CLEAR_TODO_DETAILS';
 
+// @ts-ignore
 export function updateTodoList(data) {
   return {
     type: UPDATE_TODO_LIST,
@@ -20,6 +21,7 @@ export function updateTodoList(data) {
   };
 }
 
+// @ts-ignore
 export function updateFilteredTodoList(data) {
   return {
     type: UPDATE_FILTERED_TODO_LIST,
@@ -29,6 +31,7 @@ export function updateFilteredTodoList(data) {
   };
 }
 
+// @ts-ignore
 export function updateFilterStatus(value) {
   return {
     type: UPDATE_FILTER_STATUS,
@@ -37,6 +40,7 @@ export function updateFilterStatus(value) {
     }
   }
 }
+// @ts-ignore
 export function addTodo(data) {
   return {
     type: ADD_NEW_TODO,
@@ -64,6 +68,7 @@ export function getTodoList() {
   };
 }
 
+// @ts-ignore
 export function updateTodo(data) {
   return {
     type: UPDATE_TODO,
@@ -73,6 +78,7 @@ export function updateTodo(data) {
   };
 }
 
+// @ts-ignore
 export function todoDeleted(data) {
   return {
     type: DELETE_TODO,
@@ -82,6 +88,7 @@ export function todoDeleted(data) {
   };
 }
 
+// @ts-ignore
 export function openTodoDetail(data) {
   return {
     type: OPEN_TODO_DETAIL,
@@ -91,6 +98,7 @@ export function openTodoDetail(data) {
   }
 }
 
+// @ts-ignore
 export function updateStatusTimeline(id, statusList) {
   return {
     type: UPDATE_STATUS_TIMELINE,

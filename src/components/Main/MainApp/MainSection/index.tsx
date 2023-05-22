@@ -7,6 +7,7 @@ import Notes from './Notes/index';
 import Reports from './Reports/index';
 
 const MainSection = () => {
+// @ts-ignore
   let { sectionID } = useParams('todo');
   return (
     <div className="main_section">
