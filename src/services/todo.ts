@@ -10,7 +10,7 @@ import { NOT_STARTED_CODE } from '../constants';
 // @ts-ignore
 export const doFetch = reqBody => {
   const authToken = getLoginToken(store.getState());
-  return fetch('http://localhost:4000/graphqlapi', { // http://localhost:4000/graphqlapi
+  return fetch('https://orange-backend.onrender.com/graphqlapi', { // http://localhost:4000/graphqlapi
     method: 'POST',
     body: JSON.stringify(reqBody),
     headers: {

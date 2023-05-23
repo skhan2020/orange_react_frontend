@@ -1,15 +1,14 @@
-
 ## Orange overview
 
 The example application "Orange" is a task management SPA (somewhat like trello) written in React and Javascript to help students create and accomplish every day task. It also allows them to create notes and video playlist to help keep their study materials all in one application.
 
-It uses custom API for all requests, including authentication. 
+It uses custom API for all requests, including authentication.
 
 You can view a live demo over at https://orangeplanner-32d6f.firebaseapp.com/landing
 
 This codebase was created to demonstrate a fully fledged application built with React that interacts with an actual backend server including CRUD operations, authentication, routing and more. Greate effort have been made to make the application as optimized as possible using the React guidelines.
 
-Please note that the application is still a  `Work in Progress`
+Please note that the application is still a `Work in Progress`
 
 ## Libraries / Dependencies
 
@@ -21,7 +20,7 @@ Please note that the application is still a  `Work in Progress`
 - React-Router
 - Redux ( for state managment )
 - Immutable.js
-- GraphQL 
+- GraphQL
 
 ### Building the project
 
@@ -29,16 +28,33 @@ Clone the source code to your machine.
 Run `npm install` to install all dependecies
 Run `npm start` to start and the run the application locally
 
-The application makes API calls against an Express backend hosted at `https://cryptic-depths-54668.herokuapp.com/graphqlapi`
+The application makes API calls against an Express backend hosted at `https://orange-backend.onrender.com/graphqlapi`
 
-Code for the backend can be found at https://github.com/skhan2020/orange_express_backend (please follow instructions in the read me file for how to run the server locally. 
+Code for the backend can be found at https://github.com/skhan2020/orange_express_backend (please follow instructions in the read me file for how to run the server locally.
 
 Do change the graphQL URL in https://github.com/skhan2020/orange_react_frontend/blob/master/src/services/todo.js to `http://localhost:4000/graphqlapi` for APIs to point to your local Epress server).
+
+### Deploying the project
+
+The project has setup to deploy to Firebase. In order to deploy to firebase you will need to install the firebase CLI in your machine and sign into your github account to link your project to the hosting server.
+
+To setup firebase in your machine:
+Run `firebase cli` to instal firebase client interface
+
+Run `firebase login` to login into github and connect your firebase account to github
+
+To test you may
+Run `firebase emulators:start` locally to check the build looks right. The test url would be http://127.0.0.1:5000
+
+To deploy
+Run `firebase deploy`
+
+To see your project live navigate to https://orangeplanner-32d6f.firebaseapp.com/landing
 
 **General functionality:**
 
 - Authenticate users via JWT (login/signup pages + logout button in navigator)
-- CRU* users (sign up & login UI - no deleting required)
+- CRU\* users (sign up & login UI - no deleting required)
 - CRUD Tasks, Notes and videos
 - GET and edit notes using the Draft.js (Rich Text Editor Framework for React)
 - Add or delete videos to your list.
@@ -49,16 +65,15 @@ Do change the graphQL URL in https://github.com/skhan2020/orange_react_frontend/
 **The general page breakdown looks like this:**
 
 - Sign in/Sign up pages (URL: /#/landing )
-    - Uses JWT (store the token in redux state)
+  - Uses JWT (store the token in redux state)
 - Todo page (URL: /#/main/todo )
-    - Clicking on the first top (+) icon opens a `create todo page` when you are in this page
-    - (Working on a welcome page currently)
+  - Clicking on the first top (+) icon opens a `create todo page` when you are in this page
+  - (Working on a welcome page currently)
 - Notes page to view / edit notes (URL: /#/main/notes )
-    - Clicking on the first top (+) icon opens a `create notes page` when you are in this page
+  - Clicking on the first top (+) icon opens a `create notes page` when you are in this page
 - Video page to view / delete videos (URL: /#/main/videos )
-    - Clicking on the first top (+) icon opens a `create video page` when you are in this page
+  - Clicking on the first top (+) icon opens a `create video page` when you are in this page
 - Charts page (Not yet implemented )
-
 
 <br />
 

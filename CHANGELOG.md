@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Heroku free tier have been discontinued
 - moved deployment to Render https://dashboard.render.com/select-repo?type=web
+- Added new render hosted url https://orange-backend.onrender.com/graphqlapi
 
 ### OT-3: Added Typescript support and other version updates - 2023-05-22
 
