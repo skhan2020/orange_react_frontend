@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0]
 
+### CHORE: Updating backend url to point to render - 2023-05-23
+
+- Heroku free tier have been discontinued
+- moved deployment to Render https://dashboard.render.com/select-repo?type=web
+
 ### OT-3: Added Typescript support and other version updates - 2023-05-22
 
 - Replace Webpack 3 with Webpack 5 using latest CRA with TS
